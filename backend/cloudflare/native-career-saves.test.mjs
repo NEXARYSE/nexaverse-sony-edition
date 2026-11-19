@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {createHash} from 'node:crypto';
+import {Miniflare,Response as WorkerResponse,convertV4MiniflareOptions} from 'miniflare';
+import protocol from '../protocol.cjs';
+import {nativeSaveCrc64} from './native-career-saves.mjs';
+assert.equal(BigInt(nativeSaveCrc64(Buffer.from('123456789'))).toString(16),'995dc9bbdf1939fa');
+assert.equal(nativeSaveCrc64(Buffer.alloc(0)),'0');
+const persistence=fs.mkdtempSync(path.join(os.tmpdir(),'nba22-native-save-'));
+const discord=async r=>new WorkerResponse(JSON.stringify({id:r.headers.get('authorization')==='Bearer owner'?'111111111111111111':'222222222222222222',global_name:'Fixture'}));
+const start=()=>new Miniflare({...convertV4MiniflareOptions({name:'native-save-wire',bindings:{NEXAVERSE_NATIVE_CHECKPOINTS:'1',NEXAVERSE_NATIVE_CALENDAR_USERS:'111111111111111111'},outboundService:discord,unsafeInspectDurableObjects:true,modules:true,scriptPath:'.wrangler/check/worker.js',compatibilityDate:'2026-11-15',compatibilityFlags:['nodejs_compat'],durableObjects:{PROTOCOL_JOURNAL:{className:'ProtocolJournal',useSQLite:true},PLAYER_SESSIONS:{className:'PlayerSession',useSQLite:true}}}),resourcePersistencePath:persistence});
+const f=(id,type,value)=>({id,type,value}),encode=protocol.encodeFields,value=(fields,id)=>fields.find(f=>f.id===id)?.value;
+let mf=start();
+const post=(route,body,key=null,token='owner',size=null)=>mf.dispatchFetch('https://fixture/client'+route+(key?'?nx_session='+key:''),{method:'POST',headers:{authorization:'Bearer '+token,...(size===null?{}:{vcfieldlist_size:String(size)})},body});
+const login=async token=>{const r=await post('/Session/login',encode([f(0x01caaee8,'U64',1000),f(0x3e6d9a3b,'STRING','Fixture')]),null,token);assert.equal(r.status,200);const fields=protocol.decodeRequest(Buffer.from(await r.arrayBuffer())).fields;
+ const offset=token==='owner'?210866760000000n:0n;
+ for(const id of [0xe9824107,0x329a965f])assert(Math.abs(Number(BigInt(value(fields,id))-offset)-Date.now())<60000,'calendar rollout affected an unpatched account or used the wrong epoch');
+ return fields};
+const route='/Session/MyCareer/upload';
+const payload=Buffer.from(Uint8Array.from({length:4154320},(_,i)=>i%251));
+let key;
+try{
+ const fields=await login('owner');key=value(fields,0xda780e45);
+ const manifest=protocol.decodeRequest(value(fields,0xb5017d25),{allowRepeated:true}).fields;assert(manifest.some(f=>f.value===0xc5f871c3));
+ const enumerate=async(k=key,t='owner')=>{const r=await post('/Session/MyCareer/enumerate',encode([]),k,t);assert.equal(r.status,200);return protocol.decodeRequest(Buffer.from(await r.arrayBuffer()),{allowRepeated:true}).fields};
+ assert(manifest.some(f=>f.value===0xba5ebe12));assert.equal(value(await enumerate(),0x7eddfc4d),'0');
+ assert.equal((await post('/Session/MyCareer/enumerate',encode([]),'invalid')).status,401);
+ assert.equal((await post('/Session/MyCareer/enumerate',encode([f(1,'U64',1)]),key)).status,400);
+ const meta=encode([f(0x67267fb1,'U64',1),f(0x53d25be9,'U64',payload.length)]),body=Buffer.concat([meta,payload]);
+ assert.equal((await post(route,body,'invalid','owner',meta.length)).status,401);
+ assert.equal((await post(route,body,key,'other',meta.length)).status,401);
+ assert.equal((await post(route,body.subarray(0,32768),key,'owner',meta.length)).status,400);
+ assert.equal((await post(route,body,key,'owner',meta.length+1)).status,400);
+ let r=await post(route,body,key,'owner',meta.length);assert.equal(r.status,200);assert.equal(value(protocol.decodeRequest(Buffer.from(await r.arrayBuffer())).fields,0xe3920695),0x504521a8);
+ assert.equal((await post(route,body,key,'owner',meta.length)).status,200);
+ let storage=await mf.unsafeGetDurableObjectStorage('native-save-wire','PlayerSession',{name:'111111111111111111'});
+ let row=(await storage.exec('SELECT * FROM native_career_saves WHERE save_id=?','1'))[0];assert.equal(row.revision,1);assert.equal(row.bytes,payload.length);assert.equal(row.sha256,createHash('sha256').update(payload).digest('hex'));
+ const reconstruct=async(stub,revision)=>Buffer.concat((await stub.exec('SELECT data FROM native_career_chunks WHERE save_id=? AND revision=? ORDER BY part','1',revision)).map(x=>Buffer.from(x.data)));
+ assert.deepEqual(await reconstruct(storage,1),payload);
+ const listing=await enumerate();assert.equal(value(listing,0x7eddfc4d),'1');assert.equal(value(listing,0x67267fb1),'1');assert.equal(value(listing,0x620144f4),nativeSaveCrc64(payload));assert.equal(value(listing,0xc3ccd0ad),String(BigInt(Date.parse(row.updated_at))+210866760000000n));
+ await mf.dispose();mf=start();
+ storage=await mf.unsafeGetDurableObjectStorage('native-save-wire','PlayerSession',{name:'111111111111111111'});assert.deepEqual(await reconstruct(storage,1),payload);
+ const otherKey=value(await login('other'),0xda780e45);assert.equal(value(await enumerate(otherKey,'other'),0x7eddfc4d),'0');assert.equal(value(await enumerate(),0x7eddfc4d),'1');const other=await mf.unsafeGetDurableObjectStorage('native-save-wire','PlayerSession',{name:'222222222222222222'});assert.equal((await other.exec('SELECT COUNT(*) AS n FROM native_career_saves'))[0].n,0);
+ for(let revision=2;revision<=5;revision++){
+  const p=Buffer.alloc(100000,revision),m=encode([f(0x67267fb1,'U64',1),f(0x53d25be9,'U64',p.length)]);assert.equal((await post(route,Buffer.concat([m,p]),key,'owner',m.length)).status,200);
+ }
+ row=(await storage.exec('SELECT * FROM native_career_saves WHERE save_id=?','1'))[0];assert.equal(row.revision,5);assert.deepEqual(await reconstruct(storage,5),Buffer.alloc(100000,5));assert.deepEqual((await storage.exec('SELECT revision FROM native_career_versions WHERE save_id=? ORDER BY revision','1')).map(x=>x.revision),[3,4,5]);
+ const second=Buffer.alloc(64,7),secondMeta=encode([f(0x67267fb1,'U64',2),f(0x53d25be9,'U64',64)]);assert.equal((await post(route,Buffer.concat([secondMeta,second]),key,'owner',secondMeta.length)).status,200);
+ const indexed=await enumerate();assert.equal(value(indexed,0x7eddfc4d),'2');assert.deepEqual(indexed.filter(f=>f.id===0x67267fb1).map(f=>f.value),['1','2']);assert.deepEqual(indexed.filter(f=>f.id===0x620144f4).map(f=>f.value),[nativeSaveCrc64(Buffer.alloc(100000,5)),nativeSaveCrc64(second)]);
+ assert.equal((await (await mf.dispatchFetch('https://fixture/health')).json()).mycareerReady,false);
+ console.log('PASS: native enumeration empty/listed persistence, CRC64 known vector, save checksum and timestamp encoding, auth and account isolation; advertised native career upload; complete 4,154,320-byte save committed exactly, incomplete/chunk rejection, idempotent retry, restart persistence, account isolation and three retained versions. Native City and reload remain unverified.');
+}finally{await mf.dispose()}

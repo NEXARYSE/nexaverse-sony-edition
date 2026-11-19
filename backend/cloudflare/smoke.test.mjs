@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+const base=process.env.WORKER_TEST_ORIGIN||'http://127.0.0.1:8788';
+const token=process.env.WORKER_TEST_TOKEN||'c'.repeat(64);
+const authorization='Bearer '+token;
+const fixture=Buffer.from('01caaee83d9e508900000000000000013e6d9a3b6e46752f0000000000000005000000000000000000000000000000005465737400000000','hex');
+const health=await(await fetch(base+'/health')).json();assert.equal(health.hosting,'cloudflare-workers');assert.equal(health.mycareerReady,false);
+assert.equal((await fetch(base+'/Session/login',{method:'POST',body:fixture})).status,401);
+assert.equal((await fetch(base+'/admin/status')).status,401);
+assert.equal((await fetch(base+'/unknown',{headers:{authorization}})).status,404);
+const login=await fetch(base+'/Session/login?secret=must-not-persist',{method:'POST',body:fixture,headers:{authorization,'Content-Type':'application/octet-stream'}});
+assert.equal(login.status,501);assert.equal((await login.json()).mycareerReady,false);
+const status=await(await fetch(base+'/admin/status',{headers:{authorization}})).json();
+assert(status.retainedEvents>0&&status.retainedEvents<=256);assert.equal(status.last.route,'/Session/login');
+assert.equal(status.last.summary.fields[0].name,'USERID');assert.equal(status.last.summary.fields[1].name,'USERNAME');
+for(const secret of ['must-not-persist','Test',token,'"value"'])assert(!JSON.stringify(status).includes(secret));
+const oversized=await fetch(base+'/Session/login',{method:'POST',headers:{authorization},body:Buffer.alloc(4*1024*1024+1)});assert.equal(oversized.status,413);
+console.log('PASS: real Workers runtime + SQLite Durable Object, private authentication, login parsing, redacted persistent metadata, body limits and explicit unavailable MyCAREER state.');

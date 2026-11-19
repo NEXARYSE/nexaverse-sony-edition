@@ -1,0 +1,30 @@
+name = "nexaverse-nba22-backend"
+main = "worker.mjs"
+compatibility_date = "2026-11-15"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+# Native checkpoint commit candidate; City compatibility remains unverified.
+[vars]
+NEXAVERSE_NATIVE_CHECKPOINTS = "1"
+# Calendar rollout is paired with the verified local PS5 season schedule edit.
+NEXAVERSE_NATIVE_CALENDAR_USERS = "1548789755892863117"
+
+[observability]
+enabled = false
+
+[[durable_objects.bindings]]
+name = "PROTOCOL_JOURNAL"
+class_name = "ProtocolJournal"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ProtocolJournal"]
+
+[[durable_objects.bindings]]
+name = "PLAYER_SESSIONS"
+class_name = "PlayerSession"
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["PlayerSession"]

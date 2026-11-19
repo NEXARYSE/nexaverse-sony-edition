@@ -1,0 +1,89 @@
+{
+  "origin": "https://nexaverse-nba22-backend.tratreejordant.workers.dev",
+  "stage": "private-protocol-research",
+  "deployedAt": "2026-11-15",
+  "mycareerReady": false,
+  "remoteSmokeTest": "passed",
+  "publicLauncherPublished": false,
+  "nameValidation": {
+    "deployed": true,
+    "workerVersion": "b50afbce-6702-486a-b52b-af57f3dd1196",
+    "firstAndLastNameCommitVerified": true
+  },
+  "nativeCheckpoint": {
+    "deployed": true,
+    "workerVersion": "2d5d5b35-1c12-4f3b-9aea-34d75052536f",
+    "enabledByDeploymentVariable": true,
+    "nativeServiceId": "0xfcfb638d",
+    "localPersistenceTestsPassed": true,
+    "gameAcceptanceVerified": false,
+    "cityEntryVerified": false,
+    "liveTransportVerified": true
+  },
+  "nativeCareerUpload": {
+    "workerVersion": "da39c5a4-dca6-4ac0-91b4-887ca81fa5dd",
+    "serviceId": "0xc5f871c3",
+    "deployed": true,
+    "localWireAndPersistenceTestsPassed": true,
+    "gameAcceptanceVerified": false,
+    "cityVerified": false
+  },
+  "nativeCareerCreation": {
+    "deployed": true,
+    "workerVersion": "532676f2-b857-4956-b259-274d855b92a3",
+    "serviceId": "0x914b32f9",
+    "localWireAndPersistenceTestsPassed": true,
+    "gameAcceptanceVerified": false,
+    "cityEntryVerified": false,
+    "liveTransportVerified": true
+  },
+  "nativeCareerEnumeration": {
+    "deployed": true,
+    "workerVersion": "f83ac67a-eb6b-4d90-903d-dbeb9dd5855a",
+    "serviceId": "0xba5ebe12",
+    "localTestsPassed": true,
+    "gameAcceptanceVerified": false,
+    "timestampCalendarVerified": false
+  },
+  "schemaOnlyTransitionTrace": {
+    "workerVersion": "55ad0d14-03e2-43c6-ad3b-d3d1bad9110d",
+    "deployed": true,
+    "profileRegressionPassed": true
+  },
+  "nativeCareerInitialBuildLookup": {
+    "deployed": true,
+    "workerVersion": "715c0826-6486-4137-98eb-636d83f4c26c",
+    "serviceId": "0x4e1deedc",
+    "testsPassed": true,
+    "gameAcceptanceVerified": false,
+    "completeProgressionService": false
+  },
+  "nativeCurrentAttributes": {
+    "deployed": true,
+    "workerVersion": "c0c3b1c0-49be-484e-889a-e98dd869edbd",
+    "testsPassed": true,
+    "currentValueField": "0x9a0efa17",
+    "attributes": 22,
+    "gameAcceptanceVerified": false,
+    "cityEntryVerified": false
+  },
+  "cityElection": {
+    "deployed": true,
+    "workerVersion": "cf8d5483-9a84-4984-a28e-f2787d67cf20",
+    "serviceId": "0x612f6478",
+    "requestBuilderRva": "0x72ffa0",
+    "missingServiceErrorBranchRva": "0x73026d",
+    "testsPassed": true,
+    "gameAcceptanceVerified": false,
+    "cityEntryVerified": false
+  },
+  "nativeAdditionalContent": {
+    "deployed": true,
+    "workerVersion": "1cc58e4e-f876-4e6d-905d-5d05f1a91d83",
+    "liveHttp501Observed": true,
+    "completePayloadPersistence": true,
+    "roundTripAndIsolationTestsPassed": true,
+    "gameAcceptanceVerified": false,
+    "cityEntryVerified": false
+  }
+}

@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),{checkHost}=require('./runtime-compatibility.cjs');
+const host={platform:'win32',arch:'x64',machine:'x86_64',release:'10.0.19045'};
+assert.equal(checkHost(host).windowsBuild,19045);
+assert.equal(checkHost({...host,release:'10.0.26100'}).windowsBuild,26100);
+assert.equal(checkHost(host).graphicsVerified,false);
+assert.throws(()=>checkHost({...host,platform:'linux'}),/Windows/);
+assert.throws(()=>checkHost({...host,machine:'ARM64'}),/ARM/);
+assert.throws(()=>checkHost({...host,arch:'ia32'}),/x64/);
+assert.throws(()=>checkHost({...host,release:'6.3.9600'}),/Windows/);
+console.log('PASS: Windows 10/11 x64 preflight; unsupported OS/architecture rejected without claiming GPU compatibility.');

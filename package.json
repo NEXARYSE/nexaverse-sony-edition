@@ -1,0 +1,131 @@
+{
+  "name": "nexaverse-sony-edition",
+  "version": "0.1.59",
+  "private": true,
+  "main": "main.cjs",
+  "description": "Independent console-style Windows game launcher",
+  "author": "NEXAVERSE",
+  "dependencies": {
+    "electron-updater": "^6.8.11"
+  },
+  "build": {
+    "appId": "com.nexaverse.sonyedition",
+    "productName": "NEXAVERSE",
+    "artifactName": "NEXAVERSE-Setup.exe",
+    "directories": {
+      "output": "../../outputs/sony-edition/0.1.59"
+    },
+    "electronDist": "C:/Users/tratr/Documents/Codex/2026-11-07/i-x20/work/launcher-source-2/node_modules/electron/dist",
+    "electronVersion": "40.10.6",
+    "files": [
+      "runtime-compatibility.cjs",
+      "admin-awards.cjs",
+      "main.cjs",
+      "activity.cjs",
+      "community.cjs",
+      "discord-auth.cjs",
+      "discord-link.cjs",
+      "discord-social.cjs",
+      "library-order.cjs",
+      "mutual-friends.cjs",
+      "preload.cjs",
+      "save-monitor.cjs",
+      "steam-auth.cjs",
+      "steam-progress.cjs",
+      "updates.cjs",
+      "window-drag.cjs",
+      "app.js",
+      "friends-game.js",
+      "gamepad.js",
+      "leaderboard.js",
+      "media-gallery.js",
+      "music.js",
+      "profile-badges.js",
+      "trophy-browser.js",
+      "update-banner.js",
+      "window-drag.js",
+      "index.html",
+      "style.css",
+      "catalog.json",
+      "trophies.json",
+      "steam-trophy-map.json",
+      "steam-apps.json",
+      "community-config.json",
+      "discord-config.json",
+      "package.json",
+      "assets/**/*",
+      "!*.test.cjs",
+      "!discover.cjs",
+      "!expand*.cjs",
+      "!extra.cjs",
+      "!implement*.cjs",
+      "!generate-worker.cjs",
+      "!fix-*.cjs",
+      "nba23-runtime.cjs",
+      "ps5-generic-runtime.cjs",
+      "second-son-runtime.cjs",
+      "rpcs3-runtime.cjs",
+      "yuzu-runtime.cjs",
+      "def-jam-runtime.cjs",
+      "ps5-profile.cjs",
+      "!assets/nba-2k22-next-gen.png",
+      "!assets/backgrounds/nba-2k22-next-gen.jpg",
+      "welcome-theme.js",
+      "nba23-cloud.cjs",
+      "nba23-session.cjs",
+      "nba23-calendar.cjs"
+    ],
+    "asarUnpack": [
+      "assets/audio/*.mp3"
+    ],
+    "extraResources": [
+      {
+        "from": "native",
+        "to": "sony-social",
+        "filter": [
+          "**/*",
+          "!pc-hardware-info.exe"
+        ]
+      },
+      {
+        "from": "runtime/ps5-kyty-nba23-candidate",
+        "to": "ps5-kyty"
+      },
+      {
+        "from": "runtime/yuzu",
+        "to": "yuzu"
+      },
+      {
+        "from": "runtime/rpcs3",
+        "to": "rpcs3"
+      },
+      {
+        "from": "runtime/def-jam",
+        "to": "def-jam"
+      },
+      {
+        "from": "runtime/shadps4-second-son",
+        "to": "shadps4-second-son"
+      },
+      {
+        "from": "runtime/cb-launcher",
+        "to": "cb-launcher"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/launcher-icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "shortcutName": "NEXAVERSE"
+    },
+    "publish": {
+      "provider": "generic",
+      "url": "https://github.com/NEXARYSE/nexaverse-sony-edition/releases/latest/download/"
+    }
+  }
+}

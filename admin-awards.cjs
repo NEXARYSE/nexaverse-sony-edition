@@ -1,0 +1,5 @@
+const community=require('./community.cjs'),discord=require('./discord-auth.cjs'),reference=require('./trophies.json');
+let cache=null,pending=null;
+async function getAll(){const account=await discord.status();if(!account.linked)return {};const id=account.user.id;if(cache?.userId===id&&cache.until>Date.now())return cache.games;if(pending?.id===id)return pending.job;const job=(async()=>{try{const data=await community.awards();if(data.userId!==id)throw Error('Award account mismatch');const games={};for(const [game,value]of Object.entries(data.games||{})){const trophies=reference[game]?.trophies;if(value.source!=='admin'||value.userId!==id||!trophies)continue;const ids=new Set(trophies.map(t=>t.id));if(Object.keys(value.earned||{}).some(key=>!ids.has(key)))continue;games[game]=value}cache={userId:id,until:Date.now()+30000,games};return games}catch{return cache?.userId===id?cache.games:{}}})();pending={id,job};try{return await job}finally{if(pending?.job===job)pending=null}}
+async function get(id){return (await getAll())[id]||null}
+module.exports={get,getAll};
