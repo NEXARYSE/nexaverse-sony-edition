@@ -15,7 +15,6 @@
     "directories": {
       "output": "../../outputs/sony-edition/0.1.60"
     },
-    "electronDist": "C:/Users/tratr/Documents/Codex/2026-11-07/i-x20/work/launcher-source-2/node_modules/electron/dist",
     "electronVersion": "40.10.6",
     "files": [
       "runtime-compatibility.cjs",

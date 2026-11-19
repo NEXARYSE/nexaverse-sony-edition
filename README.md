@@ -16,4 +16,6 @@ This repository does not distribute game files, game images, videos, emulator bi
 
 Use a current Windows installation of Node.js and Electron. Install the project dependencies, then run the launcher through Electron. Release packaging additionally requires the Windows Electron build toolchain and the locally supplied runtime resources referenced by the packaging configuration.
 
+`community-config.json` is a deployment template. Set its `origin` to your own deployed community-service endpoint before using online features.
+
 NEXAVERSE is an independent launcher. Users must provide and link software they are legally entitled to use.
