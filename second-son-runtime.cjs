@@ -4,6 +4,7 @@ const path = require('node:path');
 const GAMES = new Map([
   ['infamous-second-son', { label: 'inFAMOUS Second Son', titleIds: new Set(['CUSA00004', 'CUSA00223']), titlePattern: /inFAMOUS\s+Second\s+Son/i }],
   ['infamous-first-light', { label: 'inFAMOUS First Light', titleIds: new Set(['CUSA00008', 'CUSA00209']), titlePattern: /inFAMOUS\s+First\s+Light/i }],
+  ['killzone-shadow-fall', { label: 'Killzone: Shadow Fall', titleIds: new Set(['CUSA00002', 'CUSA00129']), titlePattern: /Killzone\s*:\s*Shadow\s+Fall/i }],
 ]);
 
 function readTitleId(data) {

@@ -5,6 +5,7 @@ const { checkHost } = require('./runtime-compatibility.cjs');
 const GAMES = new Map([
   ['ufc-6', { label: 'EA SPORTS UFC 6', titlePattern: /UFC\s*6/i }],
   ['marvels-wolverine', { label: 'Marvel’s Wolverine', titlePattern: /Wolverine/i }],
+  ['ghost-of-yotei', { label: 'Ghost of Yōtei', titlePattern: /Ghost\s+of\s+Y[ōo]tei/i }],
 ]);
 
 async function validateDirectory(directory, id = 'ufc-6') {

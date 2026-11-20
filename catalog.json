@@ -931,5 +931,85 @@
     "background": "assets/backgrounds/high-on-life-2.jpg",
     "libraryUntilLinked": true,
     "trophiesPending": true
+  },
+  {
+    "id": "gta-san-andreas",
+    "name": "Grand Theft Auto: San Andreas",
+    "art": "assets/gta-san-andreas.png",
+    "background": "assets/backgrounds/gta-san-andreas.png",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "outlast",
+    "name": "Outlast",
+    "art": "assets/outlast.png",
+    "background": "assets/backgrounds/outlast.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "outlast-2",
+    "name": "Outlast 2",
+    "art": "assets/outlast-2.png",
+    "background": "assets/backgrounds/outlast-2.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "phasmophobia",
+    "name": "Phasmophobia",
+    "art": "assets/phasmophobia.png",
+    "background": "assets/backgrounds/phasmophobia.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "fnaf-security-breach",
+    "name": "Five Nights at Freddy’s: Security Breach",
+    "art": "assets/fnaf-security-breach.png",
+    "background": "assets/backgrounds/fnaf-security-breach.png",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "gta-vice-city",
+    "name": "Grand Theft Auto: Vice City",
+    "art": "assets/gta-vice-city.png",
+    "background": "assets/backgrounds/gta-vice-city.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "ghost-of-yotei",
+    "name": "Ghost of Yōtei",
+    "art": "assets/ghost-of-yotei.png",
+    "background": "assets/backgrounds/ghost-of-yotei.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "epic-mickey-rebrushed",
+    "name": "Disney Epic Mickey: Rebrushed",
+    "art": "assets/epic-mickey-rebrushed.png",
+    "background": "assets/backgrounds/epic-mickey-rebrushed.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "killzone-3",
+    "name": "Killzone 3",
+    "art": "assets/killzone-3.png",
+    "background": "assets/backgrounds/killzone-3.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "killzone-shadow-fall",
+    "name": "Killzone: Shadow Fall",
+    "art": "assets/killzone-shadow-fall.png",
+    "background": "assets/backgrounds/killzone-shadow-fall.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
   }
 ]
