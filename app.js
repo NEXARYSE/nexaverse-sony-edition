@@ -1,7 +1,7 @@
 function isPs3FolderGame(game){return ['infamous','infamous-2','the-sly-collection','jak-3','littlebigplanet-3','fight-night-champion'].includes(game?.id);}
 function isDefJam(game){return game?.id==='def-jam-fight-for-ny';}
 function isSwitchFileGame(game){return ['super-smash-bros-ultimate','zelda-breath-of-the-wild','zelda-tears-of-the-kingdom','kirby-and-the-forgotten-land','super-mario-odyssey'].includes(game?.id);}
-function isSecondSon(game){return game?.id==='infamous-second-son';}
+function isSecondSon(game){return ['infamous-second-son','infamous-first-light'].includes(game?.id);}
 function isPs5FolderGame(game){return ['nba-2k23-next-gen'].includes(game?.id);}
 const $=s=>document.querySelector(s),api=window.consoleLauncher;let discordAccount=null,profileTab='overview',socialSnapshot=null,viewedFriend=null,ownCommunity=null,visitorCommunity=null,ownCommunityRequest=0;const mediaCache=new Map();let games=[],selected='welcome',activePage='games',toastTimer,libraryFilter='all',librarySearch='',libraryLaunching=false,profileGameSort=localStorage.getItem('sony-profile-game-sort')==='time'?'time':'recent';
 const launcherVersionLabel=document.querySelector('footer span:last-child');if(launcherVersionLabel)launcherVersionLabel.innerHTML='PC LAUNCHER <i>•</i> '+api.version;
@@ -113,13 +113,13 @@ function renderPs3Options(root,game){
  action(root,game.gameDirectory?'Change PS3 Game Folder':'Link Game',async()=>{try{if(await api.link(game.id)){await reload();$('#panel').close();toast('PS3 game folder linked')}}catch(e){toast(e.message)}}).disabled=Boolean(game.running);
 }
 function renderSecondSonOptions(root,game){
- paragraph(root,game.gameDirectory||'Choose your inFAMOUS Second Son PS4 game folder.','path');
+ paragraph(root,game.gameDirectory||'Choose your '+game.name+' PS4 game folder.','path');
  const buttons=block('div','second-son-options');root.append(buttons);
  const link=action(buttons,game.gameDirectory?'Change Game Folder':'Link Game',async()=>{
   try{if(await api.link(game.id)){await reload();$('#panel').close();toast('PS4 game folder linked')}}catch(e){toast(e.message)}
  });
  if(link)link.disabled=Boolean(game.running);
- action(buttons,'Controls',showSecondSonControls);
+ if(game.id==='infamous-second-son')action(buttons,'Controls',showSecondSonControls);
 }
 function showSecondSonControls(){
  const panel=$('#panel');

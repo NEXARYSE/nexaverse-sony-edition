@@ -16,8 +16,8 @@ const defJamModule=require('./def-jam-runtime.cjs');
 const defJam=defJamModule.create({runtimeRoot:app.isPackaged?path.join(process.resourcesPath,'def-jam'):path.join(__dirname,'runtime','def-jam')});
 const ps5GenericModule=require('./ps5-generic-runtime.cjs');
 const ps5Generic=ps5GenericModule.create({runtimeRoot:app.isPackaged?path.join(process.resourcesPath,'ps5-kyty'):path.join(__dirname,'runtime','ps5-kyty-nba23-candidate'),userData:app.getPath('userData')});
-function folderRuntime(id){return id==='nba-2k23-next-gen'?nba23:id===ps5GenericModule.GAME_ID?ps5Generic:id===secondSonModule.GAME_ID?secondSon:rpcs3Module.supports(id)?rpcs3:null;}
-function folderConsole(id){return rpcs3Module.supports(id)?'PS3':id===secondSonModule.GAME_ID?'PS4':'PS5';}
+function folderRuntime(id){return id==='nba-2k23-next-gen'?nba23:ps5GenericModule.supports(id)?ps5Generic:secondSonModule.supports(id)?secondSon:rpcs3Module.supports(id)?rpcs3:null;}
+function folderConsole(id){return rpcs3Module.supports(id)?'PS3':secondSonModule.supports(id)?'PS4':'PS5';}
 const homeOrder=require('./library-order.cjs').create({statePath:path.join(app.getPath('userData'),'home-order-v48.json')});
 const ownsInstance=app.requestSingleInstanceLock();if(!ownsInstance)app.quit();
 app.on('second-instance',()=>{if(!win)return;if(win.isMinimized())win.restore();win.show();win.focus()});

@@ -44091,5 +44091,8 @@
         "source": "https://www.playstationtrophies.org/game/ea-sports-ufc-6/trophies/"
       }
     ]
-  }
+  },
+  "invincible-vs": {"title":"Invincible VS Trophies","source":"https://www.playstationtrophies.org/game/invincible-vs/trophies/","playstationSource":"https://www.playstationtrophies.org/game/invincible-vs/trophies/","trophies":[]},
+  "infamous-first-light": {"title":"inFAMOUS First Light Trophies","source":"https://www.playstationtrophies.org/game/infamous-first-light/trophies/","playstationSource":"https://www.playstationtrophies.org/game/infamous-first-light/trophies/","trophies":[]},
+  "marvels-wolverine": {"title":"Marvel’s Wolverine Trophies","source":"https://www.playstationtrophies.org/game/marvels-wolverine/trophies/","playstationSource":"https://www.playstationtrophies.org/game/marvels-wolverine/trophies/","trophies":[]}
 }

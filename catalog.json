@@ -1,0 +1,935 @@
+[
+  {
+    "id": "cb-launcher",
+    "name": "CLASSIC CALL OF DUTY",
+    "art": "assets/cb-launcher.png",
+    "background": "assets/backgrounds/cb-launcher.jpeg",
+    "trophiesPending": true
+  },
+  {
+    "id": "gta-vi",
+    "name": "Grand Theft Auto VI",
+    "art": "assets/gta-vi.png",
+    "background": "assets/backgrounds/gta-vi.jpg",
+    "trophiesPending": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "nba-2k23-next-gen",
+    "name": "NBA 2K23 NEXT GEN",
+    "art": "assets/nba-2k23-next-gen.png",
+    "background": "assets/backgrounds/nba-2k23-next-gen.jpg",
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "last-of-us-2",
+    "name": "The Last of Us Part II",
+    "art": "assets/last-of-us-2.png",
+    "background": "assets/backgrounds/last-of-us-2.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "god-of-war-ragnarok",
+    "name": "God of War Ragnarök",
+    "art": "assets/god-of-war-ragnarok.png",
+    "background": "assets/backgrounds/god-of-war-ragnarok.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "spider-man-2",
+    "name": "Marvel’s Spider-Man 2",
+    "art": "assets/spider-man-2.png",
+    "background": "assets/backgrounds/spider-man-2.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "007-first-light",
+    "name": "007 First Light",
+    "art": "assets/007-first-light.png",
+    "background": "assets/backgrounds/007-first-light.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "halo-master-chief-collection",
+    "name": "Halo: The Master Chief Collection",
+    "art": "assets/halo-master-chief-collection.png",
+    "background": "assets/backgrounds/halo-master-chief-collection.jpg",
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "black-flag-resynced",
+    "name": "Assassin’s Creed Black Flag Resynced",
+    "art": "assets/black-flag-resynced.png",
+    "background": "assets/backgrounds/black-flag-resynced.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "halloween",
+    "name": "Halloween",
+    "art": "assets/halloween.png",
+    "background": "assets/backgrounds/halloween.png",
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "death-stranding-2",
+    "name": "Death Stranding 2: On the Beach",
+    "art": "assets/death-stranding-2.png",
+    "background": "assets/backgrounds/death-stranding-2.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "death-stranding",
+    "name": "Death Stranding",
+    "art": "assets/death-stranding.png",
+    "background": "assets/backgrounds/death-stranding.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "until-dawn",
+    "name": "Until Dawn",
+    "art": "assets/until-dawn.png",
+    "background": "assets/backgrounds/until-dawn.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "horizon-forbidden-west",
+    "name": "Horizon Forbidden West",
+    "art": "assets/horizon-forbidden-west.png",
+    "background": "assets/backgrounds/horizon-forbidden-west.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "horizon-zero-dawn",
+    "name": "Horizon Zero Dawn",
+    "art": "assets/horizon-zero-dawn.png",
+    "background": "assets/backgrounds/horizon-zero-dawn.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "returnal",
+    "name": "Returnal",
+    "art": "assets/returnal.png",
+    "background": "assets/backgrounds/returnal.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "ratchet-clank",
+    "name": "Ratchet & Clank: Rift Apart",
+    "art": "assets/ratchet-clank.png",
+    "background": "assets/backgrounds/ratchet-clank.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "uncharted",
+    "name": "UNCHARTED: Legacy of Thieves Collection",
+    "art": "assets/uncharted.png",
+    "background": "assets/backgrounds/uncharted.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "miles-morales",
+    "name": "Marvel’s Spider-Man: Miles Morales",
+    "art": "assets/miles-morales.png",
+    "background": "assets/backgrounds/miles-morales.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "spider-man",
+    "name": "Marvel’s Spider-Man",
+    "art": "assets/spider-man.png",
+    "background": "assets/backgrounds/spider-man.webp",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "god-of-war",
+    "name": "God of War",
+    "art": "assets/god-of-war.png",
+    "background": "assets/backgrounds/god-of-war.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "last-of-us",
+    "name": "The Last of Us Part I",
+    "art": "assets/last-of-us.png",
+    "background": "assets/backgrounds/last-of-us.jpg",
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "wolfenstein-new-order",
+    "name": "Wolfenstein: The New Order",
+    "art": "assets/wolfenstein-new-order.png",
+    "background": "assets/backgrounds/wolfenstein-new-order.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "wolfenstein-new-colossus",
+    "name": "Wolfenstein II: The New Colossus",
+    "art": "assets/wolfenstein-new-colossus.png",
+    "background": "assets/backgrounds/wolfenstein-new-colossus.avif",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "skyrim-anniversary",
+    "name": "The Elder Scrolls V: Skyrim Anniversary Edition",
+    "art": "assets/skyrim-anniversary.png",
+    "background": "assets/backgrounds/skyrim-anniversary.avif",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "sims-4",
+    "name": "The Sims 4",
+    "art": "assets/sims-4.png",
+    "background": "assets/backgrounds/sims-4.png",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "elden-ring",
+    "name": "Elden Ring",
+    "art": "assets/elden-ring.png",
+    "background": "assets/backgrounds/elden-ring.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "cyberpunk-2077",
+    "name": "Cyberpunk 2077",
+    "art": "assets/cyberpunk-2077.png",
+    "background": "assets/backgrounds/cyberpunk-2077.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "rust",
+    "name": "Rust",
+    "art": "assets/rust.png",
+    "background": "assets/backgrounds/rust.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "resident-evil-requiem",
+    "name": "Resident Evil Requiem",
+    "art": "assets/resident-evil-requiem.png",
+    "background": "assets/backgrounds/resident-evil-requiem.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "baldurs-gate-3",
+    "name": "Baldur’s Gate 3",
+    "art": "assets/baldurs-gate-3.png",
+    "background": "assets/backgrounds/baldurs-gate-3.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "dragon-ball-sparking-zero",
+    "name": "Dragon Ball: Sparking! ZERO",
+    "art": "assets/dragon-ball-sparking-zero.png",
+    "background": "assets/backgrounds/dragon-ball-sparking-zero.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "dead-island",
+    "name": "Dead Island",
+    "art": "assets/dead-island.png",
+    "background": "assets/backgrounds/dead-island.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "dead-island-2",
+    "name": "Dead Island 2",
+    "art": "assets/dead-island-2.png",
+    "background": "assets/backgrounds/dead-island-2.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "forza-horizon-6",
+    "name": "Forza Horizon 6",
+    "art": "assets/forza-horizon-6.png",
+    "background": "assets/backgrounds/forza-horizon-6.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "sunset-overdrive",
+    "name": "Sunset Overdrive",
+    "art": "assets/sunset-overdrive.png",
+    "background": "assets/backgrounds/sunset-overdrive.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "infamous-second-son",
+    "name": "inFAMOUS Second Son",
+    "art": "assets/infamous-second-son.png",
+    "background": "assets/backgrounds/infamous-second-son.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "black-myth-wukong",
+    "name": "Black Myth: Wukong",
+    "art": "assets/black-myth-wukong.png",
+    "background": "assets/backgrounds/black-myth-wukong.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "detroit-become-human",
+    "name": "Detroit: Become Human",
+    "art": "assets/detroit-become-human.png",
+    "background": "assets/backgrounds/detroit-become-human.png",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "jump-force",
+    "name": "Jump Force",
+    "art": "assets/jump-force.png",
+    "background": "assets/backgrounds/jump-force.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "watch-dogs",
+    "name": "Watch Dogs",
+    "art": "assets/watch-dogs.png",
+    "background": "assets/backgrounds/watch-dogs.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "watch-dogs-2",
+    "name": "Watch Dogs 2",
+    "art": "assets/watch-dogs-2.png",
+    "background": "assets/backgrounds/watch-dogs-2.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "lego-batman-legacy",
+    "name": "LEGO Batman: Legacy of the Dark Knight",
+    "art": "assets/lego-batman-legacy.png",
+    "background": "assets/backgrounds/lego-batman-legacy.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "silent-hill-2",
+    "name": "Silent Hill 2",
+    "art": "assets/silent-hill-2.png",
+    "background": "assets/backgrounds/silent-hill-2.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "bully",
+    "name": "Bully",
+    "art": "assets/bully.png",
+    "background": "assets/backgrounds/bully.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "gta-v",
+    "name": "Grand Theft Auto V",
+    "art": "assets/gta-v.png",
+    "background": "assets/backgrounds/gta-v.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "dispatch",
+    "name": "Dispatch",
+    "art": "assets/dispatch.png",
+    "background": "assets/backgrounds/dispatch.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "assassins-creed-shadows",
+    "name": "Assassin’s Creed Shadows",
+    "art": "assets/assassins-creed-shadows.png",
+    "background": "assets/backgrounds/assassins-creed-shadows.jpeg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "crimson-desert",
+    "name": "Crimson Desert",
+    "art": "assets/crimson-desert.png",
+    "background": "assets/backgrounds/crimson-desert.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "rv-there-yet",
+    "name": "RV There Yet?",
+    "art": "assets/rv-there-yet.png",
+    "background": "assets/backgrounds/rv-there-yet.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "god-of-war-3",
+    "name": "God of War III Remastered",
+    "art": "assets/god-of-war-3.png",
+    "background": "assets/backgrounds/god-of-war-3.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "gta-iv",
+    "name": "Grand Theft Auto IV & Episodes from Liberty City",
+    "art": "assets/gta-iv.png",
+    "background": "assets/backgrounds/gta-iv.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "madden-nfl-27",
+    "name": "Madden NFL 27 Deluxe Edition",
+    "art": "assets/madden-nfl-27.png",
+    "background": "assets/backgrounds/madden-nfl-27.avif",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "nba-2k27",
+    "name": "NBA 2K27",
+    "art": "assets/nba-2k27.png",
+    "background": "assets/backgrounds/nba-2k27.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "injustice-2",
+    "name": "Injustice 2",
+    "art": "assets/injustice-2.png",
+    "background": "assets/backgrounds/injustice-2.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "mortal-kombat-1",
+    "name": "Mortal Kombat 1",
+    "art": "assets/mortal-kombat-1.png",
+    "background": "assets/backgrounds/mortal-kombat-1.png",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "gears-5",
+    "name": "Gears 5",
+    "art": "assets/gears-5.png",
+    "background": "assets/backgrounds/gears-5.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "borderlands-4",
+    "name": "Borderlands 4",
+    "art": "assets/borderlands-4.png",
+    "background": "assets/backgrounds/borderlands-4.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "jedi-fallen-order",
+    "name": "Star Wars Jedi: Fallen Order",
+    "art": "assets/jedi-fallen-order.png",
+    "background": "assets/backgrounds/jedi-fallen-order.jpeg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "jedi-survivor",
+    "name": "Star Wars Jedi: Survivor",
+    "art": "assets/jedi-survivor.png",
+    "background": "assets/backgrounds/jedi-survivor.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "batman-arkham-knight",
+    "name": "Batman: Arkham Knight",
+    "art": "assets/batman-arkham-knight.png",
+    "background": "assets/backgrounds/batman-arkham-knight.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "dying-light",
+    "name": "Dying Light",
+    "art": "assets/dying-light.png",
+    "background": "assets/backgrounds/dying-light.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "dying-light-2",
+    "name": "Dying Light 2 Stay Human",
+    "art": "assets/dying-light-2.png",
+    "background": "assets/backgrounds/dying-light-2.jpeg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "outlast-trials",
+    "name": "The Outlast Trials",
+    "art": "assets/outlast-trials.png",
+    "background": "assets/backgrounds/outlast-trials.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "hitman-world-of-assassination",
+    "name": "HITMAN World of Assassination",
+    "art": "assets/hitman-world-of-assassination.png",
+    "background": "assets/backgrounds/hitman-world-of-assassination.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "valorant",
+    "name": "VALORANT",
+    "art": "assets/valorant.png",
+    "background": "assets/backgrounds/valorant.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "marvel-rivals",
+    "name": "Marvel Rivals",
+    "art": "assets/marvel-rivals.png",
+    "background": "assets/backgrounds/marvel-rivals.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "fortnite",
+    "name": "Fortnite",
+    "art": "assets/fortnite.png",
+    "background": "assets/backgrounds/fortnite.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true,
+    "steamAchievementsOnly": false
+  },
+  {
+    "id": "left-4-dead",
+    "name": "Left 4 Dead",
+    "art": "assets/left-4-dead.png",
+    "background": "assets/backgrounds/left-4-dead.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "left-4-dead-2",
+    "name": "Left 4 Dead 2",
+    "art": "assets/left-4-dead-2.png",
+    "background": "assets/backgrounds/left-4-dead-2.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "among-us",
+    "name": "Among Us",
+    "art": "assets/among-us.png",
+    "background": "assets/backgrounds/among-us.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "brawlhalla",
+    "name": "Brawlhalla",
+    "art": "assets/brawlhalla.png",
+    "background": "assets/backgrounds/brawlhalla.png",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "apex-legends",
+    "name": "Apex Legends",
+    "art": "assets/apex-legends.png",
+    "background": "assets/backgrounds/apex-legends.jpeg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "rainbow-six-siege",
+    "name": "Tom Clancy’s Rainbow Six Siege",
+    "art": "assets/rainbow-six-siege.png",
+    "background": "assets/backgrounds/rainbow-six-siege.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "dead-by-daylight",
+    "name": "Dead by Daylight",
+    "art": "assets/dead-by-daylight.png",
+    "background": "assets/backgrounds/dead-by-daylight.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "the-finals",
+    "name": "THE FINALS",
+    "art": "assets/the-finals.png",
+    "background": "assets/backgrounds/the-finals.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "nba-2k25",
+    "name": "NBA 2K25",
+    "art": "assets/nba-2k25.png",
+    "background": "assets/backgrounds/nba-2k25.jpeg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "nba-2k26",
+    "name": "NBA 2K26",
+    "art": "assets/nba-2k26.png",
+    "background": "assets/backgrounds/nba-2k26.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "counter-strike-2",
+    "name": "Counter-Strike 2",
+    "art": "assets/counter-strike-2.png",
+    "background": "assets/backgrounds/counter-strike-2.jpeg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "resident-evil-3",
+    "name": "Resident Evil 3",
+    "art": "assets/resident-evil-3.png",
+    "background": "assets/backgrounds/resident-evil-3.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "resident-evil-7",
+    "name": "Resident Evil 7 Biohazard",
+    "art": "assets/resident-evil-7.png",
+    "background": "assets/backgrounds/resident-evil-7.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "lethal-company",
+    "name": "Lethal Company",
+    "art": "assets/lethal-company.png",
+    "background": "assets/backgrounds/lethal-company.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "batman-arkham-city",
+    "name": "Batman: Arkham City – Game of the Year Edition",
+    "art": "assets/batman-arkham-city.png",
+    "background": "assets/backgrounds/batman-arkham-city.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "arc-raiders",
+    "name": "ARC Raiders",
+    "art": "assets/arc-raiders.png",
+    "background": "assets/backgrounds/arc-raiders.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true
+  },
+  {
+    "id": "jak-3",
+    "name": "Jak and Daxter Collection",
+    "art": "assets/jak-3.png",
+    "background": "assets/backgrounds/jak-3.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": false,
+    "steamAchievementsOnly": false,
+    "trophiesPending": true
+  },
+  {
+    "id": "super-smash-bros-ultimate",
+    "name": "Super Smash Bros. Ultimate",
+    "art": "assets/super-smash-bros-ultimate.png",
+    "background": "assets/backgrounds/super-smash-bros-ultimate.png",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "overwatch",
+    "name": "Overwatch Legendary Edition",
+    "art": "assets/overwatch.png",
+    "background": "assets/backgrounds/overwatch.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": false,
+    "steamAchievementsOnly": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "hogwarts-legacy",
+    "name": "Hogwarts Legacy",
+    "art": "assets/hogwarts-legacy.png",
+    "background": "assets/backgrounds/hogwarts-legacy.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": false,
+    "steamAchievementsOnly": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "assassins-creed-iii",
+    "name": "Assassin’s Creed III",
+    "art": "assets/assassins-creed-iii.png",
+    "background": "assets/backgrounds/assassins-creed-iii.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": false,
+    "steamAchievementsOnly": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "saints-row-iv",
+    "name": "Saints Row IV",
+    "art": "assets/saints-row-iv.png",
+    "background": "assets/backgrounds/saints-row-iv.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": false,
+    "steamAchievementsOnly": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "zelda-breath-of-the-wild",
+    "name": "The Legend of Zelda: Breath of the Wild",
+    "art": "assets/zelda-breath-of-the-wild.png",
+    "background": "assets/backgrounds/zelda-breath-of-the-wild.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "tekken-8",
+    "name": "TEKKEN 8",
+    "art": "assets/tekken-8.png",
+    "background": "assets/backgrounds/tekken-8.jpeg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "naruto-shippuden-ultimate-ninja-storm-4",
+    "name": "NARUTO SHIPPUDEN: Ultimate Ninja STORM 4",
+    "art": "assets/naruto-shippuden-ultimate-ninja-storm-4.png",
+    "background": "assets/backgrounds/naruto-shippuden-ultimate-ninja-storm-4.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "naruto-ultimate-ninja-storm",
+    "name": "NARUTO: Ultimate Ninja STORM",
+    "art": "assets/naruto-ultimate-ninja-storm.png",
+    "background": "assets/backgrounds/naruto-ultimate-ninja-storm.jpeg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "wwe-2k-battlegrounds",
+    "name": "WWE 2K Battlegrounds",
+    "art": "assets/wwe-2k-battlegrounds.png",
+    "background": "assets/backgrounds/wwe-2k-battlegrounds.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "dying-light-the-beast",
+    "name": "Dying Light: The Beast",
+    "art": "assets/dying-light-the-beast.png",
+    "background": "assets/backgrounds/dying-light-the-beast.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "mario-kart-world",
+    "name": "Mario Kart World",
+    "art": "assets/mario-kart-world.png",
+    "background": "assets/backgrounds/mario-kart-world.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": false
+  },
+  {
+    "id": "infamous",
+    "name": "inFAMOUS",
+    "art": "assets/infamous.png",
+    "background": "assets/backgrounds/infamous.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "infamous-2",
+    "name": "inFAMOUS 2",
+    "art": "assets/infamous-2.png",
+    "background": "assets/backgrounds/infamous-2.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "sly-cooper-thieves-in-time",
+    "name": "Sly Cooper: Thieves in Time",
+    "art": "assets/sly-cooper-thieves-in-time.png",
+    "background": "assets/backgrounds/sly-cooper-thieves-in-time.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "the-sly-collection",
+    "name": "The Sly Collection",
+    "art": "assets/the-sly-collection.png",
+    "background": "assets/backgrounds/the-sly-collection.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "littlebigplanet-3",
+    "name": "LittleBigPlanet 3",
+    "art": "assets/littlebigplanet-3.png",
+    "background": "assets/backgrounds/littlebigplanet-3.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "zelda-tears-of-the-kingdom",
+    "name": "The Legend of Zelda: Tears of the Kingdom",
+    "art": "assets/zelda-tears-of-the-kingdom.png",
+    "background": "assets/backgrounds/zelda-tears-of-the-kingdom.png",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": true
+  },
+  {
+    "id": "animal-crossing-new-horizons",
+    "name": "Animal Crossing: New Horizons",
+    "art": "assets/animal-crossing-new-horizons.png",
+    "background": "assets/backgrounds/animal-crossing-new-horizons.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": true
+  },
+  {
+    "id": "kirby-and-the-forgotten-land",
+    "name": "Kirby and the Forgotten Land",
+    "art": "assets/kirby-and-the-forgotten-land.png",
+    "background": "assets/backgrounds/kirby-and-the-forgotten-land.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": true
+  },
+  {
+    "id": "super-mario-odyssey",
+    "name": "Super Mario Odyssey",
+    "art": "assets/super-mario-odyssey.png",
+    "background": "assets/backgrounds/super-mario-odyssey.png",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "steamAchievementsOnly": false,
+    "trophiesPending": true
+  },
+  {
+    "id": "ufc-6",
+    "name": "EA SPORTS UFC 6",
+    "art": "assets/ufc-6.webp",
+    "background": "assets/backgrounds/ufc-6.jpg",
+    "trophiesPending": false
+  },
+  {
+    "id": "def-jam-fight-for-ny",
+    "name": "Def Jam: Fight for NY",
+    "art": "assets/def-jam-fight-for-ny.png",
+    "background": "assets/backgrounds/def-jam-fight-for-ny.webp",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "fight-night-champion",
+    "name": "Fight Night Champion",
+    "art": "assets/fight-night-champion.png",
+    "background": "assets/backgrounds/fight-night-champion.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "invincible-vs",
+    "name": "Invincible VS",
+    "art": "assets/invincible-vs.png",
+    "background": "assets/backgrounds/invincible-vs.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "infamous-first-light",
+    "name": "inFAMOUS First Light",
+    "art": "assets/infamous-first-light.png",
+    "background": "assets/backgrounds/infamous-first-light.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "marvels-wolverine",
+    "name": "Marvel’s Wolverine",
+    "art": "assets/marvels-wolverine.png",
+    "background": "assets/backgrounds/marvels-wolverine.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "sons-of-the-forest",
+    "name": "Sons of the Forest",
+    "art": "assets/sons-of-the-forest.png",
+    "background": "assets/backgrounds/sons-of-the-forest.jpg",
+    "libraryUntilLinked": true,
+    "steamAchievementsOnly": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "dead-as-disco",
+    "name": "Dead as Disco",
+    "art": "assets/dead-as-disco.png",
+    "background": "assets/backgrounds/dead-as-disco.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "high-on-life-2",
+    "name": "High On Life 2",
+    "art": "assets/high-on-life-2.png",
+    "background": "assets/backgrounds/high-on-life-2.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": true
+  }
+]

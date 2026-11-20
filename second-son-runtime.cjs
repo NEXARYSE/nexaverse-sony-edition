@@ -1,8 +1,10 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
-const GAME_ID = 'infamous-second-son';
-const TITLE_IDS = new Set(['CUSA00004', 'CUSA00223']);
+const GAMES = new Map([
+  ['infamous-second-son', { label: 'inFAMOUS Second Son', titleIds: new Set(['CUSA00004', 'CUSA00223']), titlePattern: /inFAMOUS\s+Second\s+Son/i }],
+  ['infamous-first-light', { label: 'inFAMOUS First Light', titleIds: new Set(['CUSA00008', 'CUSA00209']), titlePattern: /inFAMOUS\s+First\s+Light/i }],
+]);
 
 function readTitleId(data) {
   if (data.length < 20 || data.readUInt32LE(0) !== 0x46535000) return null;
@@ -25,20 +27,22 @@ function readTitleId(data) {
 
 function create({runtimeRoot, userData}) {
   const executable = () => path.join(runtimeRoot, 'shadPS4.exe');
-  async function validateDirectory(directory) {
+  async function validateDirectory(directory, id = 'infamous-second-son') {
+    const game = GAMES.get(id);
+    if (!game) throw Error('This game does not use the bundled shadPS4 emulator.');
     try {
       const root = await fs.realpath(directory);
       const eboot = await fs.stat(path.join(root, 'eboot.bin'));
       const param = path.join(root, 'sce_sys', 'param.sfo');
       const info = await fs.stat(param);
       if (eboot.isFile() && eboot.size > 0 && info.isFile() && info.size <= 65536 &&
-          TITLE_IDS.has(readTitleId(await fs.readFile(param)))) return root;
+          game.titleIds.has(readTitleId(await fs.readFile(param)))) return root;
     } catch {}
-    throw Error('Choose an inFAMOUS Second Son PS4 folder (CUSA00004 or CUSA00223) containing eboot.bin and sce_sys/param.sfo.');
+    throw Error(`Choose an ${game.label} PS4 folder containing eboot.bin and sce_sys/param.sfo.`);
   }
   async function launchPlan(game) {
-    if (game.id !== GAME_ID) throw Error('This emulator is reserved for inFAMOUS Second Son.');
-    const directory = await validateDirectory(game.gameDirectory);
+    if (!GAMES.has(game.id)) throw Error('This game does not use the bundled shadPS4 emulator.');
+    const directory = await validateDirectory(game.gameDirectory, game.id);
     const exe = executable();
     try {
       if (!(await fs.stat(exe)).isFile()) throw Error('Invalid runtime');
@@ -62,4 +66,4 @@ function create({runtimeRoot, userData}) {
   return {executable, validateDirectory, launchPlan};
 }
 
-module.exports = {GAME_ID, create, readTitleId};
+module.exports = {GAME_ID: 'infamous-second-son', supports: id => GAMES.has(id), create, readTitleId};
