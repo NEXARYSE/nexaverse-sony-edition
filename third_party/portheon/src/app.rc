@@ -1,0 +1,41 @@
+#include <windows.h>
+1 ICON "app.ico"
+1 24 "app.manifest"
+101 RCDATA "logo.png"
+201 RCDATA "cs_0xb61e59a3b11b03ad_0.spv"
+202 RCDATA "cs_0xb61e59a384acbdea_0.spv"
+301 RCDATA "art-gta6-icon.jpg"
+302 RCDATA "art-gta6-bg.jpg"
+303 RCDATA "art-gow3-icon.jpg"
+304 RCDATA "art-gow3-bg.jpg"
+305 RCDATA "art-fnc-icon.jpg"
+307 RCDATA "art-ufc3u-icon.jpg"
+308 RCDATA "art-zelda-icon.jpg"
+309 RCDATA "art-zelda-bg.jpg"
+310 RCDATA "art-bb-icon.jpg"
+311 RCDATA "art-bb-bg.jpg"
+312 RCDATA "art-iss-icon.jpg"
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 7,3,0,0
+PRODUCTVERSION 7,3,0,0
+FILEOS 0x40004
+FILETYPE 0x1
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "041604B0"
+    BEGIN
+      VALUE "CompanyName", "PORTHEON"
+      VALUE "FileDescription", "PORTHEON - Ports & Mods: launcher dos ports para PC do UFC 1, 2, 3, 4, 5 e 6"
+      VALUE "FileVersion", "7.3"
+      VALUE "ProductName", "PORTHEON"
+      VALUE "ProductVersion", "Update 7.3"
+      VALUE "OriginalFilename", "PORTHEON.exe"
+      VALUE "LegalCopyright", "(c) 2026 Marcelo Miyake (XAndromedaXR). GPL-2.0-or-later. Sem afiliacao com a Electronic Arts, o UFC ou a Sony."
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x416, 1200
+  END
+END

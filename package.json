@@ -1,6 +1,6 @@
 {
   "name": "nexaverse-sony-edition",
-  "version": "0.1.63",
+  "version": "0.1.64",
   "private": true,
   "main": "main.cjs",
   "description": "Independent console-style Windows game launcher",
@@ -13,7 +13,7 @@
     "productName": "NEXAVERSE",
     "artifactName": "NEXAVERSE-Setup.exe",
     "directories": {
-      "output": "../../outputs/sony-edition/0.1.63"
+      "output": "../../outputs/sony-edition/0.1.64"
     },
     "electronDist": "C:/Users/tratr/Documents/Codex/2026-11-07/i-x20/work/launcher-source-2/node_modules/electron/dist",
     "electronVersion": "40.10.6",
@@ -69,6 +69,7 @@
       "yuzu-runtime.cjs",
       "def-jam-runtime.cjs",
       "ps5-profile.cjs",
+      "portheon-runtime.cjs",
       "!assets/nba-2k22-next-gen.png",
       "!assets/backgrounds/nba-2k22-next-gen.jpg",
       "welcome-theme.js",
@@ -103,6 +104,10 @@
       {
         "from": "runtime/def-jam",
         "to": "def-jam"
+      },
+      {
+        "from": "runtime/portheon",
+        "to": "portheon"
       },
       {
         "from": "runtime/shadps4-second-son",

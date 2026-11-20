@@ -1,0 +1,54 @@
+PORTHEON UFC 6 - o motor do jogo (bin\UFC 6.exe)
+==================================================
+
+bin\UFC 6.exe é o emulador de PS5 KytyPS5 (GPL-2.0), no build feito para o UFC 6 por Peepo:
+  KytyPS5-2026-10-26-3309ab2-Windows-x64-UFC6-1080p
+  (git describe: ufc-meta-clear-htile-only-20261026-16-g3309ab23f)
+O KytyPS5 vem do Kyty de InoriRus (MIT, Kyty-MIT.txt nesta pasta) e dos colaboradores do KytyPS5
+(https://github.com/KytyPS5/KytyPS5).
+
+O que o PORTHEON mudou no arquivo, e só isso (src\brand_engine.c faz as seis coisas):
+  1. ícone do UFC 6 e um bloco de versão com o nome "UFC 6" (desde a 7.1 o nome do produto é "UFC 6 - PORTHEON");
+  2. o título da janela: o texto de formato do título e o título inicial ("KytyPS5") viram "UFC 6";
+  3. o tipo do programa: programa de janela do Windows, sem a janela de console;
+  4. um byte no código (no arquivo, posição 0xf1ff73, de 0xf8 para 0xfc): ao criar imagens, a memória da placa de
+     vídeo passa de obrigatória para preferida (requiredFlags -> preferredFlags na VmaAllocationCreateInfo), para a
+     imagem ir para a memória do sistema quando a placa está cheia em vez de o jogo fechar (erro 321);
+  5. (PORTHEON 7.1, 2026-11-14) quatro bytes no código (posição 0x11a267e, de 8b 8d b0 02 para e9 12 01 00): um
+     marcador desconhecido nos comandos da GPU (pm4, pacote NOP) é ignorado em vez de o jogo fechar;
+  6. (PORTHEON 7.1, 2026-11-14) dois bytes no código (posição 0xf4bd13, de 98 0a para 94 00): um compute shader que
+     não pode ser traduzido não é executado (o código vai para a saída de falha que já existe) em vez de o jogo fechar.
+Fora isso o código do motor não foi alterado. As DLLs do Visual C++ (msvcp140*, vcruntime140*) e a
+libwinpthread-1.dll são as que vêm com o build.
+
+Código-fonte do motor (GPL-2.0, seção 3): PENDENTE - o endereço do código do build 3309ab2 ainda não foi
+encontrado (não está em github.com/KytyPS5/KytyPS5, Cozmaaa/KytyPS5, Lepexa-cell/KytyPS5-UFC6 nem
+Jetsku/KytyPS5). Ele será acrescentado aqui; até lá, pode ser pedido pela página do projeto
+(github.com/XAndromedaXR/PORTHEON).
+
+Licença: GPL-2.0, texto completo em GPL-2.0.txt nesta pasta.
+
+----------------------------------------------------------------------------------------------------
+PORTHEON UFC 6 - the game engine (bin\UFC 6.exe)
+
+bin\UFC 6.exe is the KytyPS5 PS5 emulator (GPL-2.0), in its build for UFC 6 by Peepo:
+  KytyPS5-2026-10-26-3309ab2-Windows-x64-UFC6-1080p (git describe: ufc-meta-clear-htile-only-20261026-16-g3309ab23f).
+KytyPS5 comes from InoriRus' Kyty (MIT, Kyty-MIT.txt in this folder) and the KytyPS5 contributors.
+
+What PORTHEON changed in the file, and nothing else (src\brand_engine.c does all six):
+  1. the UFC 6 icon and a version block naming it "UFC 6" (since 7.1 the product name is "UFC 6 - PORTHEON");
+  2. the window title: the title format string and the first title ("KytyPS5") become "UFC 6";
+  3. the program type: a Windows GUI program, without the console window;
+  4. one byte of code (file offset 0xf1ff73, 0xf8 to 0xfc): when images are created, video memory becomes preferred
+     instead of required (requiredFlags -> preferredFlags in the VmaAllocationCreateInfo), so an image goes to system
+     memory when the card is full instead of the game closing (error 321);
+  5. (PORTHEON 7.1, 2026-11-14) four bytes of code (file offset 0x11a267e, 8b 8d b0 02 to e9 12 01 00): an unknown
+     marker in the GPU commands (pm4 NOP packet) is skipped instead of the game closing;
+  6. (PORTHEON 7.1, 2026-11-14) two bytes of code (file offset 0xf4bd13, 98 0a to 94 00): a compute shader that cannot
+     be translated is not run (the code takes the failure exit that already exists) instead of the game closing.
+Otherwise the engine's code was not changed.
+
+Engine source code (GPL-2.0, section 3): PENDING - the location of build 3309ab2's source has not been found yet.
+It will be added here; until then it can be asked for through the project page (github.com/XAndromedaXR/PORTHEON).
+
+License: GPL-2.0, full text in GPL-2.0.txt in this folder.

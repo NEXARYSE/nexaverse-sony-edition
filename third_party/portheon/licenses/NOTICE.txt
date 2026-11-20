@@ -1,0 +1,101 @@
+PORTHEON - Ports & Mods
+Created and maintained by Marcelo Miyake (XAndromedaXR): https://github.com/XAndromedaXR/PORTHEON
+Copyright (C) 2026 Marcelo Miyake (XAndromedaXR). The name PORTHEON, its logo and its interface design are Marcelo
+Miyake's. Anyone who copies, modifies or redistributes PORTHEON must keep this notice, the credits and the licenses,
+and publish the source code of what they distribute (GNU GPL); a modified version must not be presented as the
+original PORTHEON or by its author.
+
+PORTHEON's own code (PORTHEON.exe, games\UFC5\UFC5.exe and games\UFC6\UFC6.exe; source in src\, games\UFC5\src and
+games\UFC6\src, in every release) is free software under the GNU General Public License, version 2 or later
+(LICENSE-GPL-2.0.txt). The ports and engines in games\ keep their own licenses, described below and in their folders
+(GPL-2.0, GPL-2.0-or-later, some GPL-2.0-only parts, GPL-3.0 for the UFC 4 cheats). The sources of PORTHEON's builds
+of the UFC 1-4 ports, of games\engines\intel-arc and of the UFC 6 engine are still being gathered for publication;
+until then they can be asked for through the project page.
+
+The bundled gamecontrollerdb.txt is the SDL community controller database (github.com/mdqinc/SDL_GameControllerDB, zlib license, licenses\SDL_GameControllerDB-LICENSE.txt).
+
+The ports are built on SacredFire / bbport (GNSB, T3CHNOLOG1C) and shadPS4. Each port's own licenses folder
+(games\UFC<n>\licenses) lists the libraries it contains and their licenses.
+
+PORTHEON 4.0 also carries:
+- games\UFC4\cheats\ufc4-cheats.json: UFC 4 cheats from the GoldHEN Cheat Repository
+  (github.com/GoldHEN/GoldHEN_Cheat_Repository), GNU GPL version 3 (LICENSE-GPL-3.0.txt):
+  stamina by aran (game version 04.02), moved to version 28.00 by PORTHEON.
+  games\UFC4\scripts\cheats.py loads them as data into the game when the player turns one on; the
+  cheats file is distributed with the UFC 4 port under GPL version 3.
+- games\UFC<n>\scripts\cpu_compat.py and games\UFC<n>\tools\legacy_plan_*.py (all four ports): the
+  processor compatibility mode for Intel Core 2nd/3rd generation (Sandy/Ivy Bridge), from @deanzx06's
+  UFC 3 Sandy Bridge patch v2 (GPL-2.0-only), based on T0ug's bloodborne_pc_Ivy-Bridge and the bloodborne_pc
+  ports (deadinside28's bbport, and Supermedo's (Mohammed Albarghouthi) Windows port, two authors and two
+  repositories). In the UFC 4 port it sits next to the GPL-3.0 cheats file as a separate
+  work, not linked with it.
+- the community patches in games\UFC<n>\patches (Lepexa, Antigravity).
+
+PORTHEON 4.0.2 also carries games\UFC5: its launcher UFC5.exe (PORTHEON, GPL-2.0-or-later, source in
+games\UFC5\src) and bin\UFC 5.exe, a build of KytyPS5 (github.com/KytyPS5/KytyPS5, GPL-2.0; parts of the
+original Kyty under MIT) from Cozma's cozma-ufc5 fork, commit 927a181b, with roshanarunk's UFC 5 work merged.
+Its complete source: https://github.com/Cozmaaa/KytyPS5/tree/cozma-ufc5 (commit
+927a181b150e00ba88ba613d2e6d5721d6ccaf5b), plus games\UFC5\src\brand_engine.c and ufc5-engine.rc, which only
+give the file the UFC 5 icon and name, the window title "UFC 5" and no console window. Licenses and the written
+offer: licenses\LICENSE-GPL-2.0.txt and licenses\UFC5 (ENGINE.txt, Kyty-MIT.txt, FFmpeg, Opus).
+PORTHEON 4.0.3 built that engine itself from the same commit with games\UFC5\src\ufc5-motor-amd321.patch
+(a driver fault or failure while a pipeline compiles no longer closes the game, the engine's own helper shaders
+included, with fixed-constant variants of its texture tiling shaders for AMD drivers; a long player name is shortened).
+PORTHEON 4.0.4 carries two builds of the newer commit 84f029fe52077feb7fc85e89ee273d57b2486a24 of the same branch:
+bin\UFC 5.exe, Cozma's own build, and bin\UFC 5 AMD.exe, PORTHEON's build with that patch, which UFC5.exe starts on
+AMD video cards. Both are renamed the same way; licenses\UFC5\ENGINE.txt has the details.
+PORTHEON 4.0.7 carried games\UFC5\bin\novo\UFC 5.exe, the KytyPS5 build made for EA SPORTS UFC 6, for an experimental
+"New" video engine; it is no longer in the package.
+games\UFC5\bin also carries Aeon SR (Barbatos AWLS, MIT License, licenses\UFC5\AeonSR-LICENSE.txt), unchanged, for
+the optional frame generation.
+The KytyPS5 engines (UFC 5 and UFC 6) also contain, statically linked, the third-party libraries of the KytyPS5 source
+tree, among them Dear ImGui (MIT), Tracy (BSD-3-Clause), cpuinfo (BSD-2-Clause), SPIRV-Tools (Apache-2.0), Zydis (MIT),
+Xbyak (BSD-3-Clause), Vulkan Memory Allocator (MIT) and, in UFC 5, zstd (BSD-3-Clause); games\UFC6\bin\libwinpthread-1.dll
+is the mingw-w64 winpthreads runtime (MIT). Each keeps its own license, carried in that source tree.
+
+PORTHEON 4.0.3 also carries games\pylibs: capstone 5.0.9 (BSD) and keystone-engine 0.9.2 (Python binding BSD,
+engine GPL-2.0), unchanged from their Python wheels, with their licenses in games\pylibs\licenses. The
+processor compatibility mode of the UFC 1-4 ports uses them to make the translation plan of a game file that
+is not the one its shipped plan was made from (tools\build_cpu_compat.py, @deanzx06's generator, GPL-2.0-only).
+keystone's source: games\pylibs\licenses\keystone-SOURCE.txt.
+
+PORTHEON 4.3.3 carries games\engines\port-v30 (the engine of the community package "UFC2-UFC4-PC-Port-v3.0", GPL-2.0,
+source in its source folder) and 4.3.6 the same package's UFC 2 online server in games\UFC2\tools (ufc3_server.py and
+the ufc2_*.py files, GPL-2.0-or-later, unchanged); games\engines\port-v30\README.txt has the details.
+PORTHEON 6.1 carries games\UFC<n>\scripts\savedata_import.py (all four ports): savedata_import.py from
+UFC2-UFC4-PC-Port (GPL-2.0-or-later), adapted by PORTHEON (the game's title read from its own param.sfo).
+PORTHEON 6.1 does not carry Bloodborne's or inFAMOUS Second Son's PC ports: the player installs them from inside
+PORTHEON. Bloodborne: bbport-windows by Supermedo (Mohammed Albarghouthi), github.com/Supermedo/bloodborne_pc,
+built on deadinside28's bbport (the earlier Linux port, github.com/deadinside28/bloodborne_pc), GPL-2.0-or-later,
+downloaded from its own release page. inFAMOUS Second Son: its native PC port, GPL-2.0-or-later, built on shadPS4
+(github.com/shadps4-emu/shadPS4); its package names neither its author nor its own source address. games\BLOODBORNE and
+games\INFAMOUS ship only PORTHEON's own drawings (art\) and a PORTHEON-README.txt with each port's credits and licenses.
+
+Not affiliated with Electronic Arts, the UFC or Sony. No game files are included: each port
+needs your own copy of the game.
+
+PORTHEON 4.2 replaces games\UFC5 with games\UFC6: its launcher UFC6.exe (PORTHEON, GPL-2.0-or-later, source in
+games\UFC6\src) and bin\UFC 6.exe, the KytyPS5 build made for EA SPORTS UFC 6 (3309ab2, "UFC6-1080p", GPL-2.0; parts of
+the original Kyty under MIT; the build by Peepo), renamed and given one changed byte by
+games\UFC6\src\brand_engine.c (see licenses\UFC6\ENGINE.txt; the location of that build's source is still pending
+there). UFC 5 is no longer in the package.
+
+PORTHEON 4.3 brings games\UFC5 back next to games\UFC6 (both described above). 4.3.1 changes the UFC 5 engines' window
+title to "UFC 5 | frame: N, fps: F" and one conditional jump of their video-out status, so the game renders its 1080p
+mode below a 4K screen (licenses\UFC5\ENGINE.txt has the offsets and bytes). UFC5.exe and UFC6.exe can copy a
+player's own shader caches from games\UFC<n>\cache-inicial; the package ships none, as they hold the game's shaders.
+
+PORTHEON 4.3.2 also carries games\UFC5\bin\PortheonFXAA.dll and VkLayer_PORTHEON_fxaa.json: PORTHEON's own Vulkan
+layer (GPL-2.0-or-later, source in games\UFC5\src\fxaa) that UFC5.exe enables for the UFC 5 engine when the player
+turns anti-aliasing on. It draws an FXAA pixel shader over each presented frame; that shader is the one compiled into
+the UFC 6 engine (KytyPS5 build 3309ab2, GPL-2.0, games\UFC5\src\fxaa\fxaa_fs.inc), so the layer as built is GPL-2.0.
+
+Credits, as the PORTHEON author gives them:
+- the UFC 5 engine: the build by Cozmaa and Brotski, improved by XAndromedaXR for PORTHEON;
+- the UFC 6 engine: the build by Peepo, improved by XAndromedaXR for PORTHEON;
+- the FPS patch: lepexa_cell (Lepexa), improved by XAndromedaXR; the other community patches: Lepexa and Antigravity;
+- the UFC 1-4 ports: built on GNS (GNSB)'s UFC 3 PS4 port, SacredFire / bbport (GNSB, T3CHNOLOG1C) and shadPS4;
+  the processor compatibility mode: deanzx06, T0ug, deadinside28 and Supermedo (Mohammed Albarghouthi); the UFC 4
+  cheats: aran.
+
+PORTHEON is free: its author does not sell copies of it and only accepts donations.

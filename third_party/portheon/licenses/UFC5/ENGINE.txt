@@ -1,0 +1,75 @@
+games\UFC5\bin\UFC 5.exe and UFC 5 AMD.exe - licence, credits and source
+=========================================================================
+
+games\UFC5\bin\UFC 5.exe and games\UFC5\bin\UFC 5 AMD.exe are two Windows x64 builds of KytyPS5, a free
+and open-source PlayStation 5 translation layer, from Cozma's fork made to run EA SPORTS UFC 5
+(PPSA03541), with roshanarunk's UFC 5 work merged into it. No game files are included: you need your
+own dump of the game. UFC5.exe starts UFC 5 AMD.exe on an AMD video card and UFC 5.exe on the others
+(engine_amd=0 in UFC5.ini makes it use UFC 5.exe on AMD too).
+
+UFC 5.exe is Cozma's own build of 2026-10-25 (ThinLTO and profile-guided optimization), unchanged except
+for the renaming and the one-jump change described below. Its version line names commit 7a6db0ec with local changes; those
+changes are the ones published as commit 84f029fe.
+
+UFC 5 AMD.exe is PORTHEON's build (clang-cl, Release, ThinLTO, as the project's CI) of commit 84f029fe
+with games\UFC5\src\ufc5-motor-amd321.patch (PORTHEON 4.0.3, completed in 4.0.4), which changes these
+things:
+  - a fault or a failure of the video driver while it compiles a pipeline no longer closes the game
+    ("error 321" on AMD cards): the pipeline is built again without the driver's optimization, and
+    if that fails too, its draws or dispatches are skipped;
+  - the same for the engine's own helper pipelines (texture tiling, blits, clears, the video-out
+    overlay...); on AMD cards those start without the driver's optimization, and the texture tiling
+    shaders go to the driver in variants with their specialization constants fixed in the source
+    (compiled by glslang with scripts/portheon_bake_tiler.py, included in the patch);
+  - a player name longer than the game's buffer is shortened at a whole character instead of closing
+    the game.
+
+PORTHEON then renamed both files and changed how they present themselves: the UFC 5 icon and a version
+block naming them "UFC 5", the window title (the format string of the title, padded with zero bytes:
+"UFC 5" up to PORTHEON 4.3.0, "UFC 5 | frame: N, fps: F" from 4.3.1, which UFC5.exe reads to set the
+game's speed from the real FPS) and the Windows GUI subsystem (no console window). The tool that does
+this is games\UFC5\src\brand_engine.c (with ufc5-engine.rc); _build-tools retitle_engine.py made the
+4.3.1 title change on the files of 4.3.0. The engine's code is not changed by any of this.
+
+One change to the code itself, from PORTHEON 4.3.1 (2026-10-30), in both files: the video-out status the
+engine gives the game (sceVideoOutGetOutputStatus) reports a 4K screen only when the engine's own screen
+(--screen-width/--screen-height) is 4K, and a 1080p screen below that. The engine already decides it
+this way for games whose param.json has bit 0x4 of ATTRIBUTE3; the change takes that branch for every
+game. Before it, UFC 5 always believed it was on a 4K TV and rendered at 2136x1200 for a 3200x1800 FSR2
+output; on a 1080p or 1440p screen it now renders its 1080p mode (1068x600 for a 1600x900 FSR2 output),
+like a PS5 on a 1080p TV. It is one conditional jump of that function: at file offset 0x10c99a2 of UFC 5.exe
+"jne" becomes "jmp" (75 6a -> eb 6a), and at 0xee4614 of UFC 5 AMD.exe "je" becomes two no-ops
+(74 13 -> 90 90). The files keep their size and date.
+
+Credits for this build, as the PORTHEON author gives them: Cozmaa and Brotski, whose UFC 5 build of
+KytyPS5 PORTHEON improved (the AMD build above, the game's speed set from the real FPS, the crowd,
+shadows and seats switches, the audio watchdog off).
+
+Licence
+-------
+KytyPS5 is free software under the GNU General Public License, version 2 (licenses\LICENSE-GPL-2.0.txt).
+Parts of the original Kyty code are under the MIT licence (Kyty-MIT.txt in this folder). The FFmpeg
+and Opus libraries built into it are under their own licences (ffmpeg\ and opus\ in this folder).
+
+Copyright: the KytyPS5 developers (https://github.com/KytyPS5/KytyPS5), InoriRus (Kyty), Cozma
+(cozma-ufc5 fork), roshanarunk (UFC 5 work merged into it), Senaxx (Vulkan recording thread, draw
+preparation scanner, shader disk cache, VRAM budget) and EmK530 (renderer optimizations, through
+Senaxx's fork).
+
+Source
+------
+Complete corresponding source code of both builds:
+  https://github.com/Cozmaaa/KytyPS5/tree/cozma-ufc5
+  commit 84f029fe52077feb7fc85e89ee273d57b2486a24
+  ("ufc5: fewer GPU stalls, own CPU cores, PGO build, lighter GPU thread", 2026-10-25)
+plus, for UFC 5 AMD.exe, games\UFC5\src\ufc5-motor-amd321.patch (applied on that commit), and for both,
+brand_engine.c and ufc5-engine.rc for the changes described above and the video-out jump described there.
+
+Written offer: for at least three years from the date of this release, PORTHEON also provides the
+complete corresponding source code of these builds to anyone who received them, on request through
+the PORTHEON project page (github.com/XAndromedaXR/PORTHEON).
+
+Requirements: Windows 10/11 x64, a Vulkan 1.3 GPU with current drivers, a processor with AVX2 and the
+Microsoft Visual C++ 2015-2022 Redistributable (x64), 2019 or newer.
+
+This project is not affiliated with Sony Interactive Entertainment or Electronic Arts.
