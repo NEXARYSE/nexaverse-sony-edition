@@ -3,7 +3,7 @@ const path = require('node:path');
 
 const GAMES = new Map([
   ['infamous-second-son', { label: 'inFAMOUS Second Son', titleIds: new Set(['CUSA00004', 'CUSA00223']), titlePattern: /inFAMOUS\s+Second\s+Son/i }],
-  ['infamous-first-light', { label: 'inFAMOUS First Light', titleIds: new Set(['CUSA00008', 'CUSA00209']), titlePattern: /inFAMOUS\s+First\s+Light/i }],
+  ['infamous-first-light', { label: 'inFAMOUS First Light', acceptAnyPs4Title: true }],
   ['killzone-shadow-fall', { label: 'Killzone: Shadow Fall', titleIds: new Set(['CUSA00002', 'CUSA00129']), titlePattern: /Killzone\s*:\s*Shadow\s+Fall/i }],
 ]);
 
@@ -36,10 +36,13 @@ function create({runtimeRoot, userData}) {
       const eboot = await fs.stat(path.join(root, 'eboot.bin'));
       const param = path.join(root, 'sce_sys', 'param.sfo');
       const info = await fs.stat(param);
+      const titleId = readTitleId(await fs.readFile(param));
       if (eboot.isFile() && eboot.size > 0 && info.isFile() && info.size <= 65536 &&
-          game.titleIds.has(readTitleId(await fs.readFile(param)))) return root;
+          (game.acceptAnyPs4Title ? /^[A-Z]{4}\d{5}$/.test(titleId || '') : game.titleIds.has(titleId))) return root;
     } catch {}
-    throw Error(`Choose an ${game.label} PS4 folder containing eboot.bin and sce_sys/param.sfo.`);
+    throw Error(game.acceptAnyPs4Title
+      ? 'Choose a PS4 game folder containing eboot.bin and sce_sys/param.sfo.'
+      : `Choose an ${game.label} PS4 folder containing eboot.bin and sce_sys/param.sfo.`);
   }
   async function launchPlan(game) {
     if (!GAMES.has(game.id)) throw Error('This game does not use the bundled shadPS4 emulator.');

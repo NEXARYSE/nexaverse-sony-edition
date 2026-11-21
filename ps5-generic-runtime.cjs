@@ -4,8 +4,8 @@ const { checkHost } = require('./runtime-compatibility.cjs');
 
 const GAMES = new Map([
   ['ufc-6', { label: 'EA SPORTS UFC 6', titlePattern: /UFC\s*6/i }],
-  ['marvels-wolverine', { label: 'Marvel’s Wolverine', titlePattern: /Wolverine/i }],
-  ['ghost-of-yotei', { label: 'Ghost of Yōtei', titlePattern: /Ghost\s+of\s+Y[ōo]tei/i }],
+  ['marvels-wolverine', { label: 'Marvel’s Wolverine', acceptAnyPs5Title: true }],
+  ['ghost-of-yotei', { label: 'Ghost of Yōtei', acceptAnyPs5Title: true }],
 ]);
 
 async function validateDirectory(directory, id = 'ufc-6') {
@@ -20,10 +20,12 @@ async function validateDirectory(directory, id = 'ufc-6') {
     if (!eboot.isFile() || !info.isFile() || info.size > 1048576) throw Error();
     const param = JSON.parse(await fs.readFile(metadata, 'utf8'));
     const titles = Object.values(param.localizedParameters || {}).filter(value => value && typeof value === 'object').map(value => String(value.titleName || ''));
-    if (!/^PPSA\d{5}$/.test(param.titleId || '') || !titles.some(title => game.titlePattern.test(title))) throw Error();
+    if (!/^PPSA\d{5}$/.test(param.titleId || '') || (!game.acceptAnyPs5Title && !titles.some(title => game.titlePattern.test(title)))) throw Error();
     return root;
   } catch {
-    throw Error(`Choose a ${game.label} PS5 game folder containing eboot.bin and sce_sys/param.json.`);
+    throw Error(game.acceptAnyPs5Title
+      ? 'Choose a PS5 game folder containing eboot.bin and sce_sys/param.json.'
+      : `Choose a ${game.label} PS5 game folder containing eboot.bin and sce_sys/param.json.`);
   }
 }
 
@@ -37,7 +39,7 @@ function create({ runtimeRoot, userData, verifyHost = checkHost }) {
     await fs.access(exe);
     const cwd = path.join(userData, 'ps5-kyty', game.id);
     await fs.mkdir(cwd, { recursive: true });
-    return { exe, cwd, windowsHide: true, args: ['--game', directory, '--screen-width', '1920', '--screen-height', '1080', '--vblank-frequency', '60', '--present-mode', 'Mailbox', '--frame-rate-limit', '0', '--no-splash', '--shader-cache'] };
+    return { exe, cwd, windowsHide: true, args: ['--game', directory] };
   }
   return { executable, validateDirectory, launchPlan };
 }

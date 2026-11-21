@@ -1,6 +1,6 @@
 {
   "name": "nexaverse-sony-edition",
-  "version": "0.1.67",
+  "version": "0.1.68",
   "private": true,
   "main": "main.cjs",
   "description": "Independent console-style Windows game launcher",
@@ -13,7 +13,7 @@
     "productName": "NEXAVERSE",
     "artifactName": "NEXAVERSE-Setup.exe",
     "directories": {
-      "output": "../../outputs/sony-edition/0.1.67"
+      "output": "../../outputs/sony-edition/0.1.68"
     },
     "electronDist": "C:/Users/tratr/Documents/Codex/2026-11-07/i-x20/work/launcher-source-2/node_modules/electron/dist",
     "electronVersion": "40.10.6",
@@ -91,6 +91,10 @@
       },
       {
         "from": "runtime/ps5-kyty-nba23-candidate",
+        "to": "ps5-kyty-nba23"
+      },
+      {
+        "from": "runtime/ps5-kyty",
         "to": "ps5-kyty"
       },
       {
