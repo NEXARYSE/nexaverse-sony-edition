@@ -1,6 +1,6 @@
 {
   "name": "nexaverse-sony-edition",
-  "version": "0.1.74",
+  "version": "0.1.70",
   "private": true,
   "main": "main.cjs",
   "description": "Independent console-style Windows game launcher",
@@ -13,7 +13,7 @@
     "productName": "NEXAVERSE",
     "artifactName": "NEXAVERSE-Setup.exe",
     "directories": {
-      "output": "../../outputs/sony-edition/0.1.74"
+      "output": "../../outputs/sony-edition/0.1.70"
     },
     "electronDist": "C:/Users/tratr/Documents/Codex/2026-11-07/i-x20/work/launcher-source-2/node_modules/electron/dist",
     "electronVersion": "40.10.6",
@@ -76,9 +76,7 @@
       "welcome-theme.js",
       "nba23-cloud.cjs",
       "nba23-session.cjs",
-      "nba23-calendar.cjs",
-      "gta-toolkit.cjs",
-      "gta-toolkit.js"
+      "nba23-calendar.cjs"
     ],
     "asarUnpack": [
       "assets/audio/*.mp3"
@@ -123,10 +121,6 @@
       {
         "from": "runtime/cb-launcher",
         "to": "cb-launcher"
-      },
-      {
-        "from": "runtime/gta-toolkit",
-        "to": "gta-toolkit"
       }
     ],
     "win": {
