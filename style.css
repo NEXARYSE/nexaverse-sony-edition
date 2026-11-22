@@ -70,3 +70,18 @@ body:has(#library:not([hidden])){overflow-y:hidden}#library:not([hidden]){height
 .second-son-controls-dialog #panelContent{max-height:76vh;overflow:auto}
 .second-son-controls-dialog #panelContent>img{display:block;width:100%;height:auto;margin-bottom:16px;border-radius:10px}
 .second-son-options{display:grid;gap:12px;justify-items:start}
+dialog.sony-settings-dialog{width:min(940px,88vw);padding:0;background:linear-gradient(140deg,rgba(16,22,35,.98),rgba(8,12,21,.98));border:1px solid rgba(202,216,238,.25);box-shadow:0 28px 90px rgba(0,0,0,.6)}
+.sony-settings-dialog #panelContent{max-height:70vh;padding:8px 38px 32px;overflow:auto}
+.sony-settings-kicker{margin:8px 0 5px;color:#aebbd0;font-size:11px;font-weight:700;letter-spacing:2.2px}
+.sony-settings-heading{margin:0;color:#fff;font-weight:300;font-size:34px;letter-spacing:-.8px}
+.sony-settings-intro{max-width:610px;margin:8px 0 22px;color:#b4c0d3;font-size:15px;line-height:1.55}
+.sony-settings-list{border-top:1px solid rgba(255,255,255,.12)}
+.sony-settings-entry{width:100%;min-height:68px;display:grid;grid-template-columns:50px 1fr 30px;align-items:center;padding:9px 14px;border:0;border-bottom:1px solid rgba(255,255,255,.1);background:transparent;color:#f4f7fc;text-align:left;transition:background .18s ease,box-shadow .18s ease}
+.sony-settings-entry:hover,.sony-settings-entry:focus-visible{outline:0;background:rgba(150,177,219,.13);box-shadow:inset 0 0 0 2px rgba(211,226,255,.72)}
+.sony-settings-icon{font-size:27px;font-weight:300;color:#f5f8ff;text-align:center}.sony-settings-copy{display:grid;gap:4px}.sony-settings-copy strong{font-size:18px;font-weight:400}.sony-settings-copy small{font-size:13px;color:#9eacc0}.sony-settings-chevron{font-size:31px;color:#c5d2e6;font-weight:200;text-align:right}
+.sony-settings-back{border:0;background:transparent;color:#dfeaff;padding:6px 0 18px;font:inherit;font-size:15px}.sony-settings-back:hover,.sony-settings-back:focus-visible{outline:0;color:#fff;text-decoration:underline}
+.sony-settings-section{margin:8px 0 18px;padding:19px 20px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11)}.sony-settings-section h3{margin:0 0 9px;color:#f7f9ff;font-size:20px;font-weight:400}.sony-settings-section p{color:#c1ccdc;line-height:1.55}.sony-settings-section .pill{margin:6px 8px 0 0}
+.sony-settings-status{margin-top:10px}.sony-settings-status progress{width:100%;height:6px;accent-color:#e9f2ff}.sony-storage-meter{height:7px;overflow:hidden;background:rgba(255,255,255,.13);border-radius:8px}.sony-storage-meter i{display:block;height:100%;background:linear-gradient(90deg,#c6dbff,#fff);border-radius:inherit}
+@media(max-width:600px){.sony-settings-dialog #panelContent{padding:6px 18px 24px}.sony-settings-heading{font-size:29px}.sony-settings-entry{grid-template-columns:42px 1fr 22px}.sony-settings-copy strong{font-size:16px}}
+
+.gta-toolkit-actions{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}.gta-toolkit-output{max-height:280px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:16px;background:rgba(0,0,0,.25);border-radius:12px;font-size:12px}.gta-toolkit-output:empty{display:none}
