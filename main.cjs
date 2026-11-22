@@ -67,6 +67,7 @@ app.whenReady().then(()=>{if(!ownsInstance)return;activity.start(app.getPath('us
  ipcMain.handle('discord-connect',()=>linkDiscord());
  ipcMain.handle('discord-logout',async()=>{await mutual.remove();await require('./discord-social.cjs').disconnect();return discord.logout()});
  ipcMain.handle('community-leaderboard',()=>require('./community.cjs').leaderboard());
+ ipcMain.handle('community-online-count',()=>require('./community.cjs').onlineCount());
  ipcMain.handle('community-profile',(_,id)=>require('./community.cjs').profile(id));
  ipcMain.handle('community-save',async(_,prefs)=>require('./community.cjs').save({about:typeof prefs?.about==='string'?prefs.about:undefined,status:prefs?.status,games:(await require('./steam-progress.cjs').enrich((await read()).map(currentPlaytime))).filter(g=>g.exe||g.seconds>0).map(g=>({id:g.id,seconds:g.seconds,lastPlayed:g.lastPlayed}))}));
  ipcMain.handle('community-upload',async()=>{if(require('./updates.cjs').status().status==='installing')throw Error('The launcher is restarting to install an update.');activeUploads++;try{return await require('./community.cjs').upload(win)}finally{activeUploads--}});

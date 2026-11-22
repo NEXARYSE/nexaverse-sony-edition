@@ -15,6 +15,16 @@ async function steamStatus(){return (await request('/api/steam/status')).json()}
 async function unlinkSteam(){return (await request('/api/steam/link',{method:'DELETE'})).json()}
 async function steamProgress(id){if(!/^[a-z0-9-]{1,80}$/.test(id))throw Error('Invalid game.');return (await request('/api/steam/progress/'+id)).json()}
 async function leaderboard(){return (await request('/api/leaderboard')).json()}
+let onlineCache={count:null,expires:0};
+async function onlineCount(){
+  if(Date.now()<onlineCache.expires)return onlineCache.count;
+  const response=await fetch('https://discord.com/api/v10/invites/mRCkgZvRvb?with_counts=true',{headers:{'User-Agent':'NEXAVERSE Launcher'},signal:AbortSignal.timeout(10000)});
+  if(!response.ok)throw Error('Server presence is unavailable.');
+  const data=await response.json(),count=data.approximate_presence_count;
+  if(!Number.isSafeInteger(count)||count<0)throw Error('Server presence is unavailable.');
+  onlineCache={count,expires:Date.now()+60000};
+  return count;
+}
 async function steamPlaytime(){return (await request('/api/steam/playtime')).json()}
 async function awards(){return (await request('/api/awards')).json()}
-module.exports={awards,steamPlaytime,steamStatus,leaderboard,profile,save,upload,image,remove,syncFriends,mutualFriends,forgetFriends,linkSteam,unlinkSteam,steamProgress};
+module.exports={awards,steamPlaytime,steamStatus,leaderboard,onlineCount,profile,save,upload,image,remove,syncFriends,mutualFriends,forgetFriends,linkSteam,unlinkSteam,steamProgress};

@@ -13,6 +13,7 @@ const titles = new Map([
   ['littlebigplanet-3', new Set(['BCUS98362', 'BCES01663', 'BCES02068', 'BCJS30095', 'NPUA81116', 'NPEA00515'])],
   ['fight-night-champion', new Set(['BLUS30608', 'BLES01039', 'BLJM60267', 'NPUB30595', 'NPEB00730', 'BLAS50313'])],
   ['killzone-3', new Set(['BCUS98234', 'BCES01007'])],
+  ['naughty-bear', new Set(['BLUS30439', 'BLES00945'])],
 ]);
 const firmwareBytes = 206197916;
 const firmwareHash = '158471fd834f8ea8036136b6aab43cd86c7ba73d79ca30e0af3c0fe0001cf365';

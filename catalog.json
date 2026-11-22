@@ -1011,5 +1011,118 @@
     "background": "assets/backgrounds/killzone-shadow-fall.jpg",
     "libraryUntilLinked": true,
     "trophiesPending": true
+  },
+  {
+    "id": "mirrors-edge",
+    "name": "Mirror's Edge",
+    "art": "assets/mirrors-edge.png",
+    "background": "assets/mirrors-edge.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "rise-of-the-tomb-raider",
+    "name": "Rise of the Tomb Raider",
+    "art": "assets/rise-of-the-tomb-raider.png",
+    "background": "assets/backgrounds/rise-of-the-tomb-raider.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "super-mario-galaxy",
+    "name": "Super Mario Galaxy",
+    "art": "assets/super-mario-galaxy.png",
+    "background": "assets/backgrounds/super-mario-galaxy.jpg",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "trophiesPending": true
+  },
+  {
+    "id": "naughty-bear",
+    "name": "Naughty Bear",
+    "art": "assets/naughty-bear.jpg",
+    "background": "assets/backgrounds/naughty-bear.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "battlefield-4",
+    "name": "Battlefield 4",
+    "art": "assets/battlefield-4.png",
+    "background": "assets/backgrounds/battlefield-4.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "ea-sports-fc-27",
+    "name": "EA SPORTS FC 27",
+    "art": "assets/ea-sports-fc-27.jpg",
+    "background": "assets/backgrounds/ea-sports-fc-27.png",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "wwe-2k25",
+    "name": "WWE 2K25",
+    "art": "assets/wwe-2k25.png",
+    "background": "assets/backgrounds/wwe-2k25.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "bloodborne",
+    "name": "Bloodborne",
+    "art": "assets/bloodborne.png",
+    "background": "assets/backgrounds/bloodborne.jpeg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "crash-bandicoot-4",
+    "name": "Crash Bandicoot 4: It's About Time",
+    "art": "assets/crash-bandicoot-4.png",
+    "background": "assets/backgrounds/crash-bandicoot-4.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "crash-bandicoot-n-sane-trilogy",
+    "name": "Crash Bandicoot N. Sane Trilogy",
+    "art": "assets/crash-bandicoot-n-sane-trilogy.png",
+    "background": "assets/backgrounds/crash-bandicoot-n-sane-trilogy.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "spyro-reignited-trilogy",
+    "name": "Spyro Reignited Trilogy",
+    "art": "assets/spyro-reignited-trilogy.png",
+    "background": "assets/backgrounds/spyro-reignited-trilogy.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "back-4-blood",
+    "name": "Back 4 Blood",
+    "art": "assets/back-4-blood.png",
+    "background": "assets/backgrounds/back-4-blood.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "call-of-duty-modern-warfare-2",
+    "name": "Call of Duty: Modern Warfare 2",
+    "art": "assets/call-of-duty-modern-warfare-2.png",
+    "background": "assets/backgrounds/call-of-duty-modern-warfare-2.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "portal-2",
+    "name": "Portal 2",
+    "art": "assets/portal-2.png",
+    "background": "assets/backgrounds/portal-2.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
   }
 ]
