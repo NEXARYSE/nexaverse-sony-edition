@@ -1047,7 +1047,7 @@
   },
   {
     "id": "battlefield-4",
-    "name": "Battlefield 4",
+    "name": "Battlefield 6",
     "art": "assets/battlefield-4.png",
     "background": "assets/backgrounds/battlefield-4.jpg",
     "libraryUntilLinked": true,
@@ -1122,6 +1122,30 @@
     "name": "Portal 2",
     "art": "assets/portal-2.png",
     "background": "assets/backgrounds/portal-2.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "mlb-the-show-26",
+    "name": "MLB The Show 26",
+    "art": "assets/mlb-the-show-26.png",
+    "background": "assets/backgrounds/mlb-the-show-26.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "nhl-27",
+    "name": "NHL 27",
+    "art": "assets/nhl-27.jpg",
+    "background": "assets/backgrounds/nhl-27.jpg",
+    "libraryUntilLinked": true,
+    "trophiesPending": false
+  },
+  {
+    "id": "nba-street-vol-2",
+    "name": "NBA Street Vol. 2",
+    "art": "assets/nba-street-vol-2.png",
+    "background": "assets/backgrounds/nba-street-vol-2.jpg",
     "libraryUntilLinked": true,
     "trophiesPending": false
   }

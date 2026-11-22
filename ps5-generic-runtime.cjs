@@ -6,6 +6,8 @@ const GAMES = new Map([
   ['ufc-6', { label: 'EA SPORTS UFC 6', titlePattern: /UFC\s*6/i }],
   ['marvels-wolverine', { label: 'Marvel’s Wolverine', acceptAnyPs5Title: true }],
   ['ghost-of-yotei', { label: 'Ghost of Yōtei', acceptAnyPs5Title: true }],
+  ['mlb-the-show-26', { label: 'MLB The Show 26', acceptAnyPs5Title: true }],
+  ['nhl-27', { label: 'NHL 27', acceptAnyPs5Title: true }],
 ]);
 
 async function validateDirectory(directory, id = 'ufc-6') {

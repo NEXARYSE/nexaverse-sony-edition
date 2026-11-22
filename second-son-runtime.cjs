@@ -5,6 +5,7 @@ const GAMES = new Map([
   ['infamous-second-son', { label: 'inFAMOUS Second Son', titleIds: new Set(['CUSA00004', 'CUSA00223']), titlePattern: /inFAMOUS\s+Second\s+Son/i }],
   ['infamous-first-light', { label: 'inFAMOUS First Light', acceptAnyPs4Title: true }],
   ['killzone-shadow-fall', { label: 'Killzone: Shadow Fall', titleIds: new Set(['CUSA00002', 'CUSA00129']), titlePattern: /Killzone\s*:\s*Shadow\s+Fall/i }],
+  ['nba-street-vol-2', { label: 'NBA Street Vol. 2', acceptAnyPs4Title: true }],
 ]);
 
 function readTitleId(data) {
