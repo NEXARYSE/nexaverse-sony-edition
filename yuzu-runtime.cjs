@@ -7,7 +7,8 @@ const titles = new Set([
   'zelda-tears-of-the-kingdom',
   'kirby-and-the-forgotten-land',
   'super-mario-odyssey',
-  'super-mario-galaxy'
+  'super-mario-galaxy',
+  'pokemon-legends-arceus'
 ]);
 const extensions = new Set(['.nsp', '.xci']);
 

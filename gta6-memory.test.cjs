@@ -1,0 +1,10 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const {create}=require('./gta6-memory.cjs');const G=1024**3;
+const healthy={automatic:true,committed:20*G,limit:60*G,freeDisk:50*G};
+test('healthy managed PC never elevates',async()=>{await create({query:async()=>healthy,configure:async()=>assert.fail('unexpected elevation')}).beforeLaunch()});
+test('Play automatically configures unmanaged PC and rechecks',async()=>{let calls=0,queries=0,notices=0;await create({query:async()=>({...healthy,automatic:queries++>0}),configure:async()=>{calls++},notice:async()=>{notices++}}).beforeLaunch();assert.equal(calls,1);assert.equal(queries,2);assert.equal(notices,1)});
+test('UAC cancellation prevents game launch',async()=>{await assert.rejects(create({query:async()=>({...healthy,automatic:false}),configure:async()=>{throw Error('cancel')}}).beforeLaunch(),/cancelled or failed/)});
+test('low disk never invokes elevated setup',async()=>{await assert.rejects(create({query:async()=>({...healthy,automatic:false,freeDisk:G}),configure:async()=>assert.fail('unexpected elevation')}).beforeLaunch(),/free space/)});
+test('insufficient commit stops launch even when managed',async()=>{await assert.rejects(create({query:async()=>({...healthy,limit:22*G})}).beforeLaunch(),/available commit/)});
+test('setting change without current capacity still requires remediation',async()=>{let n=0;await assert.rejects(create({query:async()=>({...healthy,automatic:n++>0,limit:22*G}),configure:async()=>{}}).beforeLaunch(),/restart Windows/)});
+test('failed query is not treated as adequate memory',async()=>{await assert.rejects(create({query:async()=>{throw Error('unavailable')}}).beforeLaunch(),/not started/)});
+test('a setup that did not apply cannot launch',async()=>{await assert.rejects(create({query:async()=>({...healthy,automatic:false}),configure:async()=>{}}).beforeLaunch(),/did not enable/)});

@@ -1,0 +1,12 @@
+const {test}=require('node:test'),a=require('node:assert/strict'),{create,plan}=require('./gta6-memory-capacity.cjs'),G=1024**3;
+const good={automatic:true,ram:32*G,committed:20*G,limit:64*G,freeDisk:100*G,allocatedMB:32768,initialMB:0,maximumMB:0},low={...good,limit:40*G,allocatedMB:8192};
+test('adequate PCs never elevate regardless of automatic flag',async()=>{for(const automatic of [true,false])await create({query:async()=>({...good,automatic}),configure:async()=>a.fail('elevated')}).beforeLaunch()});
+test('low total limit triggers setup even when initial free capacity exceeds 8 GiB',async()=>{let n=0,c=0;await create({query:async()=>n++?good:low,configure:async()=>{c++}}).beforeLaunch();a.equal(c,1);a.equal(n,2)});
+test('post-setup capacity, not just settings, must increase',async()=>{await a.rejects(create({query:async()=>low,configure:async()=>{}}).beforeLaunch(),/Restart Windows/)});
+test('pending capacity avoids repeated UAC prompts',async()=>{await a.rejects(create({query:async()=>({...low,automatic:false,initialMB:33792}),configure:async()=>a.fail('repeat')}).beforeLaunch(),/Restart Windows/)});
+test('UAC cancellation stops launch',async()=>{await a.rejects(create({query:async()=>low,configure:async()=>{throw Error('cancel')}}).beforeLaunch(),/cancelled or failed/)});
+test('insufficient growth space never elevates',async()=>{await a.rejects(create({query:async()=>({...low,freeDisk:10*G}),configure:async()=>a.fail('elevated')}).beforeLaunch(),/Free at least/)});
+test('busy system stops despite adequate total capacity',async()=>{await a.rejects(create({query:async()=>({...good,committed:60*G})}).beforeLaunch(),/commit capacity/)});
+test('counter failure prevents launch',async()=>{await a.rejects(create({query:async()=>{throw Error('CIM')}}).beforeLaunch(),/Could not check/)});
+test('paging floor adapts to RAM with a commit-accounting margin',()=>{a.equal(plan(good).initialMB,33792);a.equal(plan({...good,ram:16*G,allocatedMB:0}).initialMB,50176);a.equal(plan({...good,ram:48*G,allocatedMB:0}).initialMB,17408)});
+test('existing larger initial and maximum sizes are preserved',()=>{const p=plan({...low,initialMB:65536,maximumMB:98304});a.equal(p.initialMB,65536);a.equal(p.maximumMB,98304)});

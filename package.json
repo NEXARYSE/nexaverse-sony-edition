@@ -1,6 +1,6 @@
 {
   "name": "nexaverse-sony-edition",
-  "version": "0.1.70",
+  "version": "0.1.87",
   "private": true,
   "main": "main.cjs",
   "description": "Independent console-style Windows game launcher",
@@ -13,9 +13,8 @@
     "productName": "NEXAVERSE",
     "artifactName": "NEXAVERSE-Setup.exe",
     "directories": {
-      "output": "../../outputs/sony-edition/0.1.70"
+      "output": "../../outputs/sony-edition/0.1.87"
     },
-    "electronDist": "C:/Users/tratr/Documents/Codex/2026-11-07/i-x20/work/launcher-source-2/node_modules/electron/dist",
     "electronVersion": "40.10.6",
     "files": [
       "runtime-compatibility.cjs",
@@ -25,6 +24,10 @@
       "community.cjs",
       "crash-logger.cjs",
       "discord-auth.cjs",
+      "discord-membership.cjs",
+      "discord-required.cjs",
+      "discord-welcome.js",
+      "discord-welcome.css",
       "discord-link.cjs",
       "discord-social.cjs",
       "library-order.cjs",
@@ -76,7 +79,17 @@
       "welcome-theme.js",
       "nba23-cloud.cjs",
       "nba23-session.cjs",
-      "nba23-calendar.cjs"
+      "nba23-calendar.cjs",
+      "gta6-runtime.cjs",
+      "gta6-memory.cjs",
+      "gta6-memory-capacity.cjs",
+      "gta6-pagefile.cjs",
+      "controller-navigation.js",
+      "controller-navigation.css",
+      "controller-picker.cjs",
+      "controller-picker-preload.cjs",
+      "controller-picker.js",
+      "controller-picker.html"
     ],
     "asarUnpack": [
       "assets/audio/*.mp3"
@@ -121,6 +134,10 @@
       {
         "from": "runtime/cb-launcher",
         "to": "cb-launcher"
+      },
+      {
+        "from": "runtime/nexa-gta-victory",
+        "to": "nexa-gta"
       }
     ],
     "win": {

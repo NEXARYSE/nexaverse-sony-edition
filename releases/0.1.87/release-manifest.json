@@ -1,0 +1,26 @@
+{
+  "latest.yml": {
+    "bytes": 337,
+    "sha256": "2725dc83f94ed922ac36a619ce0bfd670f36beb9bf18eca1e5685b8ea2af62cd"
+  },
+  "NEXAVERSE-Setup.exe.blockmap": {
+    "bytes": 1307184,
+    "sha256": "24dd420d0e88684f9e9fd6e5bc001df4796f5ec8b596291831cbacc685a86b7a"
+  },
+  "NEXAVERSE-Setup.exe": {
+    "bytes": 1254161920,
+    "sha256": "8e4ffa3073d27aa3ef696e0697f81f0abf1295b05b2e5e6ab87616f16e86a91a"
+  },
+  "NEXA-GTA-portable.zip": {
+    "bytes": 14885357,
+    "sha256": "40b137b86ccac35cd53e5c13044aca3a4b50e2d6f2d145166f7e1710b6865f3c"
+  },
+  "NEXA-GTA-source.zip": {
+    "bytes": 2484456,
+    "sha256": "d6fd12991b59e0c912dbdf2d7ffc12792b6483de38c6991c3bc468904d85a665"
+  },
+  "NEXAVERSE-0.1.87-launcher-source.zip": {
+    "bytes": 442594,
+    "sha256": "16d8ee553d78dfd174ba5ef1678360b6259f77163ad68c6a04994d40622c61b0"
+  }
+}

@@ -44092,32 +44092,563 @@
       }
     ]
   },
-  "invincible-vs": {"title":"Invincible VS Trophies","source":"https://www.playstationtrophies.org/game/invincible-vs/trophies/","playstationSource":"https://www.playstationtrophies.org/game/invincible-vs/trophies/","trophies":[]},
-  "infamous-first-light": {"title":"inFAMOUS First Light Trophies","source":"https://www.playstationtrophies.org/game/infamous-first-light/trophies/","playstationSource":"https://www.playstationtrophies.org/game/infamous-first-light/trophies/","trophies":[]},
-  "marvels-wolverine": {"title":"Marvel’s Wolverine Trophies","source":"https://www.playstationtrophies.org/game/marvels-wolverine/trophies/","playstationSource":"https://www.playstationtrophies.org/game/marvels-wolverine/trophies/","trophies":[]},
-  "gta-san-andreas": {"title":"Grand Theft Auto: San Andreas Trophies","source":"https://www.playstationtrophies.org/game/grand-theft-auto-san-andreas-ps4/trophies/","playstationSource":"https://www.playstationtrophies.org/game/grand-theft-auto-san-andreas-ps4/trophies/","trophies":[]},
-  "outlast": {"title":"Outlast Trophies","source":"https://www.playstationtrophies.org/game/outlast/trophies/","playstationSource":"https://www.playstationtrophies.org/game/outlast/trophies/","trophies":[]},
-  "outlast-2": {"title":"Outlast 2 Trophies","source":"https://www.playstationtrophies.org/game/outlast-2/trophies/","playstationSource":"https://www.playstationtrophies.org/game/outlast-2/trophies/","trophies":[]},
-  "phasmophobia": {"title":"Phasmophobia Trophies","source":"https://www.playstationtrophies.org/game/phasmophobia/trophies/","playstationSource":"https://www.playstationtrophies.org/game/phasmophobia/trophies/","trophies":[]},
-  "fnaf-security-breach": {"title":"Five Nights at Freddy’s: Security Breach Trophies","source":"https://www.playstationtrophies.org/game/five-nights-at-freddys-security-breach/trophies/","playstationSource":"https://www.playstationtrophies.org/game/five-nights-at-freddys-security-breach/trophies/","trophies":[]},
-  "gta-vice-city": {"title":"Grand Theft Auto: Vice City – The Definitive Edition Trophies","source":"https://www.playstationtrophies.org/game/grand-theft-auto-vice-city-the-definitive-edition/trophies/","playstationSource":"https://www.playstationtrophies.org/game/grand-theft-auto-vice-city-the-definitive-edition/trophies/","trophies":[]},
-  "ghost-of-yotei": {"title":"Ghost of Yōtei Trophies","source":"https://www.playstationtrophies.org/game/ghost-of-yotei/trophies/","playstationSource":"https://www.playstationtrophies.org/game/ghost-of-yotei/trophies/","trophies":[]},
-  "epic-mickey-rebrushed": {"title":"Disney Epic Mickey: Rebrushed Trophies","source":"https://www.playstationtrophies.org/game/epic-mickey-rebrushed-v2/trophies/","playstationSource":"https://www.playstationtrophies.org/game/epic-mickey-rebrushed-v2/trophies/","trophies":[]},
-  "killzone-3": {"title":"Killzone 3 Trophies","source":"https://www.playstationtrophies.org/game/killzone-3/trophies/","playstationSource":"https://www.playstationtrophies.org/game/killzone-3/trophies/","trophies":[]},
-  "killzone-shadow-fall": {"title":"Killzone: Shadow Fall Trophies","source":"https://www.playstationtrophies.org/game/killzone-shadow-fall/trophies/","playstationSource":"https://www.playstationtrophies.org/game/killzone-shadow-fall/trophies/","trophies":[]},
-  "mirrors-edge": {"title":"Mirror's Edge Trophies","source":"https://www.playstationtrophies.org/game/mirrors-edge/trophies/","playstationSource":"https://www.playstationtrophies.org/game/mirrors-edge/trophies/","trophies":[]},
-  "rise-of-the-tomb-raider": {"title":"Rise of the Tomb Raider Trophies","source":"https://www.playstationtrophies.org/game/rise-of-the-tomb-raider/trophies/","playstationSource":"https://www.playstationtrophies.org/game/rise-of-the-tomb-raider/trophies/","trophies":[]},
-  "naughty-bear": {"title":"Naughty Bear Trophies","source":"https://www.playstationtrophies.org/game/naughty-bear/trophies/","playstationSource":"https://www.playstationtrophies.org/game/naughty-bear/trophies/","trophies":[]},
-  "battlefield-4": {"title":"Battlefield 6 Trophies","source":"https://www.playstationtrophies.org/game/battlefield-4/trophies/","playstationSource":"https://www.playstationtrophies.org/game/battlefield-4/trophies/","trophies":[]},
-  "ea-sports-fc-27": {"title":"EA SPORTS FC 27 Trophies","source":"https://www.playstationtrophies.org/game/ea-sports-fc-27/trophies/","playstationSource":"https://www.playstationtrophies.org/game/ea-sports-fc-27/trophies/","trophies":[]},
-  "wwe-2k25": {"title":"WWE 2K25 Trophies","source":"https://www.playstationtrophies.org/game/wwe-2k25/trophies/","playstationSource":"https://www.playstationtrophies.org/game/wwe-2k25/trophies/","trophies":[]},
-  "bloodborne": {"title":"Bloodborne Trophies","source":"https://www.playstationtrophies.org/game/bloodborne/trophies/","playstationSource":"https://www.playstationtrophies.org/game/bloodborne/trophies/","trophies":[]},
-  "crash-bandicoot-4": {"title":"Crash Bandicoot 4: It's About Time Trophies","source":"https://www.playstationtrophies.org/game/crash-bandicoot-4/trophies/","playstationSource":"https://www.playstationtrophies.org/game/crash-bandicoot-4/trophies/","trophies":[]},
-  "crash-bandicoot-n-sane-trilogy": {"title":"Crash Bandicoot N. Sane Trilogy Trophies","source":"https://www.playstationtrophies.org/game/crash-bandicoot-n-sane-trilogy/trophies/","playstationSource":"https://www.playstationtrophies.org/game/crash-bandicoot-n-sane-trilogy/trophies/","trophies":[]},
-  "spyro-reignited-trilogy": {"title":"Spyro Reignited Trilogy Trophies","source":"https://www.playstationtrophies.org/game/spyro-reignited-trilogy/trophies/","playstationSource":"https://www.playstationtrophies.org/game/spyro-reignited-trilogy/trophies/","trophies":[]},
-  "back-4-blood": {"title":"Back 4 Blood Trophies","source":"https://www.playstationtrophies.org/game/back-4-blood/trophies/","playstationSource":"https://www.playstationtrophies.org/game/back-4-blood/trophies/","trophies":[]},
-  "call-of-duty-modern-warfare-2": {"title":"Call of Duty: Modern Warfare 2 Trophies","source":"https://www.playstationtrophies.org/game/call-of-duty-modern-warfare-2/trophies/","playstationSource":"https://www.playstationtrophies.org/game/call-of-duty-modern-warfare-2/trophies/","trophies":[]},
-  "portal-2": {"title":"Portal 2 Trophies","source":"https://www.playstationtrophies.org/game/portal-2/trophies/","playstationSource":"https://www.playstationtrophies.org/game/portal-2/trophies/","trophies":[]},
-  "mlb-the-show-26": {"title":"MLB The Show 26 Trophies","source":"https://www.playstationtrophies.org/game/mlb-the-show-26/trophies/","playstationSource":"https://www.playstationtrophies.org/game/mlb-the-show-26/trophies/","trophies":[]},
-  "nhl-27": {"title":"NHL 27 Trophies","source":"https://www.playstationtrophies.org/game/ea-sports-nhl-27/trophies/","playstationSource":"https://www.playstationtrophies.org/game/ea-sports-nhl-27/trophies/","trophies":[]}
+  "invincible-vs": {
+    "title": "Invincible VS Trophies",
+    "source": "https://www.playstationtrophies.org/game/invincible-vs/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/invincible-vs/trophies/",
+    "trophies": []
+  },
+  "infamous-first-light": {
+    "title": "inFAMOUS First Light Trophies",
+    "source": "https://www.playstationtrophies.org/game/infamous-first-light/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/infamous-first-light/trophies/",
+    "trophies": []
+  },
+  "marvels-wolverine": {
+    "title": "Marvel’s Wolverine Trophies",
+    "source": "https://www.playstationtrophies.org/game/marvels-wolverine/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/marvels-wolverine/trophies/",
+    "trophies": []
+  },
+  "gta-san-andreas": {
+    "title": "Grand Theft Auto: San Andreas Trophies",
+    "source": "https://www.playstationtrophies.org/game/grand-theft-auto-san-andreas-ps4/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/grand-theft-auto-san-andreas-ps4/trophies/",
+    "trophies": []
+  },
+  "outlast": {
+    "title": "Outlast Trophies",
+    "source": "https://www.playstationtrophies.org/game/outlast/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/outlast/trophies/",
+    "trophies": []
+  },
+  "outlast-2": {
+    "title": "Outlast 2 Trophies",
+    "source": "https://www.playstationtrophies.org/game/outlast-2/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/outlast-2/trophies/",
+    "trophies": []
+  },
+  "phasmophobia": {
+    "title": "Phasmophobia Trophies",
+    "source": "https://www.playstationtrophies.org/game/phasmophobia/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/phasmophobia/trophies/",
+    "trophies": []
+  },
+  "fnaf-security-breach": {
+    "title": "Five Nights at Freddy’s: Security Breach Trophies",
+    "source": "https://www.playstationtrophies.org/game/five-nights-at-freddys-security-breach/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/five-nights-at-freddys-security-breach/trophies/",
+    "trophies": []
+  },
+  "gta-vice-city": {
+    "title": "Grand Theft Auto: Vice City – The Definitive Edition Trophies",
+    "source": "https://www.playstationtrophies.org/game/grand-theft-auto-vice-city-the-definitive-edition/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/grand-theft-auto-vice-city-the-definitive-edition/trophies/",
+    "trophies": []
+  },
+  "ghost-of-yotei": {
+    "title": "Ghost of Yōtei Trophies",
+    "source": "https://www.playstationtrophies.org/game/ghost-of-yotei/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/ghost-of-yotei/trophies/",
+    "trophies": []
+  },
+  "epic-mickey-rebrushed": {
+    "title": "Disney Epic Mickey: Rebrushed Trophies",
+    "source": "https://www.playstationtrophies.org/game/epic-mickey-rebrushed-v2/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/epic-mickey-rebrushed-v2/trophies/",
+    "trophies": []
+  },
+  "killzone-3": {
+    "title": "Killzone 3 Trophies",
+    "source": "https://www.playstationtrophies.org/game/killzone-3/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/killzone-3/trophies/",
+    "trophies": []
+  },
+  "killzone-shadow-fall": {
+    "title": "Killzone: Shadow Fall Trophies",
+    "source": "https://www.playstationtrophies.org/game/killzone-shadow-fall/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/killzone-shadow-fall/trophies/",
+    "trophies": []
+  },
+  "mirrors-edge": {
+    "title": "Mirror's Edge Trophies",
+    "source": "https://www.playstationtrophies.org/game/mirrors-edge/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/mirrors-edge/trophies/",
+    "trophies": []
+  },
+  "rise-of-the-tomb-raider": {
+    "title": "Rise of the Tomb Raider Trophies",
+    "source": "https://www.playstationtrophies.org/game/rise-of-the-tomb-raider/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/rise-of-the-tomb-raider/trophies/",
+    "trophies": []
+  },
+  "naughty-bear": {
+    "title": "Naughty Bear Trophies",
+    "source": "https://www.playstationtrophies.org/game/naughty-bear/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/naughty-bear/trophies/",
+    "trophies": []
+  },
+  "battlefield-4": {
+    "title": "Battlefield 6 Trophies",
+    "source": "https://www.playstationtrophies.org/game/battlefield-4/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/battlefield-4/trophies/",
+    "trophies": []
+  },
+  "ea-sports-fc-27": {
+    "title": "EA SPORTS FC 27 Trophies",
+    "source": "https://www.playstationtrophies.org/game/ea-sports-fc-27/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/ea-sports-fc-27/trophies/",
+    "trophies": []
+  },
+  "wwe-2k25": {
+    "title": "WWE 2K25 Trophies",
+    "source": "https://www.playstationtrophies.org/game/wwe-2k25/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/wwe-2k25/trophies/",
+    "trophies": []
+  },
+  "bloodborne": {
+    "title": "Bloodborne Trophies",
+    "source": "https://www.playstationtrophies.org/game/bloodborne/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/bloodborne/trophies/",
+    "trophies": []
+  },
+  "crash-bandicoot-4": {
+    "title": "Crash Bandicoot 4: It's About Time Trophies",
+    "source": "https://www.playstationtrophies.org/game/crash-bandicoot-4/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/crash-bandicoot-4/trophies/",
+    "trophies": []
+  },
+  "crash-bandicoot-n-sane-trilogy": {
+    "title": "Crash Bandicoot N. Sane Trilogy Trophies",
+    "source": "https://www.playstationtrophies.org/game/crash-bandicoot-n-sane-trilogy/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/crash-bandicoot-n-sane-trilogy/trophies/",
+    "trophies": []
+  },
+  "spyro-reignited-trilogy": {
+    "title": "Spyro Reignited Trilogy Trophies",
+    "source": "https://www.playstationtrophies.org/game/spyro-reignited-trilogy/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/spyro-reignited-trilogy/trophies/",
+    "trophies": []
+  },
+  "back-4-blood": {
+    "title": "Back 4 Blood Trophies",
+    "source": "https://www.playstationtrophies.org/game/back-4-blood/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/back-4-blood/trophies/",
+    "trophies": []
+  },
+  "call-of-duty-modern-warfare-2": {
+    "title": "Call of Duty: Modern Warfare 2 Trophies",
+    "source": "https://www.playstationtrophies.org/game/call-of-duty-modern-warfare-2/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/call-of-duty-modern-warfare-2/trophies/",
+    "trophies": []
+  },
+  "portal-2": {
+    "title": "Portal 2 Trophies",
+    "source": "https://www.playstationtrophies.org/game/portal-2/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/portal-2/trophies/",
+    "trophies": []
+  },
+  "mlb-the-show-26": {
+    "title": "MLB The Show 26 Trophies",
+    "source": "https://www.playstationtrophies.org/game/mlb-the-show-26/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/mlb-the-show-26/trophies/",
+    "trophies": []
+  },
+  "nhl-27": {
+    "title": "NHL 27 Trophies",
+    "source": "https://www.playstationtrophies.org/game/ea-sports-nhl-27/trophies/",
+    "playstationSource": "https://www.playstationtrophies.org/game/ea-sports-nhl-27/trophies/",
+    "trophies": []
+  },
+  "gta-vi": {
+    "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+    "title": "Grand Theft Auto VI Trophies",
+    "trophies": [
+      {
+        "id": "gta-vi-1",
+        "name": "Vice Got a Price!",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "platinum",
+        "description": "Congratulations! You're a Leonida Legend."
+      },
+      {
+        "id": "gta-vi-2",
+        "name": "Just Like Paradise",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Gone Fishing."
+      },
+      {
+        "id": "gta-vi-3",
+        "name": "Paradise Lost",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Chapter 1."
+      },
+      {
+        "id": "gta-vi-4",
+        "name": "T**s Ass Drug Money",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Chapter 2."
+      },
+      {
+        "id": "gta-vi-5",
+        "name": "Vice City, Baby!",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Chapter 3."
+      },
+      {
+        "id": "gta-vi-6",
+        "name": "Top Of The World, Ma",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Chapter 4."
+      },
+      {
+        "id": "gta-vi-7",
+        "name": "You Gotta Know When to Get Off",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "gold",
+        "description": "Complete the final mission."
+      },
+      {
+        "id": "gta-vi-8",
+        "name": "Trust",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Breakfast Run."
+      },
+      {
+        "id": "gta-vi-9",
+        "name": "Break the Bank",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete The Cartel Heist."
+      },
+      {
+        "id": "gta-vi-10",
+        "name": "Family Matters",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Child's Play."
+      },
+      {
+        "id": "gta-vi-11",
+        "name": "DWNFALL",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Headliners."
+      },
+      {
+        "id": "gta-vi-12",
+        "name": "Hi-Jacked",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete VCIA Takedown."
+      },
+      {
+        "id": "gta-vi-13",
+        "name": "Snow Storm",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete Operation Savage Glory."
+      },
+      {
+        "id": "gta-vi-14",
+        "name": "A Long Road",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "gold",
+        "description": "Attain 100% Completion."
+      },
+      {
+        "id": "gta-vi-15",
+        "name": "Cunning Stunts",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "silver",
+        "description": "Complete 250 Stunts."
+      },
+      {
+        "id": "gta-vi-16",
+        "name": "Master of None",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Try each type of activity once."
+      },
+      {
+        "id": "gta-vi-17",
+        "name": "The Shootist",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "silver",
+        "description": "Earn a gold medal in all Shooting Range challenges."
+      },
+      {
+        "id": "gta-vi-18",
+        "name": "Top Fun",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Win a Top Fun Drone Race at every location."
+      },
+      {
+        "id": "gta-vi-19",
+        "name": "Earn Cash, Not Kudos",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Win 20 different races."
+      },
+      {
+        "id": "gta-vi-20",
+        "name": "Baited My Tackle",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Beat Cal in a fishing challenge."
+      },
+      {
+        "id": "gta-vi-21",
+        "name": "Stick Fiddler",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete an arcade game."
+      },
+      {
+        "id": "gta-vi-22",
+        "name": "Road to Rehabilitation",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete the final mission for Andy."
+      },
+      {
+        "id": "gta-vi-23",
+        "name": "This Was No Boat Accident",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete the final mission for Kenton."
+      },
+      {
+        "id": "gta-vi-24",
+        "name": "The Lone Rider",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete the final mission for Billy."
+      },
+      {
+        "id": "gta-vi-25",
+        "name": "Strangers & Freaks",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "silver",
+        "description": "Complete 8 mission strands for strangers across the state of Leonida."
+      },
+      {
+        "id": "gta-vi-26",
+        "name": "Supply & Demand",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete the final mission for Randy."
+      },
+      {
+        "id": "gta-vi-27",
+        "name": "Spin On This!",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete the final mission for Tyrone."
+      },
+      {
+        "id": "gta-vi-28",
+        "name": "Positive Mental Attitude",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Meditate at every spot across Leonida."
+      },
+      {
+        "id": "gta-vi-29",
+        "name": "Fair Game",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Hunt a unique animal for Bret."
+      },
+      {
+        "id": "gta-vi-30",
+        "name": "Don't Touch My Deck",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "silver",
+        "description": "Complete 3 Collectible Card sets."
+      },
+      {
+        "id": "gta-vi-31",
+        "name": "You WAiNKer!",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "silver",
+        "description": "WAiNK It at 100 locations."
+      },
+      {
+        "id": "gta-vi-32",
+        "name": "One Last Thing",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Complete 50 Challenges."
+      },
+      {
+        "id": "gta-vi-33",
+        "name": "Hot Together",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Lose a 4 star Wanted Level with your partner and escape the heat."
+      },
+      {
+        "id": "gta-vi-34",
+        "name": "Retail Therapy",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Rob 3 shops back-to-back with your partner without losing your Wanted Level."
+      },
+      {
+        "id": "gta-vi-35",
+        "name": "Whip It Good",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Discover 100 vehicles."
+      },
+      {
+        "id": "gta-vi-36",
+        "name": "Gunslinger",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Take down 5 enemies in a single use of Combat Focus."
+      },
+      {
+        "id": "gta-vi-37",
+        "name": "Catch Me If You Can",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Make an unscheduled departure at VCIA."
+      },
+      {
+        "id": "gta-vi-38",
+        "name": "Challenging Tank",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Kinda hot in these Rhinos."
+      },
+      {
+        "id": "gta-vi-39",
+        "name": "Sneakthief",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Rob a jewelry store without being detected."
+      },
+      {
+        "id": "gta-vi-40",
+        "name": "Maximum Withdrawal",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "silver",
+        "description": "Rob 5 Bank Vaults and escape."
+      },
+      {
+        "id": "gta-vi-41",
+        "name": "A Classic Blitz Play",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Rob an Armored Truck and escape."
+      },
+      {
+        "id": "gta-vi-42",
+        "name": "The Goodtime State",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Explore all of Leonida."
+      },
+      {
+        "id": "gta-vi-43",
+        "name": "Pest Control",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Rob an Illegal Operation belonging to each gang."
+      },
+      {
+        "id": "gta-vi-44",
+        "name": "In The Beginning…",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Enjoy a cocktail with a view on Ocean Beach."
+      },
+      {
+        "id": "gta-vi-45",
+        "name": "Capital Offense",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Smash your way out of a vehicle showroom in classic style."
+      },
+      {
+        "id": "gta-vi-46",
+        "name": "Let’s Go Bowling",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Follow-through at the Kolt & Associates' bowling alley."
+      },
+      {
+        "id": "gta-vi-47",
+        "name": "Personal Best",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "A partnership with mass appeal."
+      },
+      {
+        "id": "gta-vi-48",
+        "name": "Actions Speak Louder",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Choices made (for better or worse)."
+      },
+      {
+        "id": "gta-vi-49",
+        "name": "Bad Luck, I Guess",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Second time's the charm."
+      },
+      {
+        "id": "gta-vi-50",
+        "name": "The Truth Is Out There",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "What the hell just happened?"
+      },
+      {
+        "id": "gta-vi-51",
+        "name": "Ten Pin",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Bowl 'em over with a melee drive-by."
+      },
+      {
+        "id": "gta-vi-52",
+        "name": "Dime on the Dollar",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Earn $250,000 laundering Marked Bills through your contacts."
+      },
+      {
+        "id": "gta-vi-53",
+        "name": "Treat Yo Self",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Spend $100,000 across all shops."
+      },
+      {
+        "id": "gta-vi-54",
+        "name": "Little Boxes",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Purchase all garage properties."
+      },
+      {
+        "id": "gta-vi-55",
+        "name": "On the Spot",
+        "source": "https://psnprofiles.com/trophies/43531-grand-theft-auto-vi",
+        "tier": "bronze",
+        "description": "Register 10 vehicles to the Scooter Bros app."
+      }
+    ]
+  }
 }

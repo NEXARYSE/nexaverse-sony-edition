@@ -11,7 +11,7 @@
     status.setAttribute('role', 'status');
     const select = document.createElement('select');
     select.setAttribute('aria-label', 'Select controller');
-    const note = block('p', 'pad-note', 'Connect your controller and press a button to detect it. Move each stick and press buttons to test input.');
+    const note = block('p', 'pad-note', 'Connect your controller and press a button to detect it. Move each stick and press buttons to test input. Press Menu / Options to close this tester.');
     const sticks = block('div', 'pad-sticks');
     const views = ['Left analog stick', 'Right analog stick'].map(label => {
       const section = block('section', 'pad-stick');

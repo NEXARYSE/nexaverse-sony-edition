@@ -11,8 +11,10 @@
     const identity = block('span', 'leaderboard-identity'); identity.append(block('strong', '', user.name), block('small', '', '@' + user.username));
     const time = block('span', 'leaderboard-time', timeText(user.seconds));
     const tiers = block('span', 'leaderboard-tiers');
-    for (const tier of ['platinum', 'gold', 'silver', 'bronze','steam']) {
-      const count = block('span', 'leaderboard-tier'); count.append(image('assets/trophy-' + tier + (tier==='steam'?'.webp':'.png'), tier), block('span', '', String(user.tiers?.[tier] || 0))); tiers.append(count);
+    for (const tier of ['platinum', 'gold', 'silver', 'bronze', 'steam', 'xbox', 'nintendo']) {
+      const extension = tier === 'steam' ? '.webp' : (tier === 'xbox' || tier === 'nintendo' ? '.svg' : '.png');
+      const label = tier === 'xbox' ? 'Xbox achievements' : (tier === 'nintendo' ? 'Nintendo achievements' : tier);
+      const count = block('span', 'leaderboard-tier'); count.append(image('assets/trophy-' + tier + extension, label), block('span', '', String(user.tiers?.[tier] || 0))); tiers.append(count);
     }
     entry.append(place, avatar, identity, time, tiers);
     entry.onclick = () => {
@@ -34,11 +36,11 @@
       const data = await api.leaderboard();
       if (request !== generation || activePage !== 'leaderboard') return;
       body.replaceChildren();
-      const labels = block('div', 'leaderboard-columns'); labels.append(block('span', '', 'Rank'), block('span', '', 'Player'), block('span', '', 'Total playtime'), block('span', '', 'Trophies / Steam achievements')); body.append(labels);
+      const labels = block('div', 'leaderboard-columns'); labels.append(block('span', '', 'Rank'), block('span', '', 'Player'), block('span', '', 'Total playtime'), block('span', '', 'Trophies / platform achievements')); body.append(labels);
       if (!data.users?.length) paragraph(body, 'No rankings yet. Play a linked game to start recording your activity.');
       for (const [index, user] of (data.users || []).slice(0, 10).entries()) body.append(row(user, index + 1));
       const date = Number.isFinite(data.updatedAt) ? new Date(data.updatedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : '';
-      content.append(block('p', 'leaderboard-footnote', 'Game time recorded by NEXAVERSE · Trophy totals verified through supported Steam imports' + (date ? ' · Updated ' + date : '')));
+      content.append(block('p', 'leaderboard-footnote', 'Game time recorded by NEXAVERSE · Trophy and achievement slots include PlayStation, Steam, Xbox, and Nintendo' + (date ? ' · Updated ' + date : '')));
     } catch (error) { if (request === generation && activePage === 'leaderboard') { body.replaceChildren(); paragraph(body, 'Leaderboard unavailable. ' + error.message); } }
     finally { refresh.disabled = false; }
   }

@@ -11,7 +11,7 @@
     "name": "Grand Theft Auto VI",
     "art": "assets/gta-vi.png",
     "background": "assets/backgrounds/gta-vi.jpg",
-    "trophiesPending": true,
+    "trophiesPending": false,
     "steamAchievementsOnly": false
   },
   {
@@ -1148,5 +1148,122 @@
     "background": "assets/backgrounds/nba-street-vol-2.jpg",
     "libraryUntilLinked": true,
     "trophiesPending": false
+  },
+  {
+    "id": "sonic-frontiers", "name": "Sonic Frontiers", "art": "assets/sonic-frontiers.png", "background": "assets/backgrounds/sonic-frontiers.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "gears-of-war-e-day", "name": "Gears of War: E-Day", "art": "assets/gears-of-war-e-day.png", "background": "assets/backgrounds/gears-of-war-e-day.jpg", "libraryUntilLinked": true, "xboxAchievements": true, "trophiesPending": true
+  },
+  {
+    "id": "disney-dreamlight-valley", "name": "Disney Dreamlight Valley", "art": "assets/disney-dreamlight-valley.png", "background": "assets/backgrounds/disney-dreamlight-valley.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "we-happy-few", "name": "We Happy Few", "art": "assets/we-happy-few.png", "background": "assets/backgrounds/we-happy-few.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "metal-gear-solid-v-the-phantom-pain", "name": "Metal Gear Solid V: The Phantom Pain", "art": "assets/metal-gear-solid-v-the-phantom-pain.png", "background": "assets/backgrounds/metal-gear-solid-v-the-phantom-pain.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "arma-3", "name": "Arma 3", "art": "assets/arma-3.png", "background": "assets/backgrounds/arma-3.jpg", "libraryUntilLinked": true, "steamAchievementsOnly": true, "trophiesPending": true
+  },
+  {
+    "id": "call-of-duty-black-ops-cold-war", "name": "Call of Duty: Black Ops Cold War", "art": "assets/call-of-duty-black-ops-cold-war.png", "background": "assets/backgrounds/call-of-duty-black-ops-cold-war.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "payday-3", "name": "PAYDAY 3", "art": "assets/payday-3.png", "background": "assets/backgrounds/payday-3.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "quantum-break", "name": "Quantum Break", "art": "assets/quantum-break.png", "background": "assets/backgrounds/quantum-break.jpg", "libraryUntilLinked": true, "xboxAchievements": true, "trophiesPending": true
+  },
+  {
+    "id": "mass-effect-3", "name": "Mass Effect 3", "art": "assets/mass-effect-3.png", "background": "assets/backgrounds/mass-effect-3.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "steep", "name": "Steep", "art": "assets/steep.png", "background": "assets/backgrounds/steep.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "dead-rising-3", "name": "Dead Rising 3", "art": "assets/dead-rising-3.png", "background": "assets/backgrounds/dead-rising-3.jpg", "libraryUntilLinked": true, "xboxAchievements": true, "trophiesPending": true
+  },
+  {
+    "id": "the-texas-chain-saw-massacre", "name": "The Texas Chain Saw Massacre", "art": "assets/the-texas-chain-saw-massacre.jpg", "background": "assets/backgrounds/the-texas-chain-saw-massacre.webp", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "dishonored-2", "name": "Dishonored 2", "art": "assets/dishonored-2.png", "background": "assets/backgrounds/dishonored-2.png", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "beyond-two-souls", "name": "Beyond: Two Souls", "art": "assets/beyond-two-souls.png", "background": "assets/backgrounds/beyond-two-souls.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "kingdom-hearts-hd-1-5-2-5-remix", "name": "KINGDOM HEARTS HD 1.5 + 2.5 ReMIX", "art": "assets/kingdom-hearts-hd-1-5-2-5-remix.png", "background": "assets/backgrounds/kingdom-hearts-hd-1-5-2-5-remix.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "lego-star-wars-the-skywalker-saga", "name": "LEGO Star Wars: The Skywalker Saga", "art": "assets/lego-star-wars-the-skywalker-saga.png", "background": "assets/backgrounds/lego-star-wars-the-skywalker-saga.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "fable-anniversary", "name": "Fable Anniversary", "art": "assets/fable-anniversary.png", "background": "assets/backgrounds/fable-anniversary.png", "libraryUntilLinked": true, "xboxAchievements": true, "trophiesPending": true
+  },
+  {
+    "id": "just-cause-4", "name": "Just Cause 4", "art": "assets/just-cause-4.png", "background": "assets/backgrounds/just-cause-4.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "dragon-ball-z-kakarot", "name": "DRAGON BALL Z: KAKAROT", "art": "assets/dragon-ball-z-kakarot.png", "background": "assets/backgrounds/dragon-ball-z-kakarot.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "fallout-new-vegas", "name": "Fallout: New Vegas", "art": "assets/fallout-new-vegas.png", "background": "assets/backgrounds/fallout-new-vegas.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "fallout-4", "name": "Fallout 4", "art": "assets/fallout-4.png", "background": "assets/backgrounds/fallout-4.png", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "wii-sports", "name": "Wii Sports", "art": "assets/wii-sports-resort.png", "background": "assets/backgrounds/wii-sports-resort.jpg", "libraryUntilLinked": true, "pairingPending": true, "nintendoAchievements": true, "trophiesPending": true
+  },
+  {
+    "id": "stardew-valley", "name": "Stardew Valley", "art": "assets/stardew-valley.png", "background": "assets/backgrounds/stardew-valley.png", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "the-backrooms", "name": "The Backrooms", "art": "assets/the-backrooms.png", "background": "assets/backgrounds/the-backrooms.jpg", "libraryUntilLinked": true, "steamAchievementsOnly": true, "trophiesPending": true
+  },
+  {
+    "id": "nba-2k20", "name": "NBA 2K20", "art": "assets/nba-2k20.png", "background": "assets/backgrounds/nba-2k20.avif", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "dark-souls-iii", "name": "DARK SOULS III", "art": "assets/dark-souls-iii.png", "background": "assets/backgrounds/dark-souls-iii.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "the-witcher-3-wild-hunt", "name": "The Witcher 3: Wild Hunt", "art": "assets/the-witcher-3-wild-hunt.png", "background": "assets/backgrounds/the-witcher-3-wild-hunt.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "middle-earth-shadow-of-mordor", "name": "Middle-earth: Shadow of Mordor", "art": "assets/middle-earth-shadow-of-mordor.png", "background": "assets/backgrounds/middle-earth-shadow-of-mordor.png", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "need-for-speed-underground-2", "name": "Need for Speed: Underground 2", "art": "assets/need-for-speed-underground-2.png", "background": "assets/backgrounds/need-for-speed-underground-2.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "far-cry-6", "name": "Far Cry 6", "art": "assets/far-cry-6.png", "background": "assets/backgrounds/far-cry-6.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "ghost-of-tsushima-directors-cut", "name": "Ghost of Tsushima DIRECTOR'S CUT", "art": "assets/ghost-of-tsushima-directors-cut.png", "background": "assets/backgrounds/ghost-of-tsushima-directors-cut.jpg", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "resident-evil-4", "name": "Resident Evil 4", "art": "assets/resident-evil-4.png", "background": "assets/backgrounds/resident-evil-4.png", "libraryUntilLinked": true, "trophiesPending": true
+  },
+  {
+    "id": "peak", "name": "PEAK", "art": "assets/peak.png", "background": "assets/backgrounds/peak.png", "libraryUntilLinked": true, "steamAchievementsOnly": true, "trophiesPending": true
+  },
+  {
+    "id": "schedule-i", "name": "Schedule I", "art": "assets/schedule-i.png", "background": "assets/backgrounds/schedule-i.jpg", "libraryUntilLinked": true, "steamAchievementsOnly": true, "trophiesPending": true
+  },
+  {
+    "id": "pokemon-legends-arceus", "name": "Pokémon Legends: Arceus", "art": "assets/pokemon-legends-arceus.png", "background": "assets/backgrounds/pokemon-legends-arceus.jpg", "libraryUntilLinked": true, "nintendoAchievements": true, "trophiesPending": true
+  },
+  {
+    "id": "zelda-ocarina-of-time",
+    "name": "The Legend of Zelda: Ocarina of Time",
+    "art": "assets/zelda-ocarina-of-time.png",
+    "background": "assets/backgrounds/zelda-ocarina-of-time.png",
+    "libraryUntilLinked": true,
+    "nintendoAchievements": true,
+    "trophiesPending": true
   }
 ]

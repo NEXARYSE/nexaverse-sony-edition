@@ -1,3 +1,9 @@
+## Current release: 0.1.87
+
+[Download NEXAVERSE](https://github.com/NEXARYSE/nexaverse-sony-edition/releases/latest) · [0.1.87 notes](releases/0.1.87/release-notes.md)
+
+The GTA VI entry uses the experimental NEXA GTA hardware runtime. Link your supported local Xbox executable and assets to enable Play. Shader/pipeline preparation has a logo-colored percentage bar; gameplay launches borderless and F3 opens settings. World rendering and performance are still incomplete; this is not a fully playable GTA VI release. Runtime source, portable files and license notices accompany the release.
+
 # NEXAVERSE Sony Edition
 
 Source code for the NEXAVERSE desktop launcher and its community-service worker.

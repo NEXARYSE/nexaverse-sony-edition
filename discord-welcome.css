@@ -1,0 +1,47 @@
+/* The welcome screen is present before scripts run, so the library never flashes. */
+.nexa-welcome{position:fixed;inset:0;z-index:100000;background:#050711;color:#ecebf0;font-family:"Segoe UI",sans-serif;display:flex;align-items:center;flex-direction:column;isolation:isolate;overflow:hidden}
+.nexa-welcome[hidden]{display:none!important}
+.nexa-welcome::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 9% 0%,#b7a09245,transparent 43%),radial-gradient(ellipse at 24% 108%,#b8b2a72b,transparent 46%),linear-gradient(115deg,#29262a50,#02050f 76%)}
+.nexa-welcome::after{content:"";position:absolute;left:3%;top:-24%;width:33%;height:150%;transform:rotate(-27deg);background:linear-gradient(90deg,transparent,#bfb2aa09,transparent);filter:blur(35px);z-index:-1;pointer-events:none}
+.nexa-welcome canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.nexa-welcome-clock{position:absolute;top:5.3%;right:5%;font-size:clamp(12px,1.25vw,20px);font-weight:300;font-variant-numeric:tabular-nums;color:#dedbe0}
+.nexa-welcome-heading{text-align:center;margin:8vh 24px 0}
+.nexa-welcome h1{font-size:clamp(28px,3.1vw,54px);line-height:1.2;font-weight:300;letter-spacing:-.04em;margin:0 0 12px}
+.nexa-welcome-subtitle{font-size:clamp(15px,1.65vw,25px);font-weight:300;color:#b5b1b9;margin:0}
+.nexa-welcome-profiles{position:relative;display:flex;justify-content:center;align-items:center;width:100%;margin:auto 0;min-height:260px}
+.nexa-welcome[data-linked="true"] .nexa-welcome-link{position:absolute;right:calc(50% + clamp(110px,12vw,200px))}
+.nexa-welcome button{font:inherit;color:inherit;border:0;cursor:pointer;background:none}
+.nexa-welcome-profile,.nexa-welcome-link{display:flex;flex-direction:column;align-items:center;gap:24px;min-width:130px;padding:15px 10px;border-radius:12px;transition:opacity .2s,transform .2s}
+.nexa-welcome-profile:focus-visible,.nexa-welcome-link:focus-visible,.nexa-welcome-quit:focus-visible{outline:2px solid #f5dba0;outline-offset:8px}
+.nexa-welcome-avatar{position:relative;display:grid;place-items:center;width:clamp(130px,15vw,220px);height:clamp(130px,15vw,220px);border-radius:50%;background:#1e202b;box-shadow:0 0 0 2px #b9b6c4,0 0 0 9px #e4d19e0d;transition:box-shadow .25s,transform .25s}
+.nexa-welcome-avatar img{width:88%;height:88%;object-fit:cover;border-radius:50%}
+.nexa-welcome-initial{font-size:clamp(50px,6vw,88px);font-weight:300;background:linear-gradient(140deg,#c6a86c,#6c4e27);border-radius:50%;width:88%;height:88%;display:grid;place-items:center}
+.nexa-welcome-profile:hover .nexa-welcome-avatar,.nexa-welcome-profile:focus-visible .nexa-welcome-avatar{box-shadow:0 0 0 2px #f8e9c3,0 0 0 9px #e4d19e17,0 0 38px #d9b76b26;transform:scale(1.035)}
+.nexa-welcome-name{font-size:clamp(17px,1.7vw,26px);font-weight:300;max-width:280px;overflow-wrap:anywhere;text-align:center}
+.nexa-welcome-plus{display:grid;place-items:center;width:clamp(90px,10vw,145px);height:clamp(90px,10vw,145px);border-radius:50%;background:#ffffff0b;color:#e2dfe4;font-size:clamp(38px,4.5vw,65px);font-weight:200;transition:background .2s}
+.nexa-welcome-link:hover .nexa-welcome-plus{background:#ffffff17}
+.nexa-welcome-link-label{color:#bdb9c2;font-size:clamp(15px,1.5vw,22px);font-weight:300}
+.nexa-welcome button:disabled{cursor:wait;opacity:.55}
+.nexa-welcome-message{position:absolute;bottom:18%;max-width:650px;margin:0 24px;text-align:center;font-size:15px;line-height:1.6;color:#c4bec8}
+.nexa-welcome-message[data-error="true"]{color:#ffcebd}
+.nexa-welcome-quit{position:absolute;bottom:5.5%;left:50%;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;font-size:28px!important;color:#dedce3!important}
+.nexa-welcome-quit:hover{background:#ffffff12}
+.nexa-welcome-hint{position:absolute;right:5%;bottom:6.5%;font-size:14px;color:#bab6bf;display:flex;align-items:center;gap:10px}
+.nexa-welcome-hint i{width:9px;height:9px;border-radius:50%;background:#dcd9dd}
+@media(max-height:550px){.nexa-welcome-heading{margin-top:6vh}.nexa-welcome-profiles{margin-top:35px;margin-bottom:90px}.nexa-welcome-avatar{width:125px;height:125px}.nexa-welcome-message{bottom:14%;font-size:12px}.nexa-welcome-profile,.nexa-welcome-link{gap:14px}}
+@media(max-width:600px){.nexa-welcome-profiles{transform:none;gap:18px}.nexa-welcome h1{font-size:28px}.nexa-welcome-message{bottom:18%;font-size:13px}.nexa-welcome-name{max-width:170px}}
+@media(max-width:500px){.nexa-welcome[data-linked="true"] .nexa-welcome-link{right:calc(50% + 80px);min-width:90px;padding:8px 0}.nexa-welcome-plus{width:64px;height:64px;font-size:36px}.nexa-welcome-link-label{font-size:13px}.nexa-welcome-avatar{width:112px;height:112px}.nexa-welcome-profile{min-width:125px}.nexa-welcome-name{max-width:140px;font-size:17px}}
+@media(prefers-reduced-motion:reduce){.nexa-welcome *{transition:none!important}}
+
+.nexa-welcome [hidden]{display:none!important}.nexa-welcome-avatar>*{grid-area:1/1}
+.nexa-welcome-power-menu{position:absolute;bottom:12%;left:50%;transform:translateX(-50%);width:280px;padding:8px;border:1px solid #ffffff26;border-radius:12px;background:#191b27f5;box-shadow:0 12px 45px #0008;backdrop-filter:blur(18px);z-index:2}
+.nexa-welcome-power-menu button{display:block;width:100%;padding:16px 20px;border-radius:7px;text-align:left;font-size:17px;font-weight:300}
+.nexa-welcome-power-menu button:hover,.nexa-welcome-power-menu button:focus-visible{background:#ffffff15;outline:1px solid #d8c69e}
+.nexa-welcome-access{position:absolute;bottom:11%;display:flex;justify-content:center;gap:12px}
+.nexa-welcome-access button{border:1px solid #d7c89f70;border-radius:8px;padding:10px 15px;background:#ffffff09;font-size:14px}
+.nexa-welcome-access button:hover,.nexa-welcome-access button:focus-visible{background:#ffffff17;outline:1px solid #e7c587}
+
+.nexa-welcome-browser{position:absolute;bottom:7%;left:50%;transform:translateX(-50%);display:flex;justify-content:center;gap:10px;flex-wrap:wrap;width:min(95%,650px);z-index:3}
+.nexa-welcome-browser button{border:1px solid #d7c89f70;border-radius:8px;padding:10px 14px;background:#171923;font-size:14px}
+.nexa-welcome-browser button:focus-visible,.nexa-welcome-browser button:hover{outline:1px solid #e7c587;background:#30313b}
+.nexa-welcome:has(.nexa-welcome-browser:not([hidden])) .nexa-welcome-quit{visibility:hidden}

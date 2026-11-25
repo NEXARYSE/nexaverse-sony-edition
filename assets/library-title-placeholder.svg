@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="Game library cover placeholder">
+  <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#284e86"/><stop offset="1" stop-color="#10182b"/></linearGradient></defs>
+  <rect width="600" height="900" fill="url(#g)"/>
+  <path d="M0 690 600 340v560H0z" fill="#131f38" opacity=".75"/>
+  <circle cx="300" cy="330" r="132" fill="none" stroke="#8cb9ff" stroke-width="10" opacity=".65"/>
+  <path d="M252 264 390 330 252 396z" fill="#eaf3ff"/>
+  <text x="300" y="600" fill="#eaf3ff" font-family="Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle">NEXAVERSE</text>
+  <text x="300" y="646" fill="#b9cef0" font-family="Arial, sans-serif" font-size="22" text-anchor="middle">GAME LIBRARY</text>
+</svg>
