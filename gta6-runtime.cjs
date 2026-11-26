@@ -3,6 +3,8 @@ const fs = require('node:fs/promises');
 const {createHash} = require('node:crypto');
 const path = require('node:path');
 const GAME_ID = 'gta-vi';
+const RENDER_RESOLUTIONS = Object.freeze({'720p':Object.freeze({output:'1920x1080',scale:'0.6666666666666666'}),'1080p':Object.freeze({output:'1920x1080',scale:'1.0'})});
+function renderResolution(value) { return typeof value==='string' && Object.hasOwn(RENDER_RESOLUTIONS,value) ? value : '720p'; }
 // Fingerprint of the user's supported local Xbox image. No game bytes are bundled.
 const REFERENCE = Object.freeze({name:'game_scarlett_master.exe', size:120181760,
   sha256:'e95020b2fa4a721db3df59fdecf75621730ac559d8835252f6c3b658d5a08993'});
@@ -43,9 +45,36 @@ function create({runtimeRoot, appData, reference = REFERENCE}) {
     try {
       const file=await validateExecutable(game.gtaXboxExecutable);
       await runtimeReady();
-      return {exe:executable(),gtaLinked:true,gtaXboxExecutable:file,gtaLinkError:'',gtaBackend:'victory',gtaSoftwareRenderer:false};
+      return {exe:executable(),gtaLinked:true,gtaXboxExecutable:file,gtaLinkError:'',gtaBackend:'victory',gtaSoftwareRenderer:false,gtaRenderResolution:renderResolution(game.gtaRenderResolution)};
     } catch(error) {
-      return {exe:undefined,gtaLinked:false,gtaLinkError:game.gtaXboxExecutable?error.message:''};
+      return {exe:undefined,gtaLinked:false,gtaLinkError:game.gtaXboxExecutable?error.message:'',gtaRenderResolution:renderResolution(game.gtaRenderResolution)};
+    }
+  }
+  async function prepareStorage(env) {
+    // Optional local storage preference survives updates and is never bundled.
+    try {
+      const location=JSON.parse(await fs.readFile(path.join(appData,'NEXA GTA','7900-storage.json'),'utf8'));
+      if (!path.isAbsolute(location.cacheDir)||!path.isAbsolute(location.dataDir)) throw Error('Invalid GTA storage paths.');
+      env.VICTORY_CACHE_DIR=location.cacheDir;env.VICTORY_DATA_DIR=location.dataDir;
+    } catch(error) { if(error.code!=='ENOENT') throw error; }
+    await fs.mkdir(env.VICTORY_CACHE_DIR,{recursive:true});
+    const file=path.join(env.VICTORY_DATA_DIR,'7952987A','storage','settings','settings.xml');
+    await fs.mkdir(path.dirname(file),{recursive:true});
+    const defaults=await fs.readFile(path.join(__dirname,'gta6-graphics-defaults.xml'),'utf8');
+    try {
+      let current=await fs.readFile(file,'utf8');const original=current;
+      for(const name of ['hdr','desiredFPS','lodScale','motionBlur','rtDynamicShadows','shadowParticleShadows','waterReflectionSSR','frameRateLimit','vSync']) {
+        const expression=new RegExp('(<'+name+'\\s+value=")[^"]*("\\s*/>)','g');
+        const value=defaults.match(new RegExp('<'+name+'\\s+value="([^"]*)"'))?.[1];
+        if(value!==undefined)current=current.replace(expression,(_,before,after)=>before+value+after);
+      }
+      if(current!==original) {
+        try {await fs.writeFile(file+'.before-0.1.89',original,{flag:'wx'});}catch(error){if(error.code!=='EEXIST')throw error;}
+        const temporary=file+'.0.1.89.tmp';await fs.writeFile(temporary,current);await fs.rename(temporary,file);
+      }
+    } catch(error) {
+      if(error.code!=='ENOENT')throw error;
+      await fs.writeFile(file,defaults,{flag:'wx'});
     }
   }
   async function launchPlan(game) {
@@ -60,6 +89,15 @@ function create({runtimeRoot, appData, reference = REFERENCE}) {
     env.VICTORY_CACHE_DIR=path.join(appData,'NEXA GTA','victory','cache');
     env.VICTORY_DATA_DIR=path.join(appData,'NEXA GTA','victory','data');
     env.VICTORY_NEXA='1';
+    Object.assign(env, require('./gta6-profile.json'));
+    await prepareStorage(env);
+    // Keep 1080p output; the 720p profile uses the title's temporal upscaler.
+    const rendering=RENDER_RESOLUTIONS[renderResolution(game.gtaRenderResolution)];
+    env.VICTORY_DISPLAY_MODE=rendering.output;
+    env.VICTORY_OUTPUT=env.VICTORY_DISPLAY_MODE;
+    env.VICTORY_OWN_UPSCALER='1';
+    env.VICTORY_RENDER_SCALE=rendering.scale;
+    env.VICTORY_MEMORY_MAP='0';
     env.NEXA_GTA_ICON=path.join(runtimeRoot,'NEXA GTA.ico');
     env.VICTORY_DXIL=path.join(runtimeRoot,'dxil','dxil.dll');
     // Physical keyboard/mouse bindings remain in the VIctory runtime. These
@@ -70,4 +108,4 @@ function create({runtimeRoot, appData, reference = REFERENCE}) {
   }
   return {executable,validateExecutable,libraryState,launchPlan};
 }
-module.exports={GAME_ID,REFERENCE,create};
+module.exports={GAME_ID,REFERENCE,RENDER_RESOLUTIONS,renderResolution,create};

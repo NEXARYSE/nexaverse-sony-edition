@@ -19,7 +19,7 @@ test('legacy and software preferences cannot select another runtime',async t=>{
  const f=await fixture(t);const game={id:GAME_ID,gtaXboxExecutable:f.image};
  for(const backend of ['nexa','xcl','victory',undefined]){
   const plan=await f.runtime.launchPlan({...game,gtaBackend:backend,gtaSoftwareRenderer:true});
-  assert.equal(plan.env.NEXA_GTA_BACKEND,'victory');assert.equal(plan.env.VICTORY_NEXA,'1');assert.equal(plan.env.VICTORY_D3D12_WARP,undefined);
+  assert.equal(plan.env.NEXA_GTA_BACKEND,'victory');assert.equal(plan.env.VICTORY_NEXA,'1');assert.equal(plan.env.VICTORY_D3D12_WARP,undefined);assert.equal(plan.env.VICTORY_MEMORY_MAP,'0');
   assert(plan.env.VICTORY_CACHE_DIR.startsWith(f.root));assert.equal(plan.env.VICTORY_GAME_DIR,path.dirname(f.image));
  }
 });
@@ -32,4 +32,36 @@ test('inherited diagnostic shader flags are cleared while Windows environment su
 test('a missing runtime dependency disables Play and blocks launch',async t=>{
  const f=await fixture(t);const game={id:GAME_ID,gtaXboxExecutable:f.image};await fs.unlink(path.join(f.runtimeRoot,'dxil','dxcompiler.dll'));
  assert.equal((await f.runtime.libraryState(game)).gtaLinked,false);await assert.rejects(f.runtime.launchPlan(game));
+});
+
+
+test('saved rendering choices select 720p temporal upscaling or native 1080p',async t=>{
+ const f=await fixture(t);for(const [resolution,dimensions] of [[undefined,'1920x1080'],['720p','1920x1080'],['1080p','1920x1080'],['invalid','1920x1080'],[['1080p'],'1920x1080']]){
+  const game={id:GAME_ID,gtaXboxExecutable:f.image,gtaRenderResolution:resolution};const plan=await f.runtime.launchPlan(game);
+  assert.equal(plan.env.VICTORY_DISPLAY_MODE,dimensions);assert.equal(plan.env.VICTORY_OUTPUT,dimensions);assert.equal(plan.env.VICTORY_RENDER_SCALE,resolution==='1080p'?'1.0':'0.6666666666666666');assert.equal(plan.env.VICTORY_OWN_UPSCALER,'1');
+  const state=await f.runtime.libraryState(game);assert.equal(state.gtaRenderResolution,resolution==='1080p'?'1080p':'720p');
+ }
+});
+
+test('release profile retains tested rendering flags and never enables the experiments',async t=>{
+ const f=await fixture(t);const plan=await f.runtime.launchPlan({id:GAME_ID,gtaXboxExecutable:f.image});
+ for(const [key,value] of Object.entries({NEXA_GTA_CONSOLE:'series-s',VICTORY_HEAP_WORKER:'0',VICTORY_SCRATCH_ANY_SIZE:'0',VICTORY_TEXTURE_DROP_MIPS:'0',VICTORY_RELAY:'1',VICTORY_RAYS:'0',VICTORY_RENDER_SCALE:'0.6666666666666666'}))assert.equal(plan.env[key],value,key);
+ assert.equal(plan.env.VICTORY_KEYS,undefined);assert.equal(plan.env.VICTORY_CAPTURE,undefined);
+});
+
+test('graphics migration backs up existing settings and preserves unrelated options and saves',async t=>{
+ const f=await fixture(t);const folder=path.join(f.root,'NEXA GTA','victory','data','7952987A','storage','settings');await fs.mkdir(folder,{recursive:true});
+ const file=path.join(folder,'settings.xml');const before='<root><hdr value="true" /><lodScale value="1.000000" /><motionBlur value="true" /><audio value="77" /></root>';
+ await fs.writeFile(file,before);const save=path.join(folder,'save.fixture');await fs.writeFile(save,'untouched progress');
+ await f.runtime.launchPlan({id:GAME_ID,gtaXboxExecutable:f.image});const after=await fs.readFile(file,'utf8');
+ assert.match(after,/<hdr value="false"/);assert.match(after,/<lodScale value="0.500000"/);assert.match(after,/<motionBlur value="false"/);assert.match(after,/<audio value="77"/);
+ assert.equal(await fs.readFile(file+'.before-0.1.89','utf8'),before);assert.equal(await fs.readFile(save,'utf8'),'untouched progress');
+ await f.runtime.launchPlan({id:GAME_ID,gtaXboxExecutable:f.image});assert.equal(await fs.readFile(file+'.before-0.1.89','utf8'),before);
+});
+
+test('local storage selection retains cache and data outside the installed runtime',async t=>{
+ const f=await fixture(t);const location={cacheDir:path.join(f.root,'custom-cache'),dataDir:path.join(f.root,'custom-data')};
+ await fs.mkdir(path.join(f.root,'NEXA GTA'),{recursive:true});await fs.writeFile(path.join(f.root,'NEXA GTA','7900-storage.json'),JSON.stringify(location));
+ const plan=await f.runtime.launchPlan({id:GAME_ID,gtaXboxExecutable:f.image});assert.equal(plan.env.VICTORY_CACHE_DIR,location.cacheDir);assert.equal(plan.env.VICTORY_DATA_DIR,location.dataDir);
+ await fs.access(path.join(location.dataDir,'7952987A','storage','settings','settings.xml'));
 });

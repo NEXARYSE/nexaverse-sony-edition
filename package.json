@@ -1,6 +1,6 @@
 {
   "name": "nexaverse-sony-edition",
-  "version": "0.1.87",
+  "version": "0.1.89",
   "private": true,
   "main": "main.cjs",
   "description": "Independent console-style Windows game launcher",
@@ -13,8 +13,9 @@
     "productName": "NEXAVERSE",
     "artifactName": "NEXAVERSE-Setup.exe",
     "directories": {
-      "output": "../../outputs/sony-edition/0.1.87"
+      "output": "dist"
     },
+    "electronDist": "node_modules/electron/dist",
     "electronVersion": "40.10.6",
     "files": [
       "runtime-compatibility.cjs",
@@ -89,14 +90,16 @@
       "controller-picker.cjs",
       "controller-picker-preload.cjs",
       "controller-picker.js",
-      "controller-picker.html"
+      "controller-picker.html",
+      "gta6-profile.json",
+      "gta6-graphics-defaults.xml"
     ],
     "asarUnpack": [
       "assets/audio/*.mp3"
     ],
     "extraResources": [
       {
-        "from": "native",
+        "from": "runtime/sony-social",
         "to": "sony-social",
         "filter": [
           "**/*",
@@ -104,7 +107,7 @@
         ]
       },
       {
-        "from": "runtime/ps5-kyty-nba23-candidate",
+        "from": "runtime/ps5-kyty-nba23",
         "to": "ps5-kyty-nba23"
       },
       {
@@ -136,7 +139,7 @@
         "to": "cb-launcher"
       },
       {
-        "from": "runtime/nexa-gta-victory",
+        "from": "runtime/nexa-gta",
         "to": "nexa-gta"
       }
     ],

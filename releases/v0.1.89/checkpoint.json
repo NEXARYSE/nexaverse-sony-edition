@@ -1,0 +1,9 @@
+{
+  "coreSourceCommit": "2a9910e",
+  "coreSha256": "82d9d3b7a2092e828a72070322f3cbf64c3dac69be02dfe94939936da70614d5",
+  "presentationSha256": "b8b27e752a28d8dc5488664d68eaa8732c4932908c85ad278673f85ca0077286",
+  "scratchReuseEnabled": false,
+  "textureWorkerEnabled": false,
+  "correspondingSource": "NEXA-GTA-source.zip",
+  "status": "Experimental; rendering, long-session stability and stable 30 FPS remain incomplete."
+}

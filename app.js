@@ -161,6 +161,13 @@ function renderGta6Options(root,game){
  paragraph(root,'NEXA GTA · Integrated Xbox runtime');
  const memoryStatus=paragraph(root,'Memory setup targets at least 64 GiB of Windows commit capacity. Windows administrator approval and a restart may be required.');
  const memoryButton=action(root,'Set up GTA VI memory',async()=>{memoryButton.disabled=true;memoryStatus.textContent='Checking drives and Windows paging capacity…';try{const result=await api.gta6MemorySetup();memoryStatus.textContent=result.message}catch(error){memoryStatus.textContent=error.message.replace(/^Error invoking remote method '[^']+': (?:Error: )?/, '')}finally{memoryButton.disabled=Boolean(game.running)}});memoryButton.disabled=Boolean(game.running);
+ const controls=block('div','gta6-config-row');root.append(controls);controls.append(memoryButton);
+ const resolutionLabel=block('label','gta6-resolution-control');resolutionLabel.append(block('span','','Rendering'));
+ const resolution=block('select','gta6-resolution-select');resolution.setAttribute('aria-label','GTA VI render resolution');
+ for(const [value,text] of [['720p','720p → 1080p'],['1080p','1080p native']]){const option=block('option','',text);option.value=value;resolution.append(option)}
+ let savedResolution=game.gtaRenderResolution==='1080p'?'1080p':'720p';resolution.value=savedResolution;resolution.disabled=Boolean(game.running);
+ resolution.onchange=async()=>{const requested=resolution.value;resolution.disabled=true;try{await api.gta6RenderResolution(requested);savedResolution=requested;game.gtaRenderResolution=requested;toast('GTA VI rendering: '+requested+' · applies on next launch')}catch(error){resolution.value=savedResolution;toast(error.message)}finally{resolution.disabled=Boolean(game.running)}};
+ resolutionLabel.append(resolution);controls.append(resolutionLabel);
 
 
  paragraph(root,game.gtaXboxExecutable||'No Xbox executable linked.','path');
