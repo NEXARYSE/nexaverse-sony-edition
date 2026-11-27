@@ -61,7 +61,7 @@ async function install(){
  try{await installing}finally{installing=null}
 }
 function start(config={}){
- options={...options,...config};if(started||!app.isPackaged)return;started=true;client();
+ options={...options,...config};if(started||!app.isPackaged)return;started=true;try{client()}catch{updater=undefined;failure('The update service could not start. Reinstall the current launcher to repair it.');return}
  const first=setTimeout(()=>check(),10000);first.unref();
  const repeat=setInterval(()=>check(),300000);repeat.unref();
 }
