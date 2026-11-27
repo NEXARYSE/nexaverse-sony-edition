@@ -1,6 +1,6 @@
 {
   "name": "nexaverse-sony-edition",
-  "version": "0.1.89",
+  "version": "0.1.90",
   "private": true,
   "main": "main.cjs",
   "description": "Independent console-style Windows game launcher",

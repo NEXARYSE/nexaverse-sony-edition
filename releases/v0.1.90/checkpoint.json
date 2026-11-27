@@ -1,0 +1,11 @@
+{
+  "coreSourceCommit": "2a9910e",
+  "coreSha256": "82d9d3b7a2092e828a72070322f3cbf64c3dac69be02dfe94939936da70614d5",
+  "presentationSha256": "93ea06e0a350e1f2e3a37c73e43c603cac5615903367fbe3218c9ac71e70a76d",
+  "scratchReuseEnabled": false,
+  "textureWorkerEnabled": false,
+  "correspondingSource": "NEXA-GTA-source.zip",
+  "status": "Experimental; reported AMD/D3D12 and title-image crashes, rendering issues and low frame rates remain unresolved.",
+  "launcherTestsPassed": 33,
+  "nativeDiagnosticCasesPassed": 4
+}

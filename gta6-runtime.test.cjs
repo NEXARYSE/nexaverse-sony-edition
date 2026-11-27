@@ -65,3 +65,7 @@ test('local storage selection retains cache and data outside the installed runti
  const plan=await f.runtime.launchPlan({id:GAME_ID,gtaXboxExecutable:f.image});assert.equal(plan.env.VICTORY_CACHE_DIR,location.cacheDir);assert.equal(plan.env.VICTORY_DATA_DIR,location.dataDir);
  await fs.access(path.join(location.dataDir,'7952987A','storage','settings','settings.xml'));
 });
+test('launch identity uses the packaged launcher version instead of inherited identifiers',async t=>{
+ const f=await fixture(t);const old=process.env.NEXA_LAUNCHER_VERSION;process.env.NEXA_LAUNCHER_VERSION='0.0.0-stale';
+ try{const plan=await f.runtime.launchPlan({id:GAME_ID,gtaXboxExecutable:f.image});assert.equal(plan.env.NEXA_LAUNCHER_VERSION,require('./package.json').version)}finally{if(old===undefined)delete process.env.NEXA_LAUNCHER_VERSION;else process.env.NEXA_LAUNCHER_VERSION=old}
+});

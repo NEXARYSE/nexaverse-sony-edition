@@ -85,6 +85,7 @@ function create({runtimeRoot, appData, reference = REFERENCE}) {
     // Use a repeatable hardware profile rather than inherited shader experiments.
     for (const key of Object.keys(env)) if (/^(VICTORY_|NEXA_|XCL_|LEONIDA_|XV_)/.test(key)) delete env[key];
     env.NEXA_GTA_PRESENTATION='1'; env.NEXA_GTA_BACKEND='victory';
+    env.NEXA_LAUNCHER_VERSION=require('./package.json').version;
     env.VICTORY_GAME_DIR=path.dirname(file);
     env.VICTORY_CACHE_DIR=path.join(appData,'NEXA GTA','victory','cache');
     env.VICTORY_DATA_DIR=path.join(appData,'NEXA GTA','victory','data');

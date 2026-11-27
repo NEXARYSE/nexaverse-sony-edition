@@ -11,7 +11,24 @@ $usage=@(Get-CimInstance Win32_PageFileUsage|ForEach-Object {@{name=$_.Name;mb=[
 $settings=@(Get-CimInstance Win32_PageFileSetting|ForEach-Object {@{name=$_.Name;initial=[double]$_.InitialSize;maximum=[double]$_.MaximumSize}})
 @{automatic=[bool]$c.AutomaticManagedPagefile;limit=[double]$m.CommitLimit;committed=[double]$m.CommittedBytes;systemDrive=$env:SystemDrive;drives=$drives;usage=$usage;settings=$settings}|ConvertTo-Json -Depth 5 -Compress`;
 async function inspect(){const {stdout}=await ps(readScript);const s=JSON.parse(stdout.trim());if(!Number.isFinite(s.limit)||s.limit<=0||!Number.isFinite(s.committed)||s.committed<0||s.committed>s.limit||!Array.isArray(s.drives)||!Array.isArray(s.usage)||!Array.isArray(s.settings))throw Error('Invalid Windows memory information');return s;}
-function plan(s){
+function plan(s,preferredDrive='auto'){
+ if(preferredDrive!=='auto'&&(typeof preferredDrive!=='string'||! /^[A-Z]:$/i.test(preferredDrive)))throw Error('Select an available local NTFS drive.');
+ if(preferredDrive!=='auto'){
+  preferredDrive=preferredDrive.toUpperCase();
+  const disk=s.drives.find(d=>d.letter.toUpperCase()===preferredDrive);
+  if(!disk)throw Error('Selected paging-file drive is unavailable.');
+  const name=preferredDrive+'\\pagefile.sys',active=s.usage.reduce((n,u)=>n+u.mb,0),current=s.usage.find(u=>u.name.toLowerCase()===name.toLowerCase())?.mb||0;
+  // Subtract capacity already supplied by files awaiting removal: Windows may
+  // activate D immediately while C remains active until restart.
+  const additional=Math.ceil((TARGET-s.limit+G)/G)*1024;
+  const initialMB=Math.ceil(Math.max(1024,current,active+additional,s.settings.reduce((n,p)=>n+p.initial,0)));
+  const chosen=s.settings.find(p=>p.name.toLowerCase()===name.toLowerCase());
+  if(!s.automatic&&s.settings.length===1&&chosen?.initial>=initialMB)return {pending:true,drive:preferredDrive};
+  const reserve=preferredDrive.toLowerCase()===s.systemDrive.toLowerCase()?8*G:2*G,growth=Math.max(0,initialMB-current)*M;
+  if(!Number.isFinite(disk.free)||disk.free<growth+reserve)throw Error('Not enough free space on '+preferredDrive+' for the paging file. Free at least '+Math.ceil((growth+reserve-(disk.free||0))/G)+' GiB and retry.');
+  return {drive:preferredDrive,initialMB,maximumMB:Math.max(initialMB,chosen?.maximum||0),growth,reserve,moveToDrive:true};
+ }
+
  const additionalMB=Math.max(1024,Math.ceil((TARGET-s.limit+G)/G)*1024);
  const allocated=name=>s.usage.find(u=>u.name.toLowerCase()===name.toLowerCase())?.mb||0;
  const pendingMB=s.settings.reduce((n,p)=>n+Math.max(0,p.initial-allocated(p.name)),0);
@@ -33,7 +50,7 @@ function setupScript(p){
  return `$ErrorActionPreference='Stop'
 try {
 $memory=Get-CimInstance Win32_PerfFormattedData_PerfOS_Memory
-if([double]$memory.CommitLimit -ge 68719476736){exit 0}
+${p.moveToDrive?'# Explicit drive selection relocates paging files even when total capacity is sufficient.':'if([double]$memory.CommitLimit -ge 68719476736){exit 0}'}
 $drive='${p.drive}'
 $name="$drive\\pagefile.sys"
 $disk=Get-CimInstance Win32_LogicalDisk|Where-Object {$_.DeviceID -eq $drive -and $_.DriveType -eq 3 -and $_.FileSystem -eq 'NTFS'}|Select-Object -First 1
@@ -56,9 +73,10 @@ $computer=Get-CimInstance Win32_ComputerSystem
 $automatic=[bool]$computer.AutomaticManagedPagefile
 $oldInitial=[uint32]$current.InitialSize;$oldMaximum=[uint32]$current.MaximumSize
 $created=@()
+$removed=@()
 Set-CimInstance -InputObject $computer -Property @{AutomaticManagedPagefile=$false}
 try {
- foreach($u in $usage){if($u.Name -ine $name -and -not ($settings|Where-Object {$_.Name -ieq $u.Name})){
+ foreach($u in $usage){if(${p.moveToDrive?'$false':'$true'} -and $u.Name -ine $name -and -not ($settings|Where-Object {$_.Name -ieq $u.Name})){
   $entry=$class.CreateInstance();$entry.Name=$u.Name;$entry.InitialSize=[uint32]$u.AllocatedBaseSize;$entry.MaximumSize=[uint32]$u.AllocatedBaseSize;[void]$entry.Put();$created+=,$entry
  }}
  $entry=$current
@@ -66,8 +84,10 @@ try {
  $entry.InitialSize=$initial;$entry.MaximumSize=$maximum;[void]$entry.Put()
  $verify=@($class.GetInstances())|Where-Object {$_.Name -ieq $name}|Select-Object -First 1
  if(-not $verify -or $verify.InitialSize -lt $initial -or $verify.MaximumSize -lt $maximum){throw 'Windows did not retain the paging-file settings'}
+${p.moveToDrive?"foreach($other in $settings){if($other.Name -ine $name){$record=@{name=[string]$other.Name;initial=[uint32]$other.InitialSize;maximum=[uint32]$other.MaximumSize};[void]$other.Delete();$removed+=,$record}}":''}
 }catch {
  $failure=$_
+ foreach($record in $removed){$restore=$class.CreateInstance();$restore.Name=$record.name;$restore.InitialSize=$record.initial;$restore.MaximumSize=$record.maximum;[void]$restore.Put()}
  foreach($entry in $created){try{[void]$entry.Delete()}catch{}}
  if($current){$current.InitialSize=$oldInitial;$current.MaximumSize=$oldMaximum;[void]$current.Put()}
  Set-CimInstance -InputObject $computer -Property @{AutomaticManagedPagefile=$automatic}
@@ -89,7 +109,28 @@ async function configure(p){
  if(code!==0)throw Error('Windows paging-file setup failed (0x'+code.toString(16).padStart(8,'0')+'). Administrator paging-file permission, disk access, or configuration was refused. No successful setup was confirmed.');
 }
 function create({query=inspect,configure:apply=configure}={}){
- async function setup(){let s=await query();if(s.limit>=TARGET)return {ready:true,message:'Windows commit capacity is '+(s.limit/G).toFixed(1)+' GiB. No paging-file changes are needed.'};const p=plan(s);if(p.pending)return {ready:false,message:'Paging capacity is already configured. Restart Windows, then retry GTA VI.'};await apply(p);s=await query();if(s.limit>=TARGET)return {ready:true,message:'Paging-file setup completed. Active commit capacity is '+(s.limit/G).toFixed(1)+' GiB.'};const after=plan(s);if(!after.pending)throw Error('Windows did not retain sufficient paging-file capacity. No success was confirmed.');return {ready:false,message:'Paging-file capacity was configured on '+p.drive+'. Restart Windows to activate it, then retry GTA VI.'};}
- return {setup,async beforeLaunch(){const result=await setup();if(!result.ready)throw Error(result.message);const s=await query();if(s.limit-s.committed<8*G)throw Error('Close memory-heavy applications to leave at least 8 GiB of available commit capacity. GTA VI was not started.');return true;}};
+ async function setup(preferredDrive='auto'){
+  let s=await query();
+  if(preferredDrive!=='auto'&&(typeof preferredDrive!=='string'||! /^[A-Z]:$/i.test(preferredDrive)))throw Error('Select an available local NTFS drive.');
+  const selected=preferredDrive==='auto'?null:preferredDrive.toUpperCase()+'\\pagefile.sys';
+  if(s.limit>=TARGET&&(!selected||(!s.automatic&&s.settings.length===1&&s.settings[0].name.toLowerCase()===selected.toLowerCase()&&s.usage.every(u=>u.name.toLowerCase()===selected.toLowerCase()))))return {ready:true,message:'Windows commit capacity is '+(s.limit/G).toFixed(1)+' GiB. No paging-file changes are needed.'};
+  const p=plan(s,preferredDrive);
+  if(p.pending)return {ready:false,message:'Paging capacity is already configured'+(p.drive?' on '+p.drive:'')+'. Restart Windows to finish applying paging-file changes.'};
+  await apply(p);s=await query();
+  if(preferredDrive==='auto'&&s.limit>=TARGET)return {ready:true,message:'Paging-file setup completed. Active commit capacity is '+(s.limit/G).toFixed(1)+' GiB.'};
+  const retained=preferredDrive!=='auto'&&!s.automatic&&s.settings.length===1&&s.settings[0].name.toLowerCase()===selected.toLowerCase()&&s.settings[0].initial>=p.initialMB;
+  const after=retained?{pending:true}:plan(s,preferredDrive);
+  if(!after.pending)throw Error('Windows did not retain sufficient paging-file capacity. No success was confirmed.');
+  return {ready:false,message:'Paging-file capacity was configured on '+p.drive+'. Restart Windows to activate it'+(p.moveToDrive?' and remove the paging files on other drives':'')+'.'};
+ }
+
+ return {setup,async beforeLaunch(){
+  // The 64 GiB setup target is a recommendation, not an active launch requirement.
+  // Play reads current capacity only: never elevate or alter paging files here.
+  const s=await query();
+  if(!Number.isFinite(s.limit)||!Number.isFinite(s.committed)||s.limit<=0||s.committed<0||s.committed>s.limit)throw Error('Could not verify active Windows commit capacity. GTA VI was not started.');
+  if(s.limit-s.committed<8*G)throw Error('Close memory-heavy applications to leave at least 8 GiB of available commit capacity. GTA VI was not started. If you configured a larger paging file, restart Windows to activate it.');
+  return true;
+ }};
 }
 module.exports={create,inspect,plan,setupScript,readScript};

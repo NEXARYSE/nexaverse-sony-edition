@@ -21,3 +21,12 @@ test('resolution selector is beside memory setup, saves choices, rolls back erro
  context.api.gta6RenderResolution=async()=>{throw Error('Save failed')};select.value='720p';await select.onchange();assert.equal(select.value,'1080p');assert.equal(select.disabled,false);
  root.replaceChildren();context.renderGta6Options(root,{id:'gta-vi',running:true,gtaRenderResolution:'1080p'});assert.equal(root.querySelector('select').disabled,true);assert.equal(root.querySelector('button').disabled,true);
 });
+test('paging drive selector persists selection, applies it on setup, and rolls back errors',async()=>{
+ const {document}=parseHTML('<html><body><div id="root"></div></body></html>'),root=document.querySelector('#root');let selected,applied;
+ const block=(tag,cls='',text='')=>{const el=document.createElement(tag);el.className=cls;el.textContent=text;if(tag==='select')Object.defineProperty(el,'value',{value:'',writable:true});return el};
+ const context={document,block,paragraph:(p,t,c)=>{const e=block('p',c,t);p.append(e);return e},action:(p,t,f)=>{const e=block('button','pill',t);e.onclick=f;p.append(e);return e},api:{gta6PagefileDrives:async()=>[{drive:'C:',free:100*1073741824,activeMB:15360},{drive:'D:',free:1000*1073741824,activeMB:0}],gta6PagefileDrive:async value=>selected=value,gta6MemorySetup:async value=>{applied=value;return {message:'Restart Windows'}}},toast:()=>{}};
+ const source=fs.readFileSync(dir+'/app.js','utf8');vm.createContext(context);vm.runInContext(source.slice(source.indexOf('function renderGta6Options(root,game)'),source.indexOf('const renderBeforeGta6=')),context);
+ const game={id:'gta-vi'};context.renderGta6Options(root,game);await new Promise(setImmediate);const drive=root.querySelector('[aria-label="GTA VI paging-file drive"]');assert.equal(drive.options.length,3);assert.equal(drive.value,'auto');drive.value='D:';await drive.onchange();assert.equal(selected,'D:');assert.equal(game.gtaPagefileDrive,'D:');await root.querySelector('button').onclick();assert.equal(applied,'D:');
+ context.api.gta6PagefileDrive=async()=>{throw Error('Drive unavailable')};drive.value='C:';await drive.onchange();assert.equal(drive.value,'D:');assert.equal(game.gtaPagefileDrive,'D:');
+ root.replaceChildren();context.renderGta6Options(root,{id:'gta-vi',running:true});await new Promise(setImmediate);assert.equal(root.querySelector('[aria-label="GTA VI paging-file drive"]').disabled,true);
+});
