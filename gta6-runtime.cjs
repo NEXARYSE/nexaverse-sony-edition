@@ -3,12 +3,14 @@ const fs = require('node:fs/promises');
 const {createHash} = require('node:crypto');
 const path = require('node:path');
 const GAME_ID = 'gta-vi';
-const RENDER_RESOLUTIONS = Object.freeze({'720p':Object.freeze({output:'1920x1080',scale:'0.6666666666666666'}),'1080p':Object.freeze({output:'1920x1080',scale:'1.0'})});
-function renderResolution(value) { return typeof value==='string' && Object.hasOwn(RENDER_RESOLUTIONS,value) ? value : '720p'; }
+const graphics=require('./gta6-graphics-options.js');
+const RENDER_RESOLUTIONS=graphics.resolutions;
+const renderResolution=graphics.resolution;
 // Fingerprint of the user's supported local Xbox image. No game bytes are bundled.
 const REFERENCE = Object.freeze({name:'game_scarlett_master.exe', size:120181760,
   sha256:'e95020b2fa4a721db3df59fdecf75621730ac559d8835252f6c3b658d5a08993'});
-function create({runtimeRoot, appData, reference = REFERENCE}) {
+function create({runtimeRoot, appData, reference = REFERENCE, probeGraphics}) {
+  let hardwareProbe;
   const checked = new Map();
   const executable = () => path.join(runtimeRoot, 'NEXA GTA.exe');
   const required = ['NEXA GTA.exe','NEXA GTA Core.exe','NEXA GTA.ico','dxil/dxil.dll','dxil/dxcompiler.dll'];
@@ -41,16 +43,34 @@ function create({runtimeRoot, appData, reference = REFERENCE}) {
     checked.clear(); checked.set(key,real);
     return real;
   }
+  async function graphicsCapabilities(){
+    let manifest={};try{manifest=JSON.parse(await fs.readFile(path.join(runtimeRoot,'graphics-capabilities.json'),'utf8'));}catch{}
+    const directory=path.join(runtimeRoot,'streamline');
+    let installed=true;for(const name of ['sl.interposer.dll','sl.common.dll','sl.dlss.dll','nvngx_dlss.dll'])try{await fs.access(path.join(directory,name))}catch{installed=false}
+    let fg=installed;for(const name of ['sl.dlss_g.dll','sl.reflex.dll','sl.pcl.dll','nvngx_dlssg.dll'])try{await fs.access(path.join(directory,name))}catch{fg=false}
+    let hardware={dlss:false,frameGeneration:false};
+    if(manifest.streamline===true&&installed){
+      hardwareProbe ||= (probeGraphics?probeGraphics(directory):new Promise(resolve=>{
+        const env={...process.env};for(const key of Object.keys(env))if(key.startsWith('VICTORY_'))delete env[key];
+        Object.assign(env,{VICTORY_STREAMLINE_DIR:directory,VICTORY_LOG:'warn'});
+        require('node:child_process').execFile(path.join(runtimeRoot,'NEXA GTA Core.exe'),['upscaler-check'],{cwd:runtimeRoot,env,windowsHide:true,timeout:20000,maxBuffer:2*1024*1024},(error,stdout,stderr)=>{
+          const text=String(stdout)+' '+String(stderr);resolve({dlss:!error&&/DLSS supported/.test(text),frameGeneration:!error&&/frame generation supported/.test(text)});
+        });
+      })).catch(()=>({dlss:false,frameGeneration:false}));
+      hardware=await hardwareProbe;
+    }
+    return {dlss:manifest.streamline===true&&installed&&hardware.dlss,frameGeneration:manifest.frameGeneration===true&&fg&&hardware.frameGeneration,vSync:manifest.vSync===true,hdr:false,directory};
+  }
   async function libraryState(game) {
     try {
       const file=await validateExecutable(game.gtaXboxExecutable);
       await runtimeReady();
-      return {exe:executable(),gtaLinked:true,gtaXboxExecutable:file,gtaLinkError:'',gtaBackend:'victory',gtaSoftwareRenderer:false,gtaRenderResolution:renderResolution(game.gtaRenderResolution)};
+      return {exe:executable(),gtaLinked:true,gtaXboxExecutable:file,gtaLinkError:'',gtaBackend:'victory',gtaSoftwareRenderer:false,gtaRenderResolution:renderResolution(game.gtaRenderResolution),gtaGraphics:graphics.normalize(game.gtaGraphics),gtaGraphicsCapabilities:await graphicsCapabilities()};
     } catch(error) {
-      return {exe:undefined,gtaLinked:false,gtaLinkError:game.gtaXboxExecutable?error.message:'',gtaRenderResolution:renderResolution(game.gtaRenderResolution)};
+      return {exe:undefined,gtaLinked:false,gtaLinkError:game.gtaXboxExecutable?error.message:'',gtaRenderResolution:renderResolution(game.gtaRenderResolution),gtaGraphics:graphics.normalize(game.gtaGraphics),gtaGraphicsCapabilities:await graphicsCapabilities()};
     }
   }
-  async function prepareStorage(env) {
+  async function prepareStorage(env,settings) {
     // Optional local storage preference survives updates and is never bundled.
     try {
       const location=JSON.parse(await fs.readFile(path.join(appData,'NEXA GTA','7900-storage.json'),'utf8'));
@@ -60,14 +80,24 @@ function create({runtimeRoot, appData, reference = REFERENCE}) {
     await fs.mkdir(env.VICTORY_CACHE_DIR,{recursive:true});
     const file=path.join(env.VICTORY_DATA_DIR,'7952987A','storage','settings','settings.xml');
     await fs.mkdir(path.dirname(file),{recursive:true});
-    const defaults=await fs.readFile(path.join(__dirname,'gta6-graphics-defaults.xml'),'utf8');
+    let defaults=await fs.readFile(path.join(__dirname,'gta6-graphics-defaults.xml'),'utf8');
+    const values=graphics.xmlValues(settings);
+    for(const [name,value] of Object.entries(values)) defaults=defaults.replace(new RegExp('(<'+name+'\\s+value=")[^"]*("\\s*/>)','g'),(_,a,b)=>a+value+b);
+    const [defaultWidth,defaultHeight]=env.VICTORY_DISPLAY_MODE.split('x');
+    defaults=defaults.replace(/(<resolutionFullscreen\b[^>]*>)([\s\S]*?)(<\/resolutionFullscreen>)/g,(_,open,body,close)=>open+body.replace(/(<width\s+value=")[^"]*("\s*\/>)/g,(_,a,b)=>a+defaultWidth+b).replace(/(<height\s+value=")[^"]*("\s*\/>)/g,(_,a,b)=>a+defaultHeight+b)+close);
     try {
       let current=await fs.readFile(file,'utf8');const original=current;
-      for(const name of ['hdr','desiredFPS','lodScale','motionBlur','rtDynamicShadows','shadowParticleShadows','waterReflectionSSR','frameRateLimit','vSync']) {
+      for(const name of Object.keys(values)) {
         const expression=new RegExp('(<'+name+'\\s+value=")[^"]*("\\s*/>)','g');
         const value=defaults.match(new RegExp('<'+name+'\\s+value="([^"]*)"'))?.[1];
         if(value!==undefined)current=current.replace(expression,(_,before,after)=>before+value+after);
       }
+      // Stored output dimensions must agree with the console display mode.
+      // Internal rendering is controlled separately by VICTORY_RENDER_SCALE.
+      const [width,height]=env.VICTORY_DISPLAY_MODE.split('x');
+      current=current.replace(/(<resolutionFullscreen\b[^>]*>)([\s\S]*?)(<\/resolutionFullscreen>)/g,(_,open,body,close)=>
+        open+body.replace(/(<width\s+value=")[^"]*("\s*\/>)/g,(_,a,b)=>a+width+b)
+          .replace(/(<height\s+value=")[^"]*("\s*\/>)/g,(_,a,b)=>a+height+b)+close);
       if(current!==original) {
         try {await fs.writeFile(file+'.before-0.1.89',original,{flag:'wx'});}catch(error){if(error.code!=='EEXIST')throw error;}
         const temporary=file+'.0.1.89.tmp';await fs.writeFile(temporary,current);await fs.rename(temporary,file);
@@ -91,13 +121,25 @@ function create({runtimeRoot, appData, reference = REFERENCE}) {
     env.VICTORY_DATA_DIR=path.join(appData,'NEXA GTA','victory','data');
     env.VICTORY_NEXA='1';
     Object.assign(env, require('./gta6-profile.json'));
-    await prepareStorage(env);
     // Keep 1080p output; the 720p profile uses the title's temporal upscaler.
+    const settings=graphics.normalize(game.gtaGraphics);
     const rendering=RENDER_RESOLUTIONS[renderResolution(game.gtaRenderResolution)];
     env.VICTORY_DISPLAY_MODE=rendering.output;
     env.VICTORY_OUTPUT=env.VICTORY_DISPLAY_MODE;
     env.VICTORY_OWN_UPSCALER='1';
     env.VICTORY_RENDER_SCALE=rendering.scale;
+    env.VICTORY_VSYNC=settings.vSync;
+    const wantsDLSS=settings.upscaler==='dlss'||settings.frameGeneration==='2x';
+    env.VICTORY_DLSS='0';env.VICTORY_FRAMEGEN='0';
+    if(wantsDLSS){
+      const capabilities=await graphicsCapabilities();
+      if(!capabilities.dlss)throw Error('NVIDIA DLSS is not installed for this runtime. Keep Game temporal selected until setup is available.');
+      env.VICTORY_STREAMLINE_DIR=capabilities.directory;
+      env.VICTORY_DLSS='1';env.VICTORY_STREAMLINE_PRESENT='1';env.VICTORY_DLSS_MODE=rendering.native?'dlaa':settings.dlssMode;
+      if(settings.frameGeneration==='2x'){if(!capabilities.frameGeneration)throw Error('Update the GTA VI runtime to use frame generation.');env.VICTORY_FRAMEGEN='1';env.VICTORY_FRAMEGEN_X='2';env.VICTORY_TEXTURE_ROOM_PERCENT='80';}
+      delete env.VICTORY_OWN_UPSCALER;delete env.VICTORY_RENDER_SCALE;
+    }
+    await prepareStorage(env,settings);
     env.VICTORY_MEMORY_MAP='0';
     env.NEXA_GTA_ICON=path.join(runtimeRoot,'NEXA GTA.ico');
     env.VICTORY_DXIL=path.join(runtimeRoot,'dxil','dxil.dll');
@@ -107,6 +149,15 @@ function create({runtimeRoot, appData, reference = REFERENCE}) {
     for(const key of ['NEXA_GRAPHICS','VICTORY_D3D12_WARP','VICTORY_KEYS','VICTORY_CAPTURE','VICTORY_CAPTURE_FRAMES','VICTORY_D3D12_GBV','NEXA_PIPELINE_TRACE','NEXA_SHADER_CAPTURE','NEXA_NATIVE_GRAPHICS_CAPTURE','XV_INPUT_PRESS'])delete env[key];
     return {exe:executable(),args:[file],cwd:runtimeRoot,env,windowsHide:false};
   }
-  return {executable,validateExecutable,libraryState,launchPlan};
+  async function saveFolder(){
+    let dataDir=path.join(appData,'NEXA GTA','victory','data');
+    try{
+      const location=JSON.parse(await fs.readFile(path.join(appData,'NEXA GTA','7900-storage.json'),'utf8'));
+      if(!path.isAbsolute(location.dataDir))throw Error('Invalid GTA storage paths.');
+      dataDir=location.dataDir;
+    }catch(error){if(error.code!=='ENOENT')throw error;}
+    return path.join(dataDir,'7952987A','saves');
+  }
+  return {executable,validateExecutable,libraryState,launchPlan,graphicsCapabilities,saveFolder};
 }
 module.exports={GAME_ID,REFERENCE,RENDER_RESOLUTIONS,renderResolution,create};

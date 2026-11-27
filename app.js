@@ -164,13 +164,15 @@ function renderGta6Options(root,game){
  const controls=block('div','gta6-config-row');root.append(controls);controls.append(memoryButton);
  const resolutionLabel=block('label','gta6-resolution-control');resolutionLabel.append(block('span','','Rendering'));
  const resolution=block('select','gta6-resolution-select');resolution.setAttribute('aria-label','GTA VI render resolution');
- for(const [value,text] of [['720p','720p → 1080p'],['1080p','1080p native']]){const option=block('option','',text);option.value=value;resolution.append(option)}
- let savedResolution=game.gtaRenderResolution==='1080p'?'1080p':'720p';resolution.value=savedResolution;resolution.disabled=Boolean(game.running);
+ const graphics=globalThis.GTA6Graphics;
+ for(const [value,text] of Object.entries(graphics.resolutions).map(([key,value])=>[key,value.label])){const option=block('option','',text);option.value=value;resolution.append(option)}
+ let savedResolution=graphics.resolution(game.gtaRenderResolution);resolution.value=savedResolution;resolution.disabled=Boolean(game.running);
  resolution.onchange=async()=>{const requested=resolution.value;resolution.disabled=true;try{await api.gta6RenderResolution(requested);savedResolution=requested;game.gtaRenderResolution=requested;toast('GTA VI rendering: '+requested+' · applies on next launch')}catch(error){resolution.value=savedResolution;toast(error.message)}finally{resolution.disabled=Boolean(game.running)}};
  resolutionLabel.append(resolution);controls.append(resolutionLabel);
  const driveLabel=block('label','gta6-resolution-control');driveLabel.append(block('span','','Paging-file drive'));
  const driveSelect=block('select','gta6-resolution-select');driveSelect.setAttribute('aria-label','GTA VI paging-file drive');driveSelect.disabled=true;
  const automatic=block('option','','Automatic');automatic.value='auto';driveSelect.append(automatic);driveLabel.append(driveSelect);controls.append(driveLabel);
+ const savesButton=action(root,'Open save folder',async()=>{savesButton.disabled=true;try{await api.openGta6SaveFolder()}catch(error){toast(error.message)}finally{savesButton.disabled=false}});
  const driveNote=paragraph(root,'Choosing a drive moves Windows paging files there when you run memory setup. A Windows restart is required.');
  let savedDrive=game.gtaPagefileDrive||'auto';
  if(api.gta6PagefileDrives)api.gta6PagefileDrives().then(drives=>{for(const item of drives){const option=block('option','',item.drive+' · '+(item.free/1073741824).toFixed(0)+' GiB free'+(item.activeMB?' · active':''));option.value=item.drive;driveSelect.append(option)}if(savedDrive!=='auto'&&!drives.some(d=>d.drive===savedDrive)){const missing=block('option','',savedDrive+' · unavailable');missing.value=savedDrive;missing.disabled=true;driveSelect.append(missing)}driveSelect.value=savedDrive;driveSelect.disabled=Boolean(game.running)}).catch(error=>{driveNote.textContent='Could not list paging-file drives: '+error.message});
@@ -178,6 +180,26 @@ function renderGta6Options(root,game){
 
 
 
+ const graphicsNote=paragraph(root,'Graphics changes apply on the next launch. DLSS Frame Generation requires an RTX 40-series or newer GPU and Windows Hardware-accelerated GPU scheduling. Native rendering uses DLAA when NVIDIA upscaling is selected. Balanced and Performance modes reduce the internal resolution further.');
+ const capabilities=game.gtaGraphicsCapabilities||{};
+ let savedGraphics=graphics.normalize(game.gtaGraphics);
+ const sections=new Map();
+ for(const field of graphics.fields){
+  if(!sections.has(field.group)){const section=block('details','gta6-graphics-section');section.append(block('summary','',field.group));const grid=block('div','gta6-graphics-grid');section.append(grid);root.append(section);sections.set(field.group,grid);if(field.group==='Display')section.open=true;}
+  const label=block('label','gta6-resolution-control');label.append(block('span','',field.label));
+  const input=block('select','gta6-resolution-select');input.setAttribute('aria-label','GTA VI '+field.label);
+  for(const [value,text]of field.choices){const option=block('option','',text);option.value=value;if(field.key==='frameGeneration'&&value!=='off'&&!capabilities.frameGeneration)option.disabled=true;if(field.key==='upscaler'&&value==='dlss'&&!capabilities.dlss)option.disabled=true;input.append(option);}
+  input.value=savedGraphics[field.key];
+  const disabled=()=>Boolean(game.running)||field.locked||(field.key==='dlssMode'&&!capabilities.dlss)||(field.key==='vSync'&&!capabilities.vSync);
+  input.disabled=disabled();
+  if(field.feature&&!capabilities[field.feature])label.append(block('small','',field.key==='frameGeneration'?'Requires the DLSS-enabled runtime and NVIDIA files.':'Available after NVIDIA DLSS setup.'));
+  if(field.key==='hdr')label.append(block('small','','This runtime currently presents SDR.'));
+  if(field.key==='vSync'&&!capabilities.vSync)label.append(block('small','','Unavailable in the installed runtime.'));
+  input.onchange=async()=>{input.disabled=true;const patch={[field.key]:input.value};if(field.key==='frameGeneration'&&input.value==='2x')patch.upscaler='dlss';try{await api.gta6Graphics(patch);savedGraphics=graphics.normalize({...savedGraphics,...patch});game.gtaGraphics=savedGraphics;for(const [key,value]of Object.entries(patch)){const spec=graphics.fields.find(f=>f.key===key);const target=root.querySelector('[aria-label="GTA VI '+spec.label+'"]');if(target)target.value=value;}toast(field.label+' saved · applies on next launch')}catch(error){input.value=savedGraphics[field.key];toast(error.message)}finally{input.disabled=disabled()}};
+  label.append(input);sections.get(field.group).append(label);
+ }
+ paragraph(root,'Ray tracing, ambient occlusion, subsurface scattering and crowd density do not yet have supported controls in this runtime.');
+ const reset=action(root,'Restore recommended graphics',async()=>{reset.disabled=true;try{await api.gta6Graphics(graphics.normalize({}));await api.gta6RenderResolution('720p');game.gtaGraphics=graphics.normalize({});game.gtaRenderResolution='720p';root.replaceChildren();renderGta6Options(root,game);toast('Recommended graphics restored')}catch(error){toast(error.message)}finally{reset.disabled=Boolean(game.running)}});reset.disabled=Boolean(game.running);
  paragraph(root,game.gtaXboxExecutable||'No Xbox executable linked.','path');
  paragraph(root,'Select your local GTA VI Xbox game_scarlett_master.exe. Other games and unsupported builds cannot be linked.');
  paragraph(root,'Experimental runtime. Your local GTA VI Xbox files are required. Shader preparation runs before the game starts. Press F3 in game for settings.');

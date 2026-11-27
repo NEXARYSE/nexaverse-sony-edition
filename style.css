@@ -86,3 +86,9 @@ dialog.sony-settings-dialog{width:min(940px,88vw);padding:0;background:linear-gr
 /* Keep each trophy icon and number in a dedicated leaderboard cell. */
 .leaderboard-columns{grid-template-columns:70px 1fr 180px 330px}.leaderboard-row{grid-template-columns:70px 64px 1fr 180px 330px}.leaderboard-tiers{grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.leaderboard-tier{justify-content:center;gap:4px;min-width:0;font-size:14px;line-height:1;white-space:nowrap}.leaderboard-tier img{width:20px;height:28px;flex:none}.leaderboard-tier>span{min-width:1.3ch;text-align:left}
 @media(max-width:1250px){.leaderboard-columns{grid-template-columns:45px 1fr 115px 300px}.leaderboard-row{grid-template-columns:45px 48px 1fr 115px 300px}.leaderboard-tier{font-size:13px}.leaderboard-tier img{width:18px;height:26px}}
+
+.gta6-config-row{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:12px 0}.gta6-config-row .pill{margin:0}.gta6-resolution-control{display:grid;gap:6px;color:#c1ccdc;font-size:12px}.gta6-resolution-select{min-height:43px;padding:0 12px;border:1px solid #455065;border-radius:10px;background:#101824;color:#f4f7fc;font:inherit;font-size:13px}.gta6-resolution-select:focus-visible{outline:2px solid #dfc9f8;outline-offset:3px}.gta6-resolution-select:disabled{opacity:.55}
+
+.gta6-graphics-section{border:1px solid #455065;border-radius:12px;padding:12px 14px;margin:12px 0}.gta6-graphics-section summary{cursor:pointer;font-size:15px;color:#f4f7fc;font-weight:600}.gta6-graphics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:16px}.gta6-graphics-grid small{color:#acb8cc;font-size:11px;line-height:1.45}.gta6-graphics-section[open] summary{margin-bottom:8px}
+
+dialog:has(.gta6-graphics-section){width:min(780px,92vw);max-height:88vh;overflow:auto}

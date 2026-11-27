@@ -50,10 +50,10 @@
     <motionBlurScale value="1.000000" />
     <rtLODLightShadows value="false" />
     <rtDynamicShadows value="false" />
-    <shadowAlphaTintedShadows value="true" />
+    <shadowAlphaTintedShadows value="false" />
     <shadowLongShadows value="false" />
     <shadowParticleShadows value="false" />
-    <sharpenEnabled value="true" />
+    <sharpenEnabled value="false" />
     <sharpenIntensity value="1.000000" />
     <ssroSampleCount value="2" />
     <transferQueuesEnabled value="true" />

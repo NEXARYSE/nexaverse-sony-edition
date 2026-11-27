@@ -43,9 +43,9 @@ test('saved rendering choices select 720p temporal upscaling or native 1080p',as
  }
 });
 
-test('release profile retains tested rendering flags and never enables the experiments',async t=>{
+test('release profile retains checkpoint memory settings and defaults generation off',async t=>{
  const f=await fixture(t);const plan=await f.runtime.launchPlan({id:GAME_ID,gtaXboxExecutable:f.image});
- for(const [key,value] of Object.entries({NEXA_GTA_CONSOLE:'series-s',VICTORY_HEAP_WORKER:'0',VICTORY_SCRATCH_ANY_SIZE:'0',VICTORY_TEXTURE_DROP_MIPS:'0',VICTORY_RELAY:'1',VICTORY_RAYS:'0',VICTORY_RENDER_SCALE:'0.6666666666666666'}))assert.equal(plan.env[key],value,key);
+ for(const [key,value] of Object.entries({NEXA_GTA_CONSOLE:'series-s',VICTORY_HEAP_WORKER:'1',VICTORY_SHARED_TIGHT:'1',VICTORY_SHARED_ARENA_MB:'4',VICTORY_SCRATCH_ANY_SIZE:'0',VICTORY_TEXTURE_DROP_MIPS:'0',VICTORY_RELAY:'2',VICTORY_RAYS:'0',VICTORY_DLSS:'0',VICTORY_FRAMEGEN:'0',VICTORY_RENDER_SCALE:'0.6666666666666666'}))assert.equal(plan.env[key],value,key);
  assert.equal(plan.env.VICTORY_KEYS,undefined);assert.equal(plan.env.VICTORY_CAPTURE,undefined);
 });
 

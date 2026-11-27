@@ -1,0 +1,10 @@
+{
+  "coreSourceCommit": "ad94a1984d78ddcb2069c4cbb56f133e7758d4d5",
+  "coreSha256": "1a331662f79ea7b80e6384c50d96627ea797ff22a013791aeb841b6c229aab84",
+  "presentationSha256": "a9bb8ff4f8d4584f88d958a22253cc1f818717148650d6b8000b97b09e465361",
+  "correspondingSource": "NEXA-GTA-source.zip",
+  "launcherTestsPassed": 39,
+  "frameGenerationDefault": "off",
+  "NvidiaLibrariesBundled": false,
+  "status": "Experimental: 30 FPS, complete rendering, long-session stability and 16 GB compatibility not established."
+}
